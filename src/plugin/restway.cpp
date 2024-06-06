@@ -42,7 +42,7 @@ public:
     try {
       (*out)["result"] = json::parse(_response.body);
     } catch (json::parse_error &e) {
-      cerr << "Error parsing JSON: " << e.what() << endl;
+      cerr << "Error parsing REST body as JSON: " << e.what() << endl;
       cerr << "when trying to parse: \"" << _response.body << "\"" << endl;
       return return_type::error;
     }
@@ -107,7 +107,12 @@ int main(int argc, char const *argv[]) {
     params["size"] = 20;
   } else {
     ifstream file(argv[1]);
-    params = json::parse(file);
+    try {
+      params = json::parse(file);
+    } catch (json::parse_error &e) {
+      cerr << "Error parsing parameters: " << e.what() << endl;
+      return 1;
+    }
     file.close();
   }
   source.set_params(&params);
