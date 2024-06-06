@@ -69,6 +69,7 @@ int main(int argc, char *argv[]) {
   if (argc == 3) {
     ifstream file(argv[2]);
     params = json::parse(file);
+    file.close();
   } else {
     params["name"] = "plugin test";
   }

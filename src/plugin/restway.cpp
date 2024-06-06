@@ -14,6 +14,7 @@ A RESTful Gateway
 #include <pugg/Kernel.h>
 #include <sstream>
 #include <restclient-cpp/restclient.h>
+#include <fstream>
 
 
 #ifndef PLUGIN_NAME
@@ -93,10 +94,16 @@ int main(int argc, char const *argv[]) {
   RESTway source;
   json output;
   json params;
-  params["url"] = "http://localhost:5443/";
-  params["description"] = "RESTway, a RESTful gateway";
-  params["page"] = 0;
-  params["size"] = 20;
+  if (argc == 1) {
+    params["url"] = "http://localhost:5443/";
+    params["description"] = "RESTway, a RESTful gateway";
+    params["page"] = 0;
+    params["size"] = 20;
+  } else {
+    ifstream file(argv[1]);
+    params = json::parse(file);
+    file.close();
+  }
   source.set_params(&params);
   for (auto &p : source.info()) {
     cout << p.first << ": " << p.second << endl;
