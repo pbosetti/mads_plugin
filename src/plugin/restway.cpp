@@ -39,7 +39,13 @@ public:
 
     _response = get(ss.str());
     (*out)["code"] = _response.code;
-    (*out)["result"] = json::parse(_response.body);
+    try {
+      (*out)["result"] = json::parse(_response.body);
+    } catch (json::parse_error &e) {
+      cerr << "Error parsing JSON: " << e.what() << endl;
+      cerr << "when trying to parse: \"" << _response.body << "\"" << endl;
+      return return_type::error;
+    }
     (*out)["headers"] = _response.headers;
 
     if (_response.code != 200) {
