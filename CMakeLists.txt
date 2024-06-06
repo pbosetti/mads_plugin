@@ -87,12 +87,6 @@ add_loader(load_filter)
 add_loader(load_source)
 add_loader(load_sink)
 
-find_package(OpenCV)
-if(OpenCV_FOUND)
-  message(STATUS "OpenCV found, webcam.plugin will be built")
-  add_plugin(webcam LIBS ${OpenCV_LIBS})
-endif()
-
 
 # INSTALL ######################################################################
 set(CMAKE_INSTALL_PREFIX ${USR_DIR})
