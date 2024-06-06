@@ -1,0 +1,8 @@
+.vscode/*
+build/*
+usr/*
+
+*.jpg
+
+external/*
+doc/html
