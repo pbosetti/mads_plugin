@@ -15,6 +15,8 @@ A RESTful Gateway
 #include <sstream>
 #include <restclient-cpp/restclient.h>
 #include <fstream>
+#include <chrono>
+#include <thread>
 
 
 #ifndef PLUGIN_NAME
@@ -32,6 +34,7 @@ public:
   string kind() override { return PLUGIN_NAME; }
 
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
+    return_type rc = return_type::error;
     stringstream ss;
     ss << string(_params["url"]) << "?page=" << _params["page"] << "&size=" << _params["size"];
     out->clear();
@@ -41,26 +44,31 @@ public:
     (*out)["code"] = _response.code;
     try {
       (*out)["result"] = json::parse(_response.body);
+      rc = return_type::success;
     } catch (json::parse_error &e) {
       cerr << "Error parsing REST body as JSON: " << e.what() << endl;
       cerr << "when trying to parse: \"" << _response.body << "\"" << endl;
-      return return_type::error;
+      goto exit;
     }
     (*out)["headers"] = _response.headers;
 
     if (_response.code != 200) {
-      cerr << "Code: " << _response.code << endl;
-      return return_type::error;
+      this_thread::sleep_for(chrono::milliseconds(_params["delay"]));
+      goto exit;
     }
 
-    return return_type::success;
+exit:
+    this_thread::sleep_for(chrono::milliseconds(_params["delay"]));
+    return rc;
   }
 
   void set_params(void *params) override { 
     _params["url"] = string("http://localhost:5443/amw4analysis/job"); 
+    _params["description"] = "RESTway, a RESTful gateway";
     _params["page"] = 0;
     _params["size"] = 20;
     _params["id"] = 0;
+    _params["delay"] = 1000;
     _params.merge_patch(*(json *)params);
   }
 
