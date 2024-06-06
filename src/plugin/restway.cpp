@@ -37,11 +37,14 @@ public:
     (*out)["url"] = ss.str();
 
     _response = get(ss.str());
-
-    if (_response.code != 200) 
-      cerr << "Code: " << _response.code << endl;
-
+    (*out)["code"] = _response.code;
     (*out)["result"] = json::parse(_response.body);
+    (*out)["headers"] = _response.headers;
+
+    if (_response.code != 200) {
+      cerr << "Code: " << _response.code << endl;
+      return return_type::error;
+    }
 
     return return_type::success;
   }
