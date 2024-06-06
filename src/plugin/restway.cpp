@@ -47,7 +47,10 @@ public:
   }
 
   void set_params(void *params) override { 
-    _params["url"] = string("http://localhost:5443/"); 
+    _params["url"] = string("http://localhost:5443/amw4analysis/job"); 
+    _params["page"] = 0;
+    _params["size"] = 20;
+    _params["id"] = 0;
     _params.merge_patch(*(json *)params);
   }
 
