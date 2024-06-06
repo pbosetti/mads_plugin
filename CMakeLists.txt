@@ -32,7 +32,13 @@ FetchContent_Declare(json
   GIT_TAG        v3.11.3
   GIT_SHALLOW    TRUE
 )
-FetchContent_MakeAvailable(pugg json)
+set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+FetchContent_Declare(restclient-cpp
+  GIT_REPOSITORY https://github.com/mrtazz/restclient-cpp
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+FetchContent_MakeAvailable(pugg json restclient-cpp)
 
 
 
@@ -76,12 +82,16 @@ else()
   set(CMAKE_INSTALL_RPATH "\$ORIGIN/../lib;/usr/local/lib")
 endif()
 include_directories(${json_SOURCE_DIR}/include)
+include_directories(${restclient-cpp_SOURCE_DIR}/include)
+link_directories(${restclient-cpp_BINARY_DIR})
+
 
 
 # TARGETS ######################################################################
 add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
+add_plugin(restway LIBS restclient-cpp)
 
 add_loader(load_filter)
 add_loader(load_source)
