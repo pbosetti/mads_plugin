@@ -98,8 +98,11 @@ Derived classes</h1>
 </div><!-- fragment --><p>If it is a filter, add</p>
 <div class="fragment"><div class="line"><a class="code" href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db">INSTALL_FILTER_DRIVER</a>(MyFilterClassName, json, json)</div>
 <div class="ttc" id="acommon_8hpp_html_ac2ca73400d23bb4f12e23a64071588db"><div class="ttname"><a href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db">INSTALL_FILTER_DRIVER</a></div><div class="ttdeci">#define INSTALL_FILTER_DRIVER(klass, type_in, type_out)</div><div class="ttdoc">Call this macro after defining a filter class to install it into the kernel.</div><div class="ttdef"><b>Definition:</b> common.hpp:38</div></div>
+</div><!-- fragment --><p>If it is a sink, add</p>
+<div class="fragment"><div class="line"><a class="code" href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4">INSTALL_SINK_DRIVER</a>(MySinkClassName, json)</div>
+<div class="ttc" id="acommon_8hpp_html_a1bbc82f63035c765ea291fb1051afad4"><div class="ttname"><a href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4">INSTALL_SINK_DRIVER</a></div><div class="ttdeci">#define INSTALL_SINK_DRIVER(klass, type)</div><div class="ttdoc">Call this macro after defining a source class to install it into the kernel.</div><div class="ttdef"><b>Definition:</b> common.hpp:57</div></div>
 </div><!-- fragment --><p>Finally, create a new target in the <code>CMakeLists.txt</code> file that compiles the new plugin. Something like:</p>
-<div class="fragment"><div class="line">add_plugin(webcam LIBS ${OpenCV_LIBS} OtherLibsNeeded)</div>
+<div class="fragment"><div class="line">add_plugin(webcam LIBS LibsNeeded)</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
