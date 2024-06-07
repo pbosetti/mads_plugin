@@ -59,8 +59,14 @@ If it is a filter, add
 INSTALL_FILTER_DRIVER(MyFilterClassName, json, json)
 ```
 
+If it is a sink, add
+
+```cpp
+INSTALL_SINK_DRIVER(MySinkClassName, json)
+```
+
 Finally, create a new target in the `CMakeLists.txt` file that compiles the new plugin. Something like:
 
 ```cmake
-add_plugin(webcam LIBS ${OpenCV_LIBS} OtherLibsNeeded)
+add_plugin(webcam LIBS LibsNeeded)
 ```
