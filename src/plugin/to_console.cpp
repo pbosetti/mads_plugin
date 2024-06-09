@@ -31,7 +31,10 @@ public:
     return return_type::success;
   }
 
-  void set_params(void *params) override { _params = *(json *)params; }
+  void set_params(void *params) override { 
+    Sink::set_params(params);
+    _params = *(json *)params; 
+  }
 
   map<string, string> info() override {
     map<string, string> m;

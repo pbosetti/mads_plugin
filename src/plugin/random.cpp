@@ -33,19 +33,15 @@ public:
     vector<double> data_vector{data.data(), data.data() + data.size()};
     (*out)["result"] = data_vector;
     (*out)["agent_id"] = _agent_id;
+    (*out)["_agent_id"] = _agent_id;
     return return_type::success;
   }
 
   void set_params(void *params) override { 
-    _params = *(json *)params; 
-    try {
-      _agent_id = _params["agent_id"];
-    } catch (nlohmann::json::exception &e) {
-      _agent_id = "undefined";
-    }
+    Source::set_params(params);
     try {
       _number_of_elements = _params["number_of_elements"];
-    } catch (nlohmann::json::exception &e) {
+    } catch (json::exception &e) {
       _number_of_elements = 10;
     }
   }
@@ -56,7 +52,7 @@ public:
 
 private:
   int _number_of_elements;
-  json _data, _params;
+  json _data;
 };
 
 /*
