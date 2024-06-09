@@ -30,6 +30,7 @@ public:
     _data = d;
     return return_type::success;
   }
+
   return_type process(Vec *out) override {
     if (out == nullptr) {
       return return_type::critical;
@@ -40,7 +41,9 @@ public:
     }
     return return_type::success;
   }
+  
   void set_params(void *params) override {
+    Filter::set_params(params);
     _params = *(TwiceParams *)params;
   }
 

@@ -14,6 +14,7 @@ Base class for source plugins
 #include <string>
 #include <vector>
 #include <map>
+#include <nlohmann/json.hpp>
 #include "common.hpp"
 
 #ifdef _WIN32
@@ -41,7 +42,7 @@ Base class for source plugins
 template <typename Tout = std::vector<double>>
 class Source {
 public:
-  Source() : _error("No error") , _blob_format("none") {}
+  Source() : _error("No error") , _blob_format("none"), _agent_id("undefined") {}
   virtual ~Source() {}
 
   /*!
@@ -70,12 +71,22 @@ public:
    * Sets the parameters
    *
    * This method sets the parameters for the source. It receives a void pointer
-   * to the parameters. The child class must cast the pointer to the correct
+   * to the parameters. The derived class must cast the pointer to the correct
    * type.
+   * 
+   * Derived classes shall call the parent class method to set the `_agent_id`
+   * field in the `_params` json object.
    *
    * @param params The parameters (typically a pointer to a struct)
    */
-  virtual void set_params(void *params){};
+  virtual void set_params(void *params){
+    _params = *(nlohmann::json *)params; 
+    try {
+      _agent_id = _params["agent_id"];
+    } catch (nlohmann::json::exception &e) {
+      _agent_id = "undefined";
+    }
+  };
 
   /*!
    * Returns the filter information
@@ -111,8 +122,10 @@ public:
   static const std::string server_name() { return "SourceServer"; }
 
 protected:
+  nlohmann::json _params;
   std::string _blob_format;
   std::string _error;
+  std::string _agent_id;
 };
 
 #ifndef HAVE_MAIN

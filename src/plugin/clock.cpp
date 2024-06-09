@@ -51,10 +51,14 @@ public:
     (*out)["time_raw"] = now.time_since_epoch().count();
     (*out)["time"] = get_ISO8601(now);
     (*out)["params"] = _params;
+    (*out)["agent_id"] = _agent_id;
     return return_type::success;
   }
 
-  void set_params(void *params) override { _params = *(json *)params; }
+  void set_params(void *params) override { 
+    Source::set_params(params);
+    _params = *(json *)params; 
+  }
 
   map<string, string> info() override {
     return {};

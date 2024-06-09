@@ -14,6 +14,7 @@ Base class for sink plugins
 #include <string>
 #include <vector>
 #include <map>
+#include <nlohmann/json.hpp>
 #include "common.hpp"
 
 #ifdef _WIN32
@@ -75,7 +76,14 @@ public:
    *
    * @param params The parameters (typically a pointer to a struct)
    */
-  virtual void set_params(void *params){};
+  virtual void set_params(void *params){
+    _params = *(nlohmann::json *)params; 
+    try {
+      _agent_id = _params["agent_id"];
+    } catch (nlohmann::json::exception &e) {
+      _agent_id = "undefined";
+    }
+  };
 
   /*!
    * Returns the sink information
@@ -113,6 +121,8 @@ public:
 
 private:
   std::string _error;
+  std::string _agent_id;
+  nlohmann::json _params;
 };
 
 #ifndef HAVE_MAIN

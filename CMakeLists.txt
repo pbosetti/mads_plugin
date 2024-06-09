@@ -40,6 +40,25 @@ FetchContent_Declare(restclient-cpp
 )
 FetchContent_MakeAvailable(pugg json restclient-cpp)
 
+FetchContent_Declare(eigen
+  GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+
+FetchContent_Declare(gcem
+  GIT_REPOSITORY https://github.com/kthohr/gcem.git
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+
+FetchContent_Declare(stats
+  GIT_REPOSITORY https://github.com/kthohr/stats.git
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+FetchContent_MakeAvailable(pugg json eigen gcem stats)
+
 
 
 # MACROS #######################################################################
@@ -85,6 +104,9 @@ include_directories(${json_SOURCE_DIR}/include)
 include_directories(${restclient-cpp_SOURCE_DIR}/include)
 link_directories(${restclient-cpp_BINARY_DIR})
 
+include_directories(${gcem_SOURCE_DIR}/include)
+include_directories(${stats_SOURCE_DIR}/include)
+include_directories(${eigen_SOURCE_DIR})
 
 
 # TARGETS ######################################################################
@@ -92,6 +114,7 @@ add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
 add_plugin(restway LIBS restclient-cpp)
+add_plugin(random)
 
 add_loader(load_filter)
 add_loader(load_source)

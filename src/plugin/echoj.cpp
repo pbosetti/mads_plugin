@@ -32,10 +32,14 @@ public:
   return_type process(json *out) override {
     (*out)["data"] = _data;
     (*out)["params"] = _params;
+    (*out)["agent_id"] = _agent_id;
     return return_type::success;
   }
 
-  void set_params(void *params) override { _params = *(json *)params; }
+  void set_params(void *params) override { 
+    Filter::set_params(params);
+    _params = *(json *)params; 
+  }
 
   map<string, string> info() override {
     map<string, string> m;
