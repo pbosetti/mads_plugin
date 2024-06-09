@@ -32,7 +32,25 @@ FetchContent_Declare(json
   GIT_TAG        v3.11.3
   GIT_SHALLOW    TRUE
 )
-FetchContent_MakeAvailable(pugg json)
+
+FetchContent_Declare(eigen
+  GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+
+FetchContent_Declare(gcem
+  GIT_REPOSITORY https://github.com/kthohr/gcem.git
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+
+FetchContent_Declare(stats
+  GIT_REPOSITORY https://github.com/kthohr/stats.git
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+FetchContent_MakeAvailable(pugg json eigen gcem stats)
 
 
 
@@ -76,12 +94,16 @@ else()
   set(CMAKE_INSTALL_RPATH "\$ORIGIN/../lib;/usr/local/lib")
 endif()
 include_directories(${json_SOURCE_DIR}/include)
+include_directories(${gcem_SOURCE_DIR}/include)
+include_directories(${stats_SOURCE_DIR}/include)
+include_directories(${eigen_SOURCE_DIR})
 
 
 # TARGETS ######################################################################
 add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
+add_plugin(random)
 
 add_loader(load_filter)
 add_loader(load_source)
