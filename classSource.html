@@ -110,12 +110,18 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>version</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:abe3943f51f8c38269f9f4dd5a24f6328"><td class="memItemLeft" align="right" valign="top"><a id="abe3943f51f8c38269f9f4dd5a24f6328"></a>
+nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b></td></tr>
+<tr class="separator:abe3943f51f8c38269f9f4dd5a24f6328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60e5b59b4d06ec3a089b8a6084950683"><td class="memItemLeft" align="right" valign="top"><a id="a60e5b59b4d06ec3a089b8a6084950683"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_blob_format</b></td></tr>
 <tr class="separator:a60e5b59b4d06ec3a089b8a6084950683"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4c76323812f93b3e3a08c670035b4c4"><td class="memItemLeft" align="right" valign="top"><a id="ad4c76323812f93b3e3a08c670035b4c4"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_error</b></td></tr>
 <tr class="separator:ad4c76323812f93b3e3a08c670035b4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2663f35e9e691daef9fa8257d7f8cee"><td class="memItemLeft" align="right" valign="top"><a id="aa2663f35e9e691daef9fa8257d7f8cee"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b></td></tr>
+<tr class="separator:aa2663f35e9e691daef9fa8257d7f8cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Tout = std::vector&lt;double&gt;&gt;<br />
@@ -234,6 +240,8 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the data was processed successfully, and false otherwise </dd></dl>
 
+<p>Implemented in <a class="el" href="classRandom.html#a20fc398c8109b48b2a4c1b9171c19798">Random</a>.</p>
+
 </div>
 </div>
 <a id="a7db86c9293679009397ebf1a1f848c5a"></a>
@@ -263,6 +271,8 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 <p>Returns the filter information</p>
 <p>This method returns the filter information. It returns a map with keys and values describing the filter.</p>
 <dl class="section return"><dt>Returns</dt><dd>The filter information </dd></dl>
+
+<p>Implemented in <a class="el" href="classRandom.html#a16db0a2cbd601f40faaf81e51277885b">Random</a>.</p>
 
 </div>
 </div>
@@ -294,6 +304,8 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 <p>This method returns the kind of source. It is used to identify the source when loading it from a plugin.</p>
 <dl class="section return"><dt>Returns</dt><dd>The kind of source </dd></dl>
 
+<p>Implemented in <a class="el" href="classRandom.html#ab869aa17bf013400174f975035d14246">Random</a>.</p>
+
 </div>
 </div>
 <a id="ab68203caba13166db0dcf9c600fbe448"></a>
@@ -322,13 +334,16 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Sets the parameters</p>
-<p>This method sets the parameters for the source. It receives a void pointer to the parameters. The child class must cast the pointer to the correct type.</p>
+<p>This method sets the parameters for the source. It receives a void pointer to the parameters. The derived class must cast the pointer to the correct type.</p>
+<p>Derived classes shall call the parent class method to set the <code>_agent_id</code> field in the <code>_params</code> json object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">params</td><td>The parameters (typically a pointer to a struct) </td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="classRandom.html#a6ab57bed65142d09c6640d50b8e4dc5c">Random</a>.</p>
 
 </div>
 </div>
