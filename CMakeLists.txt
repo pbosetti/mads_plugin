@@ -6,7 +6,7 @@
 #                 |___/         
 cmake_minimum_required(VERSION 3.20)
 project(plugin VERSION 0.1.0 LANGUAGES CXX)
-set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
 
 # PROJECT SETTINGS #############################################################
 set(CMAKE_CXX_STANDARD 17)
@@ -57,8 +57,8 @@ FetchContent_Declare(stats
   GIT_TAG        HEAD
   GIT_SHALLOW    TRUE
 )
-FetchContent_MakeAvailable(pugg json eigen gcem stats)
 
+FetchContent_MakeAvailable(pugg json eigen gcem stats)
 
 
 # MACROS #######################################################################
@@ -110,7 +110,6 @@ include_directories(${gcem_SOURCE_DIR}/include)
 include_directories(${stats_SOURCE_DIR}/include)
 include_directories(${eigen_SOURCE_DIR})
 
-
 # TARGETS ######################################################################
 add_plugin(echoj)
 add_plugin(clock)
@@ -119,6 +118,7 @@ add_plugin(restway LIBS restclient-cpp)
 add_plugin(restway2 LIBS restclient-cpp)
 add_plugin(random)
 add_plugin(mqtt LIBS mosquittopp)
+add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
 
 add_loader(load_filter)
 add_loader(load_source)
