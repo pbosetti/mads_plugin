@@ -34,7 +34,7 @@ FetchContent_Declare(json
 )
 set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
 FetchContent_Declare(restclient-cpp
-  GIT_REPOSITORY https://github.com/mrtazz/restclient-cpp
+  GIT_REPOSITORY https://github.com/pbosetti/restclient-cpp
   GIT_TAG        HEAD
   GIT_SHALLOW    TRUE
 )
@@ -97,6 +97,8 @@ endmacro()
 # BUILD SETTINGS ###############################################################
 if (APPLE)
   set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
+  include_directories(/opt/homebrew/include)
+  link_directories(/opt/homebrew/lib)
 else()
   set(CMAKE_INSTALL_RPATH "\$ORIGIN/../lib;/usr/local/lib")
 endif()
@@ -114,7 +116,9 @@ add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
 add_plugin(restway LIBS restclient-cpp)
+add_plugin(restway2 LIBS restclient-cpp)
 add_plugin(random)
+add_plugin(mqtt LIBS mosquittopp)
 
 add_loader(load_filter)
 add_loader(load_source)
