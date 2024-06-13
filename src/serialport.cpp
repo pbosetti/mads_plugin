@@ -29,6 +29,7 @@ SOFTWARE.
 #include <termios.h>
 #include <unistd.h>
 #include <iostream>
+#include <string.h>
 
 int connect(const char *port, unsigned baudRate, unsigned stopBits,
             bool canonical_mode, struct termios *originalTTYAttrs) {
@@ -148,13 +149,14 @@ int connect(const char *port, unsigned baudRate, unsigned stopBits,
   options.c_cc[VINTR] = _POSIX_VDISABLE;
   options.c_cc[VQUIT] = _POSIX_VDISABLE;
   options.c_cc[VSUSP] = _POSIX_VDISABLE;
-  options.c_cc[VDSUSP] = _POSIX_VDISABLE;
   options.c_cc[VSTART] = _POSIX_VDISABLE;
   options.c_cc[VSTOP] = _POSIX_VDISABLE;
   options.c_cc[VLNEXT] = _POSIX_VDISABLE;
   options.c_cc[VDISCARD] = _POSIX_VDISABLE;
+#ifndef __linux__
   options.c_cc[VSTATUS] = _POSIX_VDISABLE;
-
+  options.c_cc[VDSUSP] = _POSIX_VDISABLE;
+#endif
   // more info on VMIN and VTIME here:
   // http://unixwiz.net/techtips/termios-vmin-vtime.html
   options.c_cc[VMIN] = 0;  // min bytes in input queue
