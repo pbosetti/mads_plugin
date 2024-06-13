@@ -69,12 +69,13 @@ int main(int argc, char *argv[]) {
   if (argc == 3) {
     ifstream file(argv[2]);
     params = json::parse(file);
+    file.close();
   } else {
-    params["name"] = "clock test";
+    params["name"] = "plugin test";
   }
   source->set_params(&params);
-  for (auto &[k, v]: source->info()) {
-    cout << k << ": " << v << endl;
+  for (auto &p: source->info()) {
+    cout << p.first << ": " << p.second << endl;
   }
   source->get_output(&out);
   cout << "Output: " << out << endl;

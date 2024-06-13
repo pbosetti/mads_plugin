@@ -13,7 +13,7 @@ It takes a JSON input and returns it as output, enriched with the parameters
 #include <pugg/Kernel.h>
 
 #ifndef PLUGIN_NAME
-#define PLUGIN_NAME "echoj"
+#define PLUGIN_NAME "to_console"
 #endif
 
 using namespace std;

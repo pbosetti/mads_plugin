@@ -1,0 +1,9 @@
+{
+  "description": "RESTway: a RESTful gateway",
+  "url": "https://192.168.1.55:5444",
+  "path": "/amw4analysis/job/description?jobId=MADS",
+  "jobId": "MADS",
+  "delay": 200,
+  "port": "/dev/cu.usbmodem21301",
+  "baudrate": 115200
+}

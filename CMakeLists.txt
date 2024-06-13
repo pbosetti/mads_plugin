@@ -6,7 +6,7 @@
 #                 |___/         
 cmake_minimum_required(VERSION 3.20)
 project(plugin VERSION 0.1.0 LANGUAGES CXX)
-set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
 
 # PROJECT SETTINGS #############################################################
 set(CMAKE_CXX_STANDARD 17)
@@ -32,6 +32,13 @@ FetchContent_Declare(json
   GIT_TAG        v3.11.3
   GIT_SHALLOW    TRUE
 )
+set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+FetchContent_Declare(restclient-cpp
+  GIT_REPOSITORY https://github.com/pbosetti/restclient-cpp
+  GIT_TAG        HEAD
+  GIT_SHALLOW    TRUE
+)
+FetchContent_MakeAvailable(pugg json restclient-cpp)
 
 FetchContent_Declare(eigen
   GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
@@ -50,8 +57,8 @@ FetchContent_Declare(stats
   GIT_TAG        HEAD
   GIT_SHALLOW    TRUE
 )
-FetchContent_MakeAvailable(pugg json eigen gcem stats)
 
+FetchContent_MakeAvailable(pugg json eigen gcem stats)
 
 
 # MACROS #######################################################################
@@ -90,20 +97,28 @@ endmacro()
 # BUILD SETTINGS ###############################################################
 if (APPLE)
   set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
+  include_directories(/opt/homebrew/include)
+  link_directories(/opt/homebrew/lib)
 else()
   set(CMAKE_INSTALL_RPATH "\$ORIGIN/../lib;/usr/local/lib")
 endif()
 include_directories(${json_SOURCE_DIR}/include)
+include_directories(${restclient-cpp_SOURCE_DIR}/include)
+link_directories(${restclient-cpp_BINARY_DIR})
+
 include_directories(${gcem_SOURCE_DIR}/include)
 include_directories(${stats_SOURCE_DIR}/include)
 include_directories(${eigen_SOURCE_DIR})
-
 
 # TARGETS ######################################################################
 add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
+add_plugin(restway LIBS restclient-cpp)
+add_plugin(restway2 LIBS restclient-cpp)
 add_plugin(random)
+add_plugin(mqtt LIBS mosquittopp)
+add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
 
 add_loader(load_filter)
 add_loader(load_source)
