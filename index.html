@@ -105,10 +105,10 @@ Derived classes</h1>
 <div class="fragment"><div class="line">add_plugin(webcam LIBS LibsNeeded)</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
 HTTPS Client Certificates</h1>
-<p>To connect with the Siemens Edge device, we need a SSL client certificate. To configure it, follo the next steps:</p>
+<p>To connect with the Siemens Edge device, we need a SSL client certificate. To configure it, follow the next steps:</p>
 <ol type="1">
 <li>on the Siemens Edge miniweb interface, create a new certificate in .p12 format (if it is not exsiting yet)</li>
-<li>download the certificarte in this project root folder: when exporting, check the "Export key" option and give a passphrase</li>
+<li>download the certificate in this project root folder: when exporting, check the "Export key" option and give a passphrase</li>
 <li>now the encripted certificate must be extracted in two separate files: the certificate itself and the private key. To do so, run the following commands (which will ask you the same passphrase used in the previous step):</li>
 </ol>
 <div class="fragment"><div class="line">openssl pkcs12 -in amwcapture.p12 -clcerts -nokeys -out amwcapture.crt -legacy</div>
