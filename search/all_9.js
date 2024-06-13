@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['plugins_21_12',['Plugins!',['../index.html',1,'']]],
-  ['process_13',['process',['../classFilter.html#ac943e2d001fded765610cbfa23abdc0b',1,'Filter']]]
+  ['mfiledesc_12',['mFileDesc',['../classSerialPort.html#a67cd62f1d1bd222989abc83d11d4ac47',1,'SerialPort']]],
+  ['mqttbridge_13',['MQTTBridge',['../classMQTTBridge.html',1,'']]]
 ];

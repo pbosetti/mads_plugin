@@ -103,7 +103,18 @@ Derived classes</h1>
 <div class="ttc" id="acommon_8hpp_html_a1bbc82f63035c765ea291fb1051afad4"><div class="ttname"><a href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4">INSTALL_SINK_DRIVER</a></div><div class="ttdeci">#define INSTALL_SINK_DRIVER(klass, type)</div><div class="ttdoc">Call this macro after defining a source class to install it into the kernel.</div><div class="ttdef"><b>Definition:</b> common.hpp:57</div></div>
 </div><!-- fragment --><p>Finally, create a new target in the <code>CMakeLists.txt</code> file that compiles the new plugin. Something like:</p>
 <div class="fragment"><div class="line">add_plugin(webcam LIBS LibsNeeded)</div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+HTTPS Client Certificates</h1>
+<p>To connect with the Siemens Edge device, we need a SSL client certificate. To configure it, follo the next steps:</p>
+<ol type="1">
+<li>on the Siemens Edge miniweb interface, create a new certificate in .p12 format (if it is not exsiting yet)</li>
+<li>download the certificarte in this project root folder: when exporting, check the "Export key" option and give a passphrase</li>
+<li>now the encripted certificate must be extracted in two separate files: the certificate itself and the private key. To do so, run the following commands (which will ask you the same passphrase used in the previous step):</li>
+</ol>
+<div class="fragment"><div class="line">openssl pkcs12 -in amwcapture.p12 -clcerts -nokeys -out amwcapture.crt -legacy</div>
+<div class="line">openssl pkcs12 -in amwcapture.p12 -nocerts -nodes -out amwcapture.key -legacy</div>
+</div><!-- fragment --><p>The executable will look for these two files in the current working directory. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

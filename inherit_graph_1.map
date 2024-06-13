@@ -1,4 +1,8 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classSink.html" title=" " alt="" coords="5,5,112,32"/>
-<area shape="rect" id="node2" href="$classToConsole.html" title=" " alt="" coords="160,5,248,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="15,5,119,32"/>
+<area shape="rect" id="node2" href="$classMQTTBridge.html" title=" " alt="" coords="177,5,280,32"/>
+<area shape="rect" id="node3" href="$classSource.html" title=" " alt="" coords="5,81,128,108"/>
+<area shape="rect" id="node4" href="$classRESTway.html" title=" " alt="" coords="189,56,269,83"/>
+<area shape="rect" id="node5" href="$classRandom.html" title=" " alt="" coords="191,107,267,133"/>
+<area shape="rect" id="node6" href="$classSerialReader.html" title=" " alt="" coords="176,157,281,184"/>
 </map>
