@@ -74,10 +74,10 @@ add_plugin(webcam LIBS LibsNeeded)
 
 # HTTPS Client Certificates
 
-To connect with the Siemens Edge device, we need a SSL client certificate. To configure it, follo the next steps:
+To connect with the Siemens Edge device, we need a SSL client certificate. To configure it, follow the next steps:
 
 1. on the Siemens Edge miniweb interface, create a new certificate in .p12 format (if it is not exsiting yet)
-2. download the certificarte in this project root folder: when exporting, check the "Export key" option and give a passphrase
+2. download the certificate in this project root folder: when exporting, check the "Export key" option and give a passphrase
 3. now the encripted certificate must be extracted in two separate files: the certificate itself and the private key. To do so, run the following commands (which will ask you the same passphrase used in the previous step):
 
 ```bash

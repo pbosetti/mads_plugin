@@ -13,6 +13,7 @@ Acts as a bridge with a MQTT network
 #include <pugg/Kernel.h>
 #include <mosquittopp.h>
 #include <sstream>
+#include <thread>
 
 #ifndef PLUGIN_NAME
 #define PLUGIN_NAME "mqtt_bridge"
@@ -43,7 +44,7 @@ public:
     int port = _params["broker_port"];
 
     lib_init();
-    connect_async(host.c_str(), port, 60);
+    connect(host.c_str(), port, 60);
     subscribe(NULL, "test", 0);
 
     // Connect to MQTT
@@ -56,13 +57,13 @@ public:
     mosqpp::lib_cleanup();
   }
 
-  void on_connect(int rc) override {
-    cout << "Connected with code " << rc << endl;
-    return;
-  }
+  // void on_connect(int rc) override {
+  //   cout << "Connected with code " << rc << endl;
+  //   return;
+  // }
 	
   void on_message(const struct mosquitto_message *message) override {
-    cout << "Received message: " << message->payload << endl;
+    _data = json::parse((char *)(message->payload));
     return;
   }
 
@@ -77,8 +78,12 @@ public:
 */
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
     if (setup() != return_type::success) return return_type::critical;
-
-    loop();
+    while (_data.empty()) {
+      loop();
+      this_thread::sleep_for(chrono::microseconds(500));
+    }
+    *out = _data;
+    _data.clear();
     return return_type::success;
   }
 
@@ -127,10 +132,12 @@ int main(int argc, char const *argv[]) {
   bridge.set_params(&params);
 
   // Process data
-  bridge.get_output(&output);
-
-  // Produce output
-  cout << "MQTT: " << output << endl;
-
+  while (true)
+  {
+    bridge.get_output(&output);
+    if (output.empty()) continue;
+    cout << "MQTT: " << output << endl;
+  }
+  
   return 0;
 }

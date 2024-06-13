@@ -24,6 +24,8 @@ A RESTful Gateway
 #define PLUGIN_NAME "RESTway"
 #endif
 
+#define API_PATH "/amw4analysis/job"
+
 using namespace std;
 using namespace RestClient;
 using json = nlohmann::json;
@@ -39,6 +41,18 @@ public:
   }
 
 private:
+  void conn_accept_json() {
+    RestClient::HeaderFields headers;
+    headers["Accept"] = "application/json";
+    _conn->SetHeaders(headers);
+  }
+
+  void conn_accept_binary() {
+    RestClient::HeaderFields headers;
+    headers["Accept"] = "application/octet-stream";
+    _conn->SetHeaders(headers);
+  }
+
   void setup() {
     RestClient::init();
     _conn = new RestClient::Connection(_params["url"]);
@@ -51,23 +65,97 @@ private:
     _conn->FollowRedirects(true, 3);
 
     // set headers
-    RestClient::HeaderFields headers;
-    headers["Accept"] = "application/json";
-    _conn->SetHeaders(headers);
+    conn_accept_json();
 
-    
+    // Set TSL options and certificates
     _conn->SetVerifyPeer(false);
     _conn->SetVerifyHost(false);
-    // set CURLOPT_SSLCERT
     _conn->SetCertPath("./file.crt.pem");
-    // set CURLOPT_SSLCERTTYPE
     _conn->SetCertType("PEM");
-    // set CURLOPT_SSLKEY
     _conn->SetKeyPath("./file.key.pem");
-    // set CURLOPT_KEYPASSWD
-    // _conn->SetKeyPassword("Mads2024!");
 
     _initialized = true;
+  }
+
+  string get_jobId(string jobName) {
+    json result;
+    string path = API_PATH;
+    cout << "=> GET: " << path << endl;
+    conn_accept_json();
+    _response = _conn->get(path);
+    if (_response.code != 200) {
+      throw runtime_error("REST Error getting job list");
+    }
+    result = json::parse(_response.body);
+    for (auto &r : result) {
+      if (r["name"] == jobName) {
+        return r["id"];
+      }
+    }
+    throw runtime_error("Job not found");
+  }
+
+  string get_jobRunId(string jobId) {
+    json result;
+    string path = API_PATH;
+    path += jobId;
+    path += "/run/all";
+    cout << "=> GET: " << path << endl;
+    conn_accept_json();
+    _response = _conn->get(path);
+    if (_response.code != 200) {
+      throw runtime_error("REST Error getting jobRun list");
+    }
+    result = json::parse(_response.body);
+    return result[0]["jobRunId"];
+  }
+
+  string get_fileName(string jobId, string jobRunId) {
+    json result;
+    string path = API_PATH;
+    path += jobId;
+    path += "/run/";
+    path += jobRunId;
+    path += "/file/all";
+    cout << "=> GET: " << path << endl;
+    conn_accept_json();
+    _response = _conn->get(path);
+    if (_response.code != 200) {
+      throw runtime_error("REST Error getting zip files");
+    }
+    result = json::parse(_response.body);
+    return result[0]["fileName"];
+  }
+
+  void save_fileContent(string jobId, string jobRunId, string fileName) {
+    string path = API_PATH;
+    path += jobId;
+    path += "/run/";
+    path += jobRunId;
+    path += "/file?fileName=";
+    path += fileName;
+    cout << "=> GET: " << path << endl;
+    conn_accept_binary();
+    _response = _conn->get(path);
+    if (_response.code != 200) {
+      throw runtime_error("REST Error getting file content");
+    }
+    ofstream file(fileName, ios::out | ios::binary);
+    file.write(_response.body.c_str(), _response.body.size());
+    file.close();
+  }
+
+  void delete_jobRun(string jobId, string jobRunId) {
+    string path = API_PATH;
+    path += jobId;
+    path += "/run/";
+    path += jobRunId;
+    cout << "=> DELETE: " << path << endl;
+    _response = _conn->del(path);
+    if (_response.code != 200) {
+      throw runtime_error("REST Error deleting jobRun");
+    }
+    return;
   }
 
 public:
@@ -75,32 +163,54 @@ public:
   string kind() override { return PLUGIN_NAME; }
 
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
-    return_type rc = return_type::error;
-    stringstream path;
+    return_type rc = return_type::success;
+    string path = API_PATH;
+    string jobId, jobRunId, fileName;
+    json result;
     if (!_initialized) {
       setup();
     }
-    path << string(_params["path"]); // << "?page=" << _params["page"] << "&size=" << _params["size"];
-    out->clear();
-    (*out)["url"] = _params["url"];
-    (*out)["path"] = path.str();
-    _response = _conn->get(path.str());
-    cout << "RESTway: code " << _response.code << ", " << _response.body << endl;
-    (*out)["code"] = _response.code;
-    try {
-      (*out)["result"] = json::parse(_response.body);
-      rc = return_type::success;
-    } catch (json::parse_error &e) {
-      cerr << "Error parsing REST body as JSON: " << e.what() << endl;
-      cerr << "when trying to parse: \"" << _response.body << "\"" << endl;
-      goto exit;
-    }
-    (*out)["headers"] = _response.headers;
 
-    if (_response.code != 200) {
-      this_thread::sleep_for(chrono::milliseconds(_params["delay"]));
+    try {
+      jobId = get_jobId(_params["jobId"][0]);
+      jobRunId = get_jobRunId(jobId);
+      fileName = get_fileName(jobId, jobRunId);
+      save_fileContent(jobId, jobRunId, fileName);
+      delete_jobRun(jobId, jobRunId);
+    } catch (runtime_error &e) {
+      cerr << "Error: " << e.what() << endl;
+      rc = return_type::error;
       goto exit;
     }
+
+    return rc;
+
+    // path += "/description?jobId=";
+    // path += _params["jobId"][0];
+    // _response = _conn->get(path);
+    // cout << "RESTway: code " << _response.code << ", " << _response.body << endl;
+    // (*out)["code"] = _response.code;
+    // try {
+    //   result = json::parse(_response.body);
+    // } catch (json::parse_error &e) {
+    //   cerr << "Error parsing REST body as JSON: " << e.what() << endl;
+    //   cerr << "when trying to parse: \"" << _response.body << "\"" << endl;
+    //   rc = return_type::error;
+    //   goto exit;
+    // }
+    // cout << "*** " << result[0]["fileName"] << " " << result[0]["fileSize"] << " bytes" << endl;
+
+    // path = API_PATH;
+
+    // out->clear();
+    // (*out)["url"] = _params["url"];
+    // (*out)["path"] = path;
+    // (*out)["headers"] = _response.headers;
+
+    // if (_response.code != 200) {
+    //   this_thread::sleep_for(chrono::milliseconds(_params["delay"]));
+    //   goto exit;
+    // }
 
 exit:
     this_thread::sleep_for(chrono::milliseconds(_params["delay"]));
@@ -108,8 +218,8 @@ exit:
   }
 
   void set_params(void *params) override { 
-    _params["url"] = string("http://localhost:5444");
-    _params["path"] = string("/amw4analysis/job"); 
+    _params["url"] = string("https://192.168.1.55:5444");
+    _params["jobId"] = {"MADS"};
     _params["description"] = "RESTway, a RESTful gateway";
     _params["page"] = 0;
     _params["size"] = 20;
@@ -157,7 +267,8 @@ int main(int argc, char const *argv[]) {
   json output;
   json params;
   if (argc == 1) {
-    params["url"] = "http://localhost:5443/";
+    params["url"] = "https://192.168.1.55:5444";
+    params["jobId"] = {"MADS"};
     params["description"] = "RESTway, a RESTful gateway";
     params["page"] = 0;
     params["size"] = 20;
