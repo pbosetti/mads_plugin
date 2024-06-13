@@ -100,6 +100,11 @@ int main(int argc, char const *argv[]) {
   SerialReader sr;
   json output;
 
+  if (argc < 2) {
+    cout << "Usage: " << argv[0] << " <port>" << endl;
+    return 1;
+  }
+
   // Set parameters
   json params;
   params["port"] = argv[1];
