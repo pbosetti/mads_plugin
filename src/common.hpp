@@ -69,6 +69,7 @@
 */
 enum class return_type {
   success = 0,
+  retry,
   warning,
   error,
   critical

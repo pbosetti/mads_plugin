@@ -41,11 +41,12 @@ public:
     return_type status = return_type::success;
     if (_connected) return status;
     string host = _params["broker_host"];
+    string topic = _params["topic"];
     int port = _params["broker_port"];
 
     lib_init();
     connect(host.c_str(), port, 60);
-    subscribe(NULL, "test", 0);
+    subscribe(NULL, topic.c_str(), 0);
 
     // Connect to MQTT
     _connected = true;
@@ -64,6 +65,7 @@ public:
 	
   void on_message(const struct mosquitto_message *message) override {
     _data = json::parse((char *)(message->payload));
+    _topic = message->topic;
     return;
   }
 
@@ -78,11 +80,16 @@ public:
 */
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
     if (setup() != return_type::success) return return_type::critical;
-    while (_data.empty()) {
+    // while (_data.empty()) {
       loop();
       this_thread::sleep_for(chrono::microseconds(500));
+    // }
+    if(_data.is_null() || _data.empty()) {
+      _data.clear();
+      return return_type::retry;
     }
-    *out = _data;
+    (*out)["payload"] = _data;
+    (*out)["topic"] = _topic;
     _data.clear();
     return return_type::success;
   }
@@ -98,6 +105,7 @@ public:
 
 private:
   json _data, _params;
+  string _topic;
   bool _connected = false;
 };
 
@@ -127,6 +135,7 @@ int main(int argc, char const *argv[]) {
   json output, params;
   params["broker_host"] = "localhost";
   params["broker_port"] = 1883;
+  params["topic"] = "mads/#";
 
   // Set parameters
   bridge.set_params(&params);
@@ -134,9 +143,8 @@ int main(int argc, char const *argv[]) {
   // Process data
   while (true)
   {
-    bridge.get_output(&output);
-    if (output.empty()) continue;
-    cout << "MQTT: " << output << endl;
+    if (bridge.get_output(&output) == return_type::success) 
+      cout << "MQTT: " << output << endl;
   }
   
   return 0;
