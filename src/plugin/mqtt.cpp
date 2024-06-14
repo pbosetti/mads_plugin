@@ -45,6 +45,7 @@ public:
     int port = _params["broker_port"];
 
     lib_init();
+    reinitialise("MQTT2MADS-bridge", true);
     connect(host.c_str(), port, 60);
     subscribe(NULL, topic.c_str(), 0);
 
@@ -64,7 +65,14 @@ public:
   // }
 	
   void on_message(const struct mosquitto_message *message) override {
-    _data = json::parse((char *)(message->payload));
+    _data.clear();
+    try {
+      _data = json::parse((char *)(message->payload));
+      _error = "No error";
+    } catch (json::parse_error &e) {
+      _error = e.what();
+      _data["message"] = "Error parsing invalid JSON received from MQTT";
+    }
     _topic = message->topic;
     return;
   }
@@ -80,10 +88,7 @@ public:
 */
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
     if (setup() != return_type::success) return return_type::critical;
-    // while (_data.empty()) {
-      loop();
-      this_thread::sleep_for(chrono::microseconds(500));
-    // }
+    loop();
     if(_data.is_null() || _data.empty()) {
       _data.clear();
       return return_type::retry;
@@ -91,7 +96,11 @@ public:
     (*out)["payload"] = _data;
     (*out)["topic"] = _topic;
     _data.clear();
-    return return_type::success;
+    this_thread::sleep_for(chrono::microseconds(500));
+    if (_error != "No error") 
+      return return_type::error;
+    else
+      return return_type::success;
   }
 
   void set_params(void *params) override { 
@@ -100,7 +109,10 @@ public:
   }
 
   map<string, string> info() override {
-    return {};
+    return {
+      {"Broker:", _params.value("broker_host", "unset") + ":" + to_string(_params["broker_port"])},
+      {"Topic:", _params["topic"]}
+    };
   };
 
 private:
@@ -135,14 +147,13 @@ int main(int argc, char const *argv[]) {
   json output, params;
   params["broker_host"] = "localhost";
   params["broker_port"] = 1883;
-  params["topic"] = "mads/#";
+  params["topic"] = "capture/#";
 
   // Set parameters
   bridge.set_params(&params);
 
   // Process data
-  while (true)
-  {
+  while (true) {
     if (bridge.get_output(&output) == return_type::success) 
       cout << "MQTT: " << output << endl;
   }
