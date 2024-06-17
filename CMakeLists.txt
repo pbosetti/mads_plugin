@@ -16,6 +16,10 @@ set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
 set(CMAKE_INSTALL_PREFIX ${USR_DIR})
 set(FETCHCONTENT_QUIET OFF)
 
+if(UNIX AND NOT APPLE)
+  set(LINUX TRUE)
+endif()
+
 # DEPENDENCIES #################################################################
 include(FetchContent)
 # pugg is for the plugin system
@@ -114,11 +118,13 @@ include_directories(${eigen_SOURCE_DIR})
 add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
-add_plugin(restway LIBS restclient-cpp)
-add_plugin(restway2 LIBS restclient-cpp)
 add_plugin(random)
 add_plugin(mqtt LIBS mosquittopp)
 add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
+if (APPLE)
+  add_plugin(restway LIBS restclient-cpp)
+  add_plugin(restway2 LIBS restclient-cpp)
+endif()
 
 add_loader(load_filter)
 add_loader(load_source)
