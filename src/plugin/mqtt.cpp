@@ -71,7 +71,9 @@ public:
       _error = "No error";
     } catch (json::parse_error &e) {
       _error = e.what();
-      _data["message"] = "Error parsing invalid JSON received from MQTT";
+      _data["error"] = "Error parsing invalid JSON received from MQTT";
+      _data["reason"] = _error;
+      _data["content"] = (char *)(message->payload);
     }
     _topic = message->topic;
     return;
@@ -87,7 +89,9 @@ public:
                                    
 */
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
-    if (setup() != return_type::success) return return_type::critical;
+    if (setup() != return_type::success) {
+      return return_type::critical;
+    }
     loop();
     if(_data.is_null() || _data.empty()) {
       _data.clear();
@@ -105,12 +109,14 @@ public:
 
   void set_params(void *params) override { 
     Source::set_params(params);
-    _params = *(json *)params; 
+    _params["broker_host"] = "localhost";
+    _params["broker_port"] = 1883;
+    _params.merge_patch(*(json *)params);
   }
 
   map<string, string> info() override {
     return {
-      {"Broker:", _params.value("broker_host", "unset") + ":" + to_string(_params["broker_port"])},
+      {"Broker:", _params["broker_host"].get<string>() + ":" + to_string(_params["broker_port"])},
       {"Topic:", _params["topic"]}
     };
   };

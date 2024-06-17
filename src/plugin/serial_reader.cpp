@@ -28,6 +28,10 @@ class SerialReader : public Source<json> {
 
   return_type setup() {
     if (_serialPort == nullptr) {
+      if (filesystem::exists(_params["port"].get<string>()) == false) {
+        cout << "Error: port " << _params["port"].get<string>() << " does not exist" << endl;
+        return return_type::critical;
+      }
       try {
         _serialPort = new SerialPort(_params["port"].get<string>().c_str(), _params["baudrate"].get<unsigned>());
       } catch (std::exception &e) {
@@ -44,7 +48,7 @@ public:
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
     string line;
     bool success = false;
-    if (setup() != return_type::critical) {
+    if (setup() != return_type::success) {
       return return_type::critical;
     }
     do {
