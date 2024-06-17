@@ -44,8 +44,8 @@ public:
   return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
     string line;
     bool success = false;
-    if (setup() != return_type::success) {
-      return return_type::error;
+    if (setup() != return_type::critical) {
+      return return_type::critical;
     }
     do {
       line.clear();
@@ -68,7 +68,10 @@ public:
   }
 
   map<string, string> info() override {
-    return {};
+    return {
+      {"port", _params["port"].get<string>()},
+      {"baudrate", to_string(_params["baudrate"].get<unsigned>())}
+    };
   };
 
 private:
