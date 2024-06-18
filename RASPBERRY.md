@@ -37,6 +37,12 @@ Now we want to enable the Bonjour service for the RPi: this will enable to conne
 
 Using the editor, find the section `[publish]` and change the line `publish-workstation=no` to `publish-workstation=yes`, and the line `publish-hinfo=no` to `publish-hinfo=yes`. Save the file and exit the editor (CTRL-X, Y).
 
+Restart the Avahi service with this command:
+
+```bash
+sudo systemctl restart avahi-daemon.service
+```
+
 Now, from another computer connected to the same network, open a terminal and type:
 
 ```bash
@@ -46,6 +52,14 @@ ssh mads@mads-pi.local
 If it works, you can optionally disable the grphical interface on the RPi to save resources: launch again the `raspi-config` tool and in `System options` select `Boot` and `Console Autologin`. From now on, you can use the RPi via SSH without any screen or keyboard attached.
 
 ## Programming environment
+
+Install the required packages:
+
+```bash
+sudo apt-get update  # update the package list
+sudo apt-get upgrade # upgrade the installed packages
+sudo apt-get install git gh build-essential cmake cmake-curses-gui libssl-dev libmosquitto-dev libmosquittopp-dev libcurl4-openssl-dev
+```
 
 It is suggested that you use the Visual Studio Code IDE installed on your laptop to develop on the RPi. You must check that the VSCode plugins `Remote Explorer`, `Remote - SSH`, and `Remote Development` are installed.
 
