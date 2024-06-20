@@ -31,10 +31,10 @@ public:
     if (input[_params["field"]].is_object() == false) {
       return return_type::error;
     }
-    for (auto &it : input[_params["field"]].items()) {
-      _queues[it.key()].push_front(it.value());
-      if (_queues[it.key()].size() > _params["capa"]) {
-        _queues[it.key()].pop_back();
+    for (auto &[key, value] : input[_params["field"]].items()) {
+      _queues[key].push_front(value);
+      if (_queues[key].size() > _params["capa"]) {
+        _queues[key].pop_back();
       }
     }
     return return_type::success;
@@ -64,9 +64,9 @@ public:
 
   map<string, string> info() override {
     return {
-      {"capa", to_string(_params["capa"].get<int>())},
-      {"field", _params["field"].get<string>()},
-      {"out_field", _params["out_field"].get<string>()}
+      {"capa", to_string(_params["capa"])},
+      {"field", _params["field"]},
+      {"out_field", _params["out_field"]}
     };
   };
 
