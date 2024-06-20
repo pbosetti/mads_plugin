@@ -21,12 +21,14 @@ using json = nlohmann::json;
 
 
 // The filter class
-// We use the defauilt template parameters std::vector<double> for the input and
-// output data
+// We use json objects fro both input and output
 class RunningAverage : public Filter<json, json> {
 public:
   string kind() override { return PLUGIN_NAME; }
 
+  // We expect to have a dictionary of values in the input, and we feed them
+  // into a map of double-ended queues (deques) to keep track of the last N
+  // values for each key.
   return_type load_data(json const &input) override {
     if (input[_params["field"]].is_object() == false) {
       return return_type::error;
@@ -40,6 +42,8 @@ public:
     return return_type::success;
   }
 
+  // We calculate the average of the last N values for each key and store it
+  // into the output json object
   return_type process(json &out) override {
     out.clear();
     for (auto &[key, queue] : _queues) {
@@ -93,6 +97,8 @@ int main(int argc, char const *argv[])
   RunningAverage ra;
   json params{{"queue_size", 3}};
   json output;
+  ra.set_params(&params);
+
   json data{
     {"data", {
       {"AX", 1},
@@ -100,9 +106,6 @@ int main(int argc, char const *argv[])
       {"AZ", 3}
     }}
   };
-
-  ra.set_params(&params);
-
   cout << "Input: " << data << endl;
   ra.load_data(data);
   ra.process(output);
