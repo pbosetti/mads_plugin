@@ -6,6 +6,7 @@
 #define CURRENT_Z A4
 #define DELAY 50UL     // microseconds
 #define TIMESTEP 500UL // milliseconds
+#define DATA_FIELD "data"
 
 JsonDocument doc;
 String out;
@@ -23,9 +24,9 @@ void loop() {
   unsigned long now = micros();
   if (now - prev_time >= timestep_us) {
     doc["millis"] = millis();
-    doc["AX"] = analogRead(CURRENT_X) * factor;
-    doc["AY"] = analogRead(CURRENT_Y) * factor;
-    doc["AZ"] = analogRead(CURRENT_Z) * factor;
+    doc[DATA_FIELD]["AX"] = analogRead(CURRENT_X) * factor;
+    doc[DATA_FIELD]["AY"] = analogRead(CURRENT_Y) * factor;
+    doc[DATA_FIELD]["AZ"] = analogRead(CURRENT_Z) * factor;
     serializeJson(doc, out);
     Serial.print(out);
     Serial.print("\n");
