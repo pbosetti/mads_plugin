@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['random_34',['Random',['../classRandom.html',1,'']]],
-  ['restway_35',['RESTway',['../classRESTway.html',1,'']]]
+  ['random_37',['Random',['../classRandom.html',1,'']]],
+  ['restway_38',['RESTway',['../classRESTway.html',1,'']]],
+  ['runningaverage_39',['RunningAverage',['../classRunningAverage.html',1,'']]]
 ];

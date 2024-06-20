@@ -80,10 +80,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afc952efdbef1cbee52db276b276defa0"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">kind</a> ()=0</td></tr>
 <tr class="separator:afc952efdbef1cbee52db276b276defa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addf76b7fd300ebe9f72a3744d65d878a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#addf76b7fd300ebe9f72a3744d65d878a">get_output</a> (Tout *out, std::vector&lt; unsigned char &gt; *blob=nullptr)=0</td></tr>
-<tr class="separator:addf76b7fd300ebe9f72a3744d65d878a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab68203caba13166db0dcf9c600fbe448"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ab68203caba13166db0dcf9c600fbe448">set_params</a> (void *params)</td></tr>
-<tr class="separator:ab68203caba13166db0dcf9c600fbe448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae53b4ab2f47b84e811232e0301682bb8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">get_output</a> (Tout &amp;out, std::vector&lt; unsigned char &gt; *blob=nullptr)=0</td></tr>
+<tr class="separator:ae53b4ab2f47b84e811232e0301682bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b4922fb8d1a363a447ea3b530f3871"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a43b4922fb8d1a363a447ea3b530f3871">set_params</a> (void const *params)</td></tr>
+<tr class="separator:a43b4922fb8d1a363a447ea3b530f3871"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7db86c9293679009397ebf1a1f848c5a"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a7db86c9293679009397ebf1a1f848c5a">info</a> ()=0</td></tr>
 <tr class="separator:a7db86c9293679009397ebf1a1f848c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb408a2891887138206fd602bf2357cb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#aeb408a2891887138206fd602bf2357cb">error</a> ()</td></tr>
@@ -128,7 +128,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
 class Source&lt; Tout &gt;</h3>
 
 <p>Base class for sources</p>
-<p>This class is the base class for all sources. It defines the interface for providing output of data internally acquired. Child classes must implement the <a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">Source::kind()</a> and <a class="el" href="classSource.html#addf76b7fd300ebe9f72a3744d65d878a">Source::get_output()</a> methods. Optionally, they can implement the <a class="el" href="classSource.html#ab68203caba13166db0dcf9c600fbe448">Source::set_params()</a> method to receive parameters as a void pointer.</p>
+<p>This class is the base class for all sources. It defines the interface for providing output of data internally acquired. Child classes must implement the <a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">Source::kind()</a> and <a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">Source::get_output()</a> methods. Optionally, they can implement the <a class="el" href="classSource.html#a43b4922fb8d1a363a447ea3b530f3871">Source::set_params()</a> method to receive parameters as a void pointer.</p>
 <p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#ab7463bc9c9b40ff018d92b01c237c452" title="Call this macro after defining a source class to install it into the kernel.">INSTALL_SOURCE_DRIVER(klass, type)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -161,7 +161,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the format of the blob data provided by <a class="el" href="classSource.html#addf76b7fd300ebe9f72a3744d65d878a">get_output()</a>. </p>
+<p>Returns the format of the blob data provided by <a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">get_output()</a>. </p>
 
 </div>
 </div>
@@ -195,8 +195,8 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 
 </div>
 </div>
-<a id="addf76b7fd300ebe9f72a3744d65d878a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addf76b7fd300ebe9f72a3744d65d878a">&#9670;&nbsp;</a></span>get_output()</h2>
+<a id="ae53b4ab2f47b84e811232e0301682bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae53b4ab2f47b84e811232e0301682bb8">&#9670;&nbsp;</a></span>get_output()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,7 +209,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
         <tr>
           <td class="memname">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::get_output </td>
           <td>(</td>
-          <td class="paramtype">Tout *&#160;</td>
+          <td class="paramtype">Tout &amp;&#160;</td>
           <td class="paramname"><em>out</em>, </td>
         </tr>
         <tr>
@@ -240,7 +240,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the data was processed successfully, and false otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classSerialReader.html#afda54df826471933e3a7bc69aac53156">SerialReader</a>, <a class="el" href="classRESTway.html#a426d492c7e79f30a8012d514662c4ac0">RESTway</a>, <a class="el" href="classRESTway.html#a426d492c7e79f30a8012d514662c4ac0">RESTway</a>, <a class="el" href="classRandom.html#a20fc398c8109b48b2a4c1b9171c19798">Random</a>, and <a class="el" href="classMQTTBridge.html#a5ed1de22446ef29bf7b3a31847bb5cc0">MQTTBridge</a>.</p>
+<p>Implemented in <a class="el" href="classSerialReader.html#a7c0a2f303b640862cb3f0feef2bd4430">SerialReader</a>, <a class="el" href="classRESTway.html#a764cb8b7a1a4f21bec743842586fe198">RESTway</a>, <a class="el" href="classRandom.html#a0d0abc75765b1ad5504ef6a7ff5873bf">Random</a>, and <a class="el" href="classMQTTBridge.html#a5a94e80b54015e4200d76eea11fdddf7">MQTTBridge</a>.</p>
 
 </div>
 </div>
@@ -272,7 +272,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 <p>This method returns the filter information. It returns a map with keys and values describing the filter.</p>
 <dl class="section return"><dt>Returns</dt><dd>The filter information </dd></dl>
 
-<p>Implemented in <a class="el" href="classSerialReader.html#ae9e404b161358edd22852e653c23079d">SerialReader</a>, <a class="el" href="classRESTway.html#a89628bb83221aff1c455935d6f0df401">RESTway</a>, <a class="el" href="classRESTway.html#a89628bb83221aff1c455935d6f0df401">RESTway</a>, <a class="el" href="classRandom.html#a16db0a2cbd601f40faaf81e51277885b">Random</a>, and <a class="el" href="classMQTTBridge.html#a3b61cdabab81977c353c68f1e8b9a6f4">MQTTBridge</a>.</p>
+<p>Implemented in <a class="el" href="classSerialReader.html#ae9e404b161358edd22852e653c23079d">SerialReader</a>, <a class="el" href="classRESTway.html#a89628bb83221aff1c455935d6f0df401">RESTway</a>, <a class="el" href="classRandom.html#a16db0a2cbd601f40faaf81e51277885b">Random</a>, and <a class="el" href="classMQTTBridge.html#a3b61cdabab81977c353c68f1e8b9a6f4">MQTTBridge</a>.</p>
 
 </div>
 </div>
@@ -304,12 +304,12 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 <p>This method returns the kind of source. It is used to identify the source when loading it from a plugin.</p>
 <dl class="section return"><dt>Returns</dt><dd>The kind of source </dd></dl>
 
-<p>Implemented in <a class="el" href="classSerialReader.html#ae1138bfd9e1975c7ba9783a6dc837eed">SerialReader</a>, <a class="el" href="classRESTway.html#ac628ea13e9d2bb0e87e52ccc30db19a0">RESTway</a>, <a class="el" href="classRESTway.html#ac628ea13e9d2bb0e87e52ccc30db19a0">RESTway</a>, <a class="el" href="classRandom.html#ab869aa17bf013400174f975035d14246">Random</a>, and <a class="el" href="classMQTTBridge.html#ae45137d601ae33fc2243b1c7e87ff093">MQTTBridge</a>.</p>
+<p>Implemented in <a class="el" href="classSerialReader.html#ae1138bfd9e1975c7ba9783a6dc837eed">SerialReader</a>, <a class="el" href="classRESTway.html#ac628ea13e9d2bb0e87e52ccc30db19a0">RESTway</a>, <a class="el" href="classRandom.html#ab869aa17bf013400174f975035d14246">Random</a>, and <a class="el" href="classMQTTBridge.html#ae45137d601ae33fc2243b1c7e87ff093">MQTTBridge</a>.</p>
 
 </div>
 </div>
-<a id="ab68203caba13166db0dcf9c600fbe448"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab68203caba13166db0dcf9c600fbe448">&#9670;&nbsp;</a></span>set_params()</h2>
+<a id="a43b4922fb8d1a363a447ea3b530f3871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b4922fb8d1a363a447ea3b530f3871">&#9670;&nbsp;</a></span>set_params()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -322,7 +322,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::set_params </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">void const *&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -343,7 +343,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classSerialReader.html#a0cf1b9969acd9b4987232f9af4416de7">SerialReader</a>, <a class="el" href="classRESTway.html#a5e9976a7962b5ee0af048641e0624181">RESTway</a>, <a class="el" href="classRESTway.html#a5e9976a7962b5ee0af048641e0624181">RESTway</a>, <a class="el" href="classRandom.html#a6ab57bed65142d09c6640d50b8e4dc5c">Random</a>, and <a class="el" href="classMQTTBridge.html#af2f111d041a054596f75a14c9814a55d">MQTTBridge</a>.</p>
+<p>Reimplemented in <a class="el" href="classSerialReader.html#a164ef33b1f6b3bde055c8a7838450737">SerialReader</a>, <a class="el" href="classRESTway.html#a7e8dd13609c7369181ede815236adba6">RESTway</a>, <a class="el" href="classRandom.html#a5e1051959b72bfd008b4781927cd7973">Random</a>, and <a class="el" href="classMQTTBridge.html#a2e35316b229ad97832684fb84160d224">MQTTBridge</a>.</p>
 
 </div>
 </div>

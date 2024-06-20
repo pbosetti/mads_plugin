@@ -92,10 +92,10 @@ Collaboration diagram for Random:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab869aa17bf013400174f975035d14246"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandom.html#ab869aa17bf013400174f975035d14246">kind</a> () override</td></tr>
 <tr class="separator:ab869aa17bf013400174f975035d14246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20fc398c8109b48b2a4c1b9171c19798"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandom.html#a20fc398c8109b48b2a4c1b9171c19798">get_output</a> (json *out, std::vector&lt; unsigned char &gt; *blob=nullptr) override</td></tr>
-<tr class="separator:a20fc398c8109b48b2a4c1b9171c19798"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ab57bed65142d09c6640d50b8e4dc5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandom.html#a6ab57bed65142d09c6640d50b8e4dc5c">set_params</a> (void *params) override</td></tr>
-<tr class="separator:a6ab57bed65142d09c6640d50b8e4dc5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d0abc75765b1ad5504ef6a7ff5873bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandom.html#a0d0abc75765b1ad5504ef6a7ff5873bf">get_output</a> (json &amp;out, std::vector&lt; unsigned char &gt; *blob=nullptr) override</td></tr>
+<tr class="separator:a0d0abc75765b1ad5504ef6a7ff5873bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e1051959b72bfd008b4781927cd7973"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandom.html#a5e1051959b72bfd008b4781927cd7973">set_params</a> (void const *params) override</td></tr>
+<tr class="separator:a5e1051959b72bfd008b4781927cd7973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16db0a2cbd601f40faaf81e51277885b"><td class="memItemLeft" align="right" valign="top">map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRandom.html#a16db0a2cbd601f40faaf81e51277885b">info</a> () override</td></tr>
 <tr class="separator:a16db0a2cbd601f40faaf81e51277885b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classSource"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classSource')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classSource.html">Source&lt; json &gt;</a></td></tr>
@@ -132,8 +132,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
 <tr class="separator:aa2663f35e9e691daef9fa8257d7f8cee inherit pro_attribs_classSource"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a20fc398c8109b48b2a4c1b9171c19798"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20fc398c8109b48b2a4c1b9171c19798">&#9670;&nbsp;</a></span>get_output()</h2>
+<a id="a0d0abc75765b1ad5504ef6a7ff5873bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d0abc75765b1ad5504ef6a7ff5873bf">&#9670;&nbsp;</a></span>get_output()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,7 +144,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
         <tr>
           <td class="memname"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> Random::get_output </td>
           <td>(</td>
-          <td class="paramtype">json *&#160;</td>
+          <td class="paramtype">json &amp;&#160;</td>
           <td class="paramname"><em>out</em>, </td>
         </tr>
         <tr>
@@ -175,7 +175,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the data was processed successfully, and false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classSource.html#addf76b7fd300ebe9f72a3744d65d878a">Source&lt; json &gt;</a>.</p>
+<p>Implements <a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">Source&lt; json &gt;</a>.</p>
 
 </div>
 </div>
@@ -239,8 +239,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
 
 </div>
 </div>
-<a id="a6ab57bed65142d09c6640d50b8e4dc5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ab57bed65142d09c6640d50b8e4dc5c">&#9670;&nbsp;</a></span>set_params()</h2>
+<a id="a5e1051959b72bfd008b4781927cd7973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e1051959b72bfd008b4781927cd7973">&#9670;&nbsp;</a></span>set_params()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,7 +251,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
         <tr>
           <td class="memname">void Random::set_params </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">void const *&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -272,7 +272,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="classSource.html#ab68203caba13166db0dcf9c600fbe448">Source&lt; json &gt;</a>.</p>
+<p>Reimplemented from <a class="el" href="classSource.html#a43b4922fb8d1a363a447ea3b530f3871">Source&lt; json &gt;</a>.</p>
 
 </div>
 </div>

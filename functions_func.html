@@ -82,11 +82,11 @@ $(function() {
 
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>get_output()
-: <a class="el" href="classMQTTBridge.html#a5ed1de22446ef29bf7b3a31847bb5cc0">MQTTBridge</a>
-, <a class="el" href="classRandom.html#a20fc398c8109b48b2a4c1b9171c19798">Random</a>
-, <a class="el" href="classRESTway.html#a426d492c7e79f30a8012d514662c4ac0">RESTway</a>
-, <a class="el" href="classSerialReader.html#afda54df826471933e3a7bc69aac53156">SerialReader</a>
-, <a class="el" href="classSource.html#addf76b7fd300ebe9f72a3744d65d878a">Source&lt; Tout &gt;</a>
+: <a class="el" href="classMQTTBridge.html#a5a94e80b54015e4200d76eea11fdddf7">MQTTBridge</a>
+, <a class="el" href="classRandom.html#a0d0abc75765b1ad5504ef6a7ff5873bf">Random</a>
+, <a class="el" href="classRESTway.html#a764cb8b7a1a4f21bec743842586fe198">RESTway</a>
+, <a class="el" href="classSerialReader.html#a7c0a2f303b640862cb3f0feef2bd4430">SerialReader</a>
+, <a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">Source&lt; Tout &gt;</a>
 </li>
 </ul>
 
@@ -97,6 +97,7 @@ $(function() {
 , <a class="el" href="classMQTTBridge.html#a3b61cdabab81977c353c68f1e8b9a6f4">MQTTBridge</a>
 , <a class="el" href="classRandom.html#a16db0a2cbd601f40faaf81e51277885b">Random</a>
 , <a class="el" href="classRESTway.html#a89628bb83221aff1c455935d6f0df401">RESTway</a>
+, <a class="el" href="classRunningAverage.html#a246a9741870901734a7e3db5d5ffb797">RunningAverage</a>
 , <a class="el" href="classSerialReader.html#ae9e404b161358edd22852e653c23079d">SerialReader</a>
 , <a class="el" href="classSink.html#acde447f8670f585d14ab2c7d4eaa4369">Sink&lt; Tin &gt;</a>
 , <a class="el" href="classSource.html#a7db86c9293679009397ebf1a1f848c5a">Source&lt; Tout &gt;</a>
@@ -111,6 +112,7 @@ $(function() {
 , <a class="el" href="classMQTTBridge.html#ae45137d601ae33fc2243b1c7e87ff093">MQTTBridge</a>
 , <a class="el" href="classRandom.html#ab869aa17bf013400174f975035d14246">Random</a>
 , <a class="el" href="classRESTway.html#ac628ea13e9d2bb0e87e52ccc30db19a0">RESTway</a>
+, <a class="el" href="classRunningAverage.html#a292611672634dd7c9b0f2cc9d3d28671">RunningAverage</a>
 , <a class="el" href="classSerialReader.html#ae1138bfd9e1975c7ba9783a6dc837eed">SerialReader</a>
 , <a class="el" href="classSink.html#ab890a163c212e897ae04c6ad3d1d72c2">Sink&lt; Tin &gt;</a>
 , <a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">Source&lt; Tout &gt;</a>
@@ -121,16 +123,18 @@ $(function() {
 
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>load_data()
-: <a class="el" href="classFilter.html#a28d0801cad687c24af7ba2336e7486e7">Filter&lt; Tin, Tout &gt;</a>
-, <a class="el" href="classSink.html#a4e7ca24d40cb7efbf7582abf301329a7">Sink&lt; Tin &gt;</a>
-, <a class="el" href="classToConsole.html#aa468f095b01fcc1bdd901d25ff418ceb">ToConsole</a>
+: <a class="el" href="classFilter.html#ad9477371843930c37fd8d6a371c473f1">Filter&lt; Tin, Tout &gt;</a>
+, <a class="el" href="classRunningAverage.html#ab08fe6e22b19fe33def4d9db5cd9e107">RunningAverage</a>
+, <a class="el" href="classSink.html#a5aa49f6c4eb8470f4752f360a8c63052">Sink&lt; Tin &gt;</a>
+, <a class="el" href="classToConsole.html#a890d359dee6f18ab64cb88b9a353c9fe">ToConsole</a>
 </li>
 </ul>
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>process()
-: <a class="el" href="classFilter.html#ac943e2d001fded765610cbfa23abdc0b">Filter&lt; Tin, Tout &gt;</a>
+: <a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">Filter&lt; Tin, Tout &gt;</a>
+, <a class="el" href="classRunningAverage.html#a90b927f75b99e017195d0165a8635351">RunningAverage</a>
 </li>
 </ul>
 
@@ -154,14 +158,15 @@ $(function() {
 , <a class="el" href="classSink.html#a665f1c561735d2eda9ff24601d9ed41e">Sink&lt; Tin &gt;</a>
 </li>
 <li>set_params()
-: <a class="el" href="classFilter.html#ad6436fb39072398f1c1376f3317ba061">Filter&lt; Tin, Tout &gt;</a>
-, <a class="el" href="classMQTTBridge.html#af2f111d041a054596f75a14c9814a55d">MQTTBridge</a>
-, <a class="el" href="classRandom.html#a6ab57bed65142d09c6640d50b8e4dc5c">Random</a>
-, <a class="el" href="classRESTway.html#a5e9976a7962b5ee0af048641e0624181">RESTway</a>
-, <a class="el" href="classSerialReader.html#a0cf1b9969acd9b4987232f9af4416de7">SerialReader</a>
-, <a class="el" href="classSink.html#aa8539d66f2f58f5b598cb7ae21c31ba6">Sink&lt; Tin &gt;</a>
-, <a class="el" href="classSource.html#ab68203caba13166db0dcf9c600fbe448">Source&lt; Tout &gt;</a>
-, <a class="el" href="classToConsole.html#a5ff94113123619122bbc49c7e4ce452c">ToConsole</a>
+: <a class="el" href="classFilter.html#a4228450b2102ca29c20c305d6c98178d">Filter&lt; Tin, Tout &gt;</a>
+, <a class="el" href="classMQTTBridge.html#a2e35316b229ad97832684fb84160d224">MQTTBridge</a>
+, <a class="el" href="classRandom.html#a5e1051959b72bfd008b4781927cd7973">Random</a>
+, <a class="el" href="classRESTway.html#a7e8dd13609c7369181ede815236adba6">RESTway</a>
+, <a class="el" href="classRunningAverage.html#abb4b495d95200dbe387138f41e27aa53">RunningAverage</a>
+, <a class="el" href="classSerialReader.html#a164ef33b1f6b3bde055c8a7838450737">SerialReader</a>
+, <a class="el" href="classSink.html#ad188b670f9780066b344bd2b3ca00bf9">Sink&lt; Tin &gt;</a>
+, <a class="el" href="classSource.html#a43b4922fb8d1a363a447ea3b530f3871">Source&lt; Tout &gt;</a>
+, <a class="el" href="classToConsole.html#a3a95379b792147044099f41dee806e6e">ToConsole</a>
 </li>
 </ul>
 

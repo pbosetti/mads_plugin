@@ -79,10 +79,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab890a163c212e897ae04c6ad3d1d72c2"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#ab890a163c212e897ae04c6ad3d1d72c2">kind</a> ()=0</td></tr>
 <tr class="separator:ab890a163c212e897ae04c6ad3d1d72c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e7ca24d40cb7efbf7582abf301329a7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#a4e7ca24d40cb7efbf7582abf301329a7">load_data</a> (Tin &amp;data)=0</td></tr>
-<tr class="separator:a4e7ca24d40cb7efbf7582abf301329a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8539d66f2f58f5b598cb7ae21c31ba6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#aa8539d66f2f58f5b598cb7ae21c31ba6">set_params</a> (void *params)</td></tr>
-<tr class="separator:aa8539d66f2f58f5b598cb7ae21c31ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aa49f6c4eb8470f4752f360a8c63052"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#a5aa49f6c4eb8470f4752f360a8c63052">load_data</a> (Tin const &amp;data)=0</td></tr>
+<tr class="separator:a5aa49f6c4eb8470f4752f360a8c63052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad188b670f9780066b344bd2b3ca00bf9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#ad188b670f9780066b344bd2b3ca00bf9">set_params</a> (void const *params)</td></tr>
+<tr class="separator:ad188b670f9780066b344bd2b3ca00bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acde447f8670f585d14ab2c7d4eaa4369"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#acde447f8670f585d14ab2c7d4eaa4369">info</a> ()=0</td></tr>
 <tr class="separator:acde447f8670f585d14ab2c7d4eaa4369"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3da423ff6979ec8150a43fadfbd5ab"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#a5d3da423ff6979ec8150a43fadfbd5ab">error</a> ()</td></tr>
@@ -108,7 +108,7 @@ Static Public Attributes</h2></td></tr>
 class Sink&lt; Tin &gt;</h3>
 
 <p>Base class for sinks</p>
-<p>This class is the base class for all sinks. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classSink.html#ab890a163c212e897ae04c6ad3d1d72c2">Sink::kind</a>, <a class="el" href="classSink.html#a4e7ca24d40cb7efbf7582abf301329a7">Sink::load_data</a> and Sink::process methods. Optionally, they can implement the <a class="el" href="classSink.html#aa8539d66f2f58f5b598cb7ae21c31ba6">Sink::set_params</a> method to receive parameters as a void pointer.</p>
+<p>This class is the base class for all sinks. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classSink.html#ab890a163c212e897ae04c6ad3d1d72c2">Sink::kind</a>, <a class="el" href="classSink.html#a5aa49f6c4eb8470f4752f360a8c63052">Sink::load_data</a> and Sink::process methods. Optionally, they can implement the <a class="el" href="classSink.html#ad188b670f9780066b344bd2b3ca00bf9">Sink::set_params</a> method to receive parameters as a void pointer.</p>
 <p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4" title="Call this macro after defining a source class to install it into the kernel.">INSTALL_SINK_DRIVER(klass, type_in, type_out)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -212,8 +212,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
 
 </div>
 </div>
-<a id="a4e7ca24d40cb7efbf7582abf301329a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e7ca24d40cb7efbf7582abf301329a7">&#9670;&nbsp;</a></span>load_data()</h2>
+<a id="a5aa49f6c4eb8470f4752f360a8c63052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aa49f6c4eb8470f4752f360a8c63052">&#9670;&nbsp;</a></span>load_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,7 +226,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
         <tr>
           <td class="memname">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> <a class="el" href="classSink.html">Sink</a>&lt; Tin &gt;::load_data </td>
           <td>(</td>
-          <td class="paramtype">Tin &amp;&#160;</td>
+          <td class="paramtype">Tin const &amp;&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
@@ -247,7 +247,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the data was loaded successfully, and false otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classToConsole.html#aa468f095b01fcc1bdd901d25ff418ceb">ToConsole</a>.</p>
+<p>Implemented in <a class="el" href="classToConsole.html#a890d359dee6f18ab64cb88b9a353c9fe">ToConsole</a>.</p>
 
 </div>
 </div>
@@ -279,8 +279,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
 
 </div>
 </div>
-<a id="aa8539d66f2f58f5b598cb7ae21c31ba6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8539d66f2f58f5b598cb7ae21c31ba6">&#9670;&nbsp;</a></span>set_params()</h2>
+<a id="ad188b670f9780066b344bd2b3ca00bf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad188b670f9780066b344bd2b3ca00bf9">&#9670;&nbsp;</a></span>set_params()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -293,7 +293,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classSink.html">Sink</a>&lt; Tin &gt;::set_params </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">void const *&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -313,7 +313,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classToConsole.html#a5ff94113123619122bbc49c7e4ce452c">ToConsole</a>.</p>
+<p>Reimplemented in <a class="el" href="classToConsole.html#a3a95379b792147044099f41dee806e6e">ToConsole</a>.</p>
 
 </div>
 </div>

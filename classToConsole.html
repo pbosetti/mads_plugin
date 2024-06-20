@@ -92,10 +92,10 @@ Collaboration diagram for ToConsole:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad30dc162c3339cdf4f894979f899eda8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToConsole.html#ad30dc162c3339cdf4f894979f899eda8">kind</a> () override</td></tr>
 <tr class="separator:ad30dc162c3339cdf4f894979f899eda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa468f095b01fcc1bdd901d25ff418ceb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToConsole.html#aa468f095b01fcc1bdd901d25ff418ceb">load_data</a> (json &amp;d) override</td></tr>
-<tr class="separator:aa468f095b01fcc1bdd901d25ff418ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ff94113123619122bbc49c7e4ce452c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToConsole.html#a5ff94113123619122bbc49c7e4ce452c">set_params</a> (void *params) override</td></tr>
-<tr class="separator:a5ff94113123619122bbc49c7e4ce452c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a890d359dee6f18ab64cb88b9a353c9fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToConsole.html#a890d359dee6f18ab64cb88b9a353c9fe">load_data</a> (json const &amp;d) override</td></tr>
+<tr class="separator:a890d359dee6f18ab64cb88b9a353c9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a95379b792147044099f41dee806e6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToConsole.html#a3a95379b792147044099f41dee806e6e">set_params</a> (void const *params) override</td></tr>
+<tr class="separator:a3a95379b792147044099f41dee806e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c404eb15c5c7c6263b9c5a1ae0520d"><td class="memItemLeft" align="right" valign="top">map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToConsole.html#a10c404eb15c5c7c6263b9c5a1ae0520d">info</a> () override</td></tr>
 <tr class="separator:a10c404eb15c5c7c6263b9c5a1ae0520d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classSink"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classSink')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classSink.html">Sink&lt; json &gt;</a></td></tr>
@@ -175,8 +175,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aa468f095b01fcc1bdd901d25ff418ceb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa468f095b01fcc1bdd901d25ff418ceb">&#9670;&nbsp;</a></span>load_data()</h2>
+<a id="a890d359dee6f18ab64cb88b9a353c9fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890d359dee6f18ab64cb88b9a353c9fe">&#9670;&nbsp;</a></span>load_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +187,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> ToConsole::load_data </td>
           <td>(</td>
-          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramtype">json const &amp;&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
@@ -208,12 +208,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the data was loaded successfully, and false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classSink.html#a4e7ca24d40cb7efbf7582abf301329a7">Sink&lt; json &gt;</a>.</p>
+<p>Implements <a class="el" href="classSink.html#a5aa49f6c4eb8470f4752f360a8c63052">Sink&lt; json &gt;</a>.</p>
 
 </div>
 </div>
-<a id="a5ff94113123619122bbc49c7e4ce452c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ff94113123619122bbc49c7e4ce452c">&#9670;&nbsp;</a></span>set_params()</h2>
+<a id="a3a95379b792147044099f41dee806e6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a95379b792147044099f41dee806e6e">&#9670;&nbsp;</a></span>set_params()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,7 +224,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void ToConsole::set_params </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">void const *&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -244,7 +244,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="classSink.html#aa8539d66f2f58f5b598cb7ae21c31ba6">Sink&lt; json &gt;</a>.</p>
+<p>Reimplemented from <a class="el" href="classSink.html#ad188b670f9780066b344bd2b3ca00bf9">Sink&lt; json &gt;</a>.</p>
 
 </div>
 </div>

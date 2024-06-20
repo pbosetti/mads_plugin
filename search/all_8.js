@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_5fdata_11',['load_data',['../classFilter.html#a28d0801cad687c24af7ba2336e7486e7',1,'Filter::load_data()'],['../classToConsole.html#aa468f095b01fcc1bdd901d25ff418ceb',1,'ToConsole::load_data()'],['../classSink.html#a4e7ca24d40cb7efbf7582abf301329a7',1,'Sink::load_data()']]]
+  ['load_5fdata_12',['load_data',['../classFilter.html#ad9477371843930c37fd8d6a371c473f1',1,'Filter::load_data()'],['../classRunningAverage.html#ab08fe6e22b19fe33def4d9db5cd9e107',1,'RunningAverage::load_data()'],['../classToConsole.html#a890d359dee6f18ab64cb88b9a353c9fe',1,'ToConsole::load_data()'],['../classSink.html#a5aa49f6c4eb8470f4752f360a8c63052',1,'Sink::load_data()']]]
 ];
