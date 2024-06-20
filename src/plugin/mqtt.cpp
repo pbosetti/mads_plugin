@@ -88,17 +88,19 @@ public:
  |_|   |_____\___/ \____|___|_| \_|
                                    
 */
-  return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
+  return_type get_output(json &out, std::vector<unsigned char> *blob = nullptr) override {
     if (setup() != return_type::success) {
       return return_type::critical;
     }
     loop();
+    out.clear();
     if(_data.is_null() || _data.empty()) {
       _data.clear();
       return return_type::retry;
     }
-    (*out)["payload"] = _data;
-    (*out)["topic"] = _topic;
+    out["payload"] = _data;
+    out["topic"] = _topic;
+    out["agent_id"] = _agent_id;
     _data.clear();
     this_thread::sleep_for(chrono::microseconds(500));
     if (_error != "No error") 
@@ -107,7 +109,7 @@ public:
       return return_type::success;
   }
 
-  void set_params(void *params) override { 
+  void set_params(void const *params) override { 
     Source::set_params(params);
     _params["broker_host"] = "localhost";
     _params["broker_port"] = 1883;
@@ -135,7 +137,7 @@ private:
  |  __/| | |_| | (_| | | | | | | (_| | |  | |\ V /  __/ |
  |_|   |_|\__,_|\__, |_|_| |_|  \__,_|_|  |_| \_/ \___|_|
                 |___/
-This is the plugin driver, it should not need to be modified
+Enable the class as plugin
 */
 INSTALL_SOURCE_DRIVER(MQTTBridge, json)
 
@@ -160,7 +162,7 @@ int main(int argc, char const *argv[]) {
 
   // Process data
   while (true) {
-    if (bridge.get_output(&output) == return_type::success) 
+    if (bridge.get_output(output) == return_type::success) 
       cout << "MQTT: " << output << endl;
   }
   

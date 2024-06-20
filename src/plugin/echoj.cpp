@@ -25,18 +25,18 @@ using json = nlohmann::json;
 class Echo : public Filter<json, json> {
 public:
   string kind() override { return PLUGIN_NAME; }
-  return_type load_data(json &d) override {
+  return_type load_data(json const &d) override {
     _data = d;
     return return_type::success;
   }
-  return_type process(json *out) override {
-    (*out)["data"] = _data;
-    (*out)["params"] = _params;
-    (*out)["agent_id"] = _agent_id;
+  return_type process(json &out) override {
+    out["data"] = _data;
+    out["params"] = _params;
+    out["agent_id"] = _agent_id;
     return return_type::success;
   }
 
-  void set_params(void *params) override { 
+  void set_params(void const *params) override { 
     Filter::set_params(params);
     _params = *(json *)params; 
   }
@@ -60,7 +60,7 @@ private:
  |  __/| | |_| | (_| | | | | | | (_| | |  | |\ V /  __/ |   
  |_|   |_|\__,_|\__, |_|_| |_|  \__,_|_|  |_| \_/ \___|_|   
                 |___/                                      
-This is the plugin driver, it should not need to be modified 
+Enable the class as plugin
 */
 INSTALL_FILTER_DRIVER(Echo, json, json)
 
@@ -100,7 +100,7 @@ int main(int argc, char const *argv[]) {
   echo.set_params(&params);
   echo.load_data(data);
   json result;
-  if (echo.process(&result) != return_type::success) {
+  if (echo.process(result) != return_type::success) {
     cerr << "Error processing data" << endl;
     return 1;
   }

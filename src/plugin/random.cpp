@@ -28,16 +28,17 @@ class Random : public Source<json> {
 public:
   string kind() override { return PLUGIN_NAME; }
 
-  return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
+  return_type get_output(json &out, std::vector<unsigned char> *blob = nullptr) override {
     Eigen::MatrixXd data = stats::rnorm<Eigen::MatrixXd>(1,_number_of_elements,42.0, 1.0);
     vector<double> data_vector{data.data(), data.data() + data.size()};
-    (*out)["result"] = data_vector;
-    (*out)["agent_id"] = _agent_id;
-    (*out)["_agent_id"] = _agent_id;
+    out.clear();
+    out["result"] = data_vector;
+    out["agent_id"] = _agent_id;
+    out["_agent_id"] = _agent_id;
     return return_type::success;
   }
 
-  void set_params(void *params) override { 
+  void set_params(void const *params) override { 
     Source::set_params(params);
     try {
       _number_of_elements = _params["number_of_elements"];
@@ -62,7 +63,7 @@ private:
  |  __/| | |_| | (_| | | | | | | (_| | |  | |\ V /  __/ |
  |_|   |_|\__,_|\__, |_|_| |_|  \__,_|_|  |_| \_/ \___|_|
                 |___/
-This is the plugin driver, it should not need to be modified
+Enable the class as plugin
 */
 INSTALL_SOURCE_DRIVER(Random, json)
 
@@ -84,7 +85,7 @@ int main(int argc, char const *argv[]) {
   random.set_params(&params);
   
   // Process data
-  random.get_output(&output);
+  random.get_output(output);
 
   // Produce output
   std::cout << "Random data: " << output << std::endl;

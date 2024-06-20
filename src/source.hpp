@@ -64,7 +64,7 @@ public:
    * @param out The output data
    * @return True if the data was processed successfully, and false otherwise
    */
-  virtual return_type get_output(Tout *out, std::vector<unsigned char> *blob = nullptr) = 0;
+  virtual return_type get_output(Tout &out, std::vector<unsigned char> *blob = nullptr) = 0;
 
 
   /*!
@@ -79,7 +79,7 @@ public:
    *
    * @param params The parameters (typically a pointer to a struct)
    */
-  virtual void set_params(void *params){
+  virtual void set_params(void const *params){
     _params = *(nlohmann::json *)params; 
     try {
       _agent_id = _params["agent_id"];

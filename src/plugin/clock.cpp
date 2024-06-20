@@ -46,16 +46,16 @@ public:
         .str();
   }
 
-  return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
+  return_type get_output(json &out, std::vector<unsigned char> *blob = nullptr) override {
     auto now = chrono::system_clock::now();
-    (*out)["time_raw"] = now.time_since_epoch().count();
-    (*out)["time"] = get_ISO8601(now);
-    (*out)["params"] = _params;
-    (*out)["agent_id"] = _agent_id;
+    out["time_raw"] = now.time_since_epoch().count();
+    out["time"] = get_ISO8601(now);
+    out["params"] = _params;
+    out["agent_id"] = _agent_id;
     return return_type::success;
   }
 
-  void set_params(void *params) override { 
+  void set_params(void const *params) override { 
     Source::set_params(params);
     _params = *(json *)params; 
   }
@@ -75,7 +75,7 @@ private:
  |  __/| | |_| | (_| | | | | | | (_| | |  | |\ V /  __/ |
  |_|   |_|\__,_|\__, |_|_| |_|  \__,_|_|  |_| \_/ \___|_|
                 |___/
-This is the plugin driver, it should not need to be modified
+Enable the class as plugin
 */
 INSTALL_SOURCE_DRIVER(Clock, json)
 
@@ -93,7 +93,7 @@ int main(int argc, char const *argv[]) {
   json output;
 
   // Process data
-  clock.get_output(&output);
+  clock.get_output(output);
 
   // Produce output
   cout << "Clock: " << output << endl;

@@ -65,7 +65,7 @@ public:
    * @param data The input data
    * @return True if the data was loaded successfully, and false otherwise
    */
-  virtual return_type load_data(Tin &data) = 0;
+  virtual return_type load_data(Tin const &data) = 0;
 
   /*!
    * Sets the parameters
@@ -76,7 +76,7 @@ public:
    *
    * @param params The parameters (typically a pointer to a struct)
    */
-  virtual void set_params(void *params){
+  virtual void set_params(void const *params){
     _params = *(nlohmann::json *)params; 
     try {
       _agent_id = _params["agent_id"];

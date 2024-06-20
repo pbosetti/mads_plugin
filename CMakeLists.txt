@@ -121,9 +121,10 @@ add_plugin(to_console)
 add_plugin(random)
 add_plugin(mqtt LIBS mosquittopp)
 add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
+add_plugin(running_avg)
+
 if (APPLE)
   add_plugin(restway LIBS restclient-cpp)
-  add_plugin(restway2 LIBS restclient-cpp)
 endif()
 
 add_loader(load_filter)

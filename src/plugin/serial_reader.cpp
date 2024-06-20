@@ -47,9 +47,10 @@ class SerialReader : public Source<json> {
 public:
   string kind() override { return PLUGIN_NAME; }
 
-  return_type get_output(json *out, std::vector<unsigned char> *blob = nullptr) override {
+  return_type get_output(json &out, std::vector<unsigned char> *blob = nullptr) override {
     string line;
     bool success = false;
+    out.clear();
     if (setup() != return_type::success) {
       return return_type::critical;
     }
@@ -57,16 +58,17 @@ public:
       line.clear();
       _serialPort->readLine(line);
       try {
-        *out = json::parse(line);
+        out = json::parse(line);
         success = true;
       } catch (json::exception &e) {
 
       }
     } while (success == false);
+    out["agent_id"] = _agent_id;
     return return_type::success;
   }
 
-  void set_params(void *params) override { 
+  void set_params(void const *params) override { 
     Source::set_params(params);
     _params["port"] = "/dev/ttyUSB0";
     _params["baudrate"] = 115200;
@@ -92,7 +94,7 @@ private:
  |  __/| | |_| | (_| | | | | | | (_| | |  | |\ V /  __/ |
  |_|   |_|\__,_|\__, |_|_| |_|  \__,_|_|  |_| \_/ \___|_|
                 |___/
-This is the plugin driver, it should not need to be modified
+Enable the class as plugin
 */
 INSTALL_SOURCE_DRIVER(SerialReader, json)
 
@@ -121,7 +123,7 @@ int main(int argc, char const *argv[]) {
   sr.set_params(&params);
 
   for (int i = 0; i < 10; i++) {
-    sr.get_output(&output);
+    sr.get_output(output);
     cout << "message #" << i << ": " << output << endl;
   }
 

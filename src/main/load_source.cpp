@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
   for (auto &p: source->info()) {
     cout << p.first << ": " << p.second << endl;
   }
-  source->get_output(&out);
+  source->get_output(out);
   cout << "Output: " << out << endl;
   delete source;
 

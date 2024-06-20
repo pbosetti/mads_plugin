@@ -26,23 +26,21 @@ struct TwiceParams {
 class Twice : public Filter<> {
 public:
   string kind() override { return PLUGIN_NAME; }
-  return_type load_data(Vec &d) override {
+
+  return_type load_data(Vec const &d) override {
     _data = d;
     return return_type::success;
   }
 
-  return_type process(Vec *out) override {
-    if (out == nullptr) {
-      return return_type::critical;
-    }
-    out->clear();
+  return_type process(Vec &out) override {
+    out.clear();
     for (auto &d : _data) {
-      out->push_back(d * _params.times);
+      out.push_back(d * _params.times);
     }
     return return_type::success;
   }
   
-  void set_params(void *params) override {
+  void set_params(void const *params) override {
     Filter::set_params(params);
     _params = *(TwiceParams *)params;
   }
@@ -58,17 +56,8 @@ private:
 };
 
 
-// The driver class
-class TwiceDriver : public FilterDriver<> {
-public:
-  TwiceDriver() : FilterDriver(PLUGIN_NAME, Twice::version) {}
-  Filter<> *create() { return new Twice(); }
-};
-
-// The plugin registration function
-extern "C" EXPORTIT void register_pugg_plugin(pugg::Kernel *kernel) {
-  kernel->add_driver(new TwiceDriver());
-}
+// Enable the class as plugin
+INSTALL_FILTER_DRIVER(Twice, Vec, Vec)
 
 
 /*

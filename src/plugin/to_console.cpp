@@ -25,13 +25,13 @@ using json = nlohmann::json;
 class ToConsole : public Sink<json> {
 public:
   string kind() override { return PLUGIN_NAME; }
-  return_type load_data(json &d) override {
+  return_type load_data(json const &d) override {
     _data = d;
     cout << "Data: " << _data << endl;
     return return_type::success;
   }
 
-  void set_params(void *params) override { 
+  void set_params(void const *params) override { 
     Sink::set_params(params);
     _params = *(json *)params; 
   }
@@ -55,7 +55,7 @@ private:
  |  __/| | |_| | (_| | | | | | | (_| | |  | |\ V /  __/ |   
  |_|   |_|\__,_|\__, |_|_| |_|  \__,_|_|  |_| \_/ \___|_|   
                 |___/                                      
-This is the plugin driver, it should not need to be modified 
+Enable the class as plugin 
 */
 INSTALL_SINK_DRIVER(ToConsole, json)
 

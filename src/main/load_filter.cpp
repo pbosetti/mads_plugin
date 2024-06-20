@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
     cout << k << ": " << v << endl;
   }
   filter->load_data(in);
-  filter->process(&out);
+  filter->process(out);
   cout << "Input: " << in << endl;
   cout << "Output: " << out << endl;
   delete filter;
