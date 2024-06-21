@@ -8,6 +8,8 @@ cmake_minimum_required(VERSION 3.20)
 project(plugin VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
 
+option(MADS_NO_DEPS_ONLY "Build only plugins without external dependencies" OFF)
+
 # PROJECT SETTINGS #############################################################
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -118,9 +120,12 @@ add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
 add_plugin(random)
-add_plugin(mqtt LIBS mosquittopp)
 add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
 add_plugin(running_avg)
+
+if(NOT MADS_NO_DEPS_ONLY)
+  add_plugin(mqtt LIBS mosquittopp)
+endif()
 
 if (APPLE)
   add_plugin(restway LIBS restclient-cpp)
