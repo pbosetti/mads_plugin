@@ -1,5 +1,5 @@
 # Plugins!
-![Build status](https://github.com/miroscic/plugin_cpp/actions/workflows/cmake-multi-platform.yml/badge.svg)
+![Build status](https://github.com/pbosetti/mads_plugin/actions/workflows/cmake-multi-platform.yml/badge.svg)
 
 This example project explores how to develop a plugin system for a C++ application. It is based on the [pugg plugin system]().
 
