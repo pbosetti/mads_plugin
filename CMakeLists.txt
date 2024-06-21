@@ -30,6 +30,7 @@ FetchContent_Declare(pugg
   GIT_TAG        1.0.2
   GIT_SHALLOW    TRUE
 )
+
 # plugins deal with I/O as JSON objects
 set(BUILD_TESTING OFF CACHE INTERNAL "")
 set(JSON_BuildTests OFF CACHE INTERNAL "")
@@ -38,13 +39,6 @@ FetchContent_Declare(json
   GIT_TAG        v3.11.3
   GIT_SHALLOW    TRUE
 )
-set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
-FetchContent_Declare(restclient-cpp
-  GIT_REPOSITORY https://github.com/pbosetti/restclient-cpp
-  GIT_TAG        HEAD
-  GIT_SHALLOW    TRUE
-)
-FetchContent_MakeAvailable(pugg json restclient-cpp)
 
 FetchContent_Declare(eigen
   GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
@@ -65,6 +59,16 @@ FetchContent_Declare(stats
 )
 
 FetchContent_MakeAvailable(pugg json eigen gcem stats)
+
+if(NOT MADS_NO_DEPS_ONLY)
+  set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+  FetchContent_Declare(restclient-cpp
+    GIT_REPOSITORY https://github.com/pbosetti/restclient-cpp
+    GIT_TAG        HEAD
+    GIT_SHALLOW    TRUE
+  )
+  FetchContent_MakeAvailable(restclient-cpp)
+endif()
 
 
 # MACROS #######################################################################
