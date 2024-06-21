@@ -6,8 +6,9 @@
 #                 |___/         
 cmake_minimum_required(VERSION 3.20)
 project(plugin VERSION 0.1.0 LANGUAGES CXX)
-set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
-
+if(CMAKE_BUILD_TYPE STREQUAL "")
+  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build." FORCE)
+endif()
 option(MADS_NO_DEPS_ONLY "Build only plugins without external dependencies" OFF)
 
 # PROJECT SETTINGS #############################################################
@@ -15,7 +16,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(USR_DIR ${CMAKE_CURRENT_LIST_DIR}/usr)
 set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
-set(CMAKE_INSTALL_PREFIX ${USR_DIR})
 set(FETCHCONTENT_QUIET OFF)
 
 if(UNIX AND NOT APPLE)
@@ -144,7 +144,7 @@ add_loader(load_sink)
 
 # INSTALL ######################################################################
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  set(CMAKE_INSTALL_PREFIX ${USR_DIR} CACHE PATH "Installation dir" FORCE)
+  set_property(CACHE CMAKE_INSTALL_PREFIX PROPERTY VALUE ${USR_DIR})
 endif()
 install(TARGETS ${TARGET_LIST}
   LIBRARY DESTINATION lib
