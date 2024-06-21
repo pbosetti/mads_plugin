@@ -98,7 +98,7 @@ $(function() {
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tout = std::vector&lt;<span class="keywordtype">double</span>&gt;&gt;</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classSource.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSource.html">Source</a> {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classSource.html">Source</a>() : _error(<span class="stringliteral">&quot;No error&quot;</span>) , _blob_format(<span class="stringliteral">&quot;none&quot;</span>), _agent_id(<span class="stringliteral">&quot;undefined&quot;</span>) {}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classSource.html">Source</a>() : _error(<span class="stringliteral">&quot;No error&quot;</span>) , _blob_format(<span class="stringliteral">&quot;none&quot;</span>), _agent_id(<span class="stringliteral">&quot;&quot;</span>) {}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classSource.html">Source</a>() {}</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classSource.html#afc952efdbef1cbee52db276b276defa0">   56</a></span>&#160;  <span class="keyword">virtual</span> std::string <a class="code" href="classSource.html#afc952efdbef1cbee52db276b276defa0">kind</a>() = 0;</div>
@@ -111,7 +111,7 @@ $(function() {
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      _agent_id = _params[<span class="stringliteral">&quot;agent_id&quot;</span>];</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    } <span class="keywordflow">catch</span> (nlohmann::json::exception &amp;e) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      _agent_id = <span class="stringliteral">&quot;undefined&quot;</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      _agent_id = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  };</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
