@@ -94,7 +94,6 @@ endmacro()
 macro(add_loader name)
   add_executable(${name} ${SRC_DIR}/main/${name}.cpp)
   target_link_libraries(${name} PRIVATE pugg)
-  list(APPEND TARGET_LIST ${name})
 endmacro()
 
 
@@ -133,11 +132,12 @@ add_loader(load_sink)
 
 
 # INSTALL ######################################################################
-set(CMAKE_INSTALL_PREFIX ${USR_DIR})
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX ${USR_DIR} CACHE PATH "Installation dir" FORCE)
+endif()
 install(TARGETS ${TARGET_LIST}
-  BUNDLE DESTINATION bin
   LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin
+  RUNTIME DESTINATION lib
   ARCHIVE DESTINATION lib
 )
 
