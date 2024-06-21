@@ -124,15 +124,17 @@ add_plugin(echoj)
 add_plugin(clock)
 add_plugin(to_console)
 add_plugin(random)
-add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
 add_plugin(running_avg)
+if(NOT WIN32)
+  # Serial port plugin is not supported on Windows
+  add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
+endif()
 
 if(NOT MADS_NO_DEPS_ONLY)
   add_plugin(mqtt LIBS mosquittopp)
-endif()
-
-if (APPLE)
-  add_plugin(restway LIBS restclient-cpp)
+  if (APPLE)
+    add_plugin(restway LIBS restclient-cpp)
+  endif()
 endif()
 
 add_loader(load_filter)
