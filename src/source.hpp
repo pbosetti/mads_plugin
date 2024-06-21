@@ -118,7 +118,11 @@ public:
   bool dummy;
 
 
-  static const int version = 2;
+  static const int version = 3;
+
+  /*!
+   * Returns the plugin server name.
+   */
   static const std::string server_name() { return "SourceServer"; }
 
 protected:

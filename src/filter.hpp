@@ -124,7 +124,7 @@ public:
   /*!
    * Returns the plugin protocol version.
    */
-  static const int version = 2;
+  static const int version = 3;
 
   /*!
    * Returns the plugin server name.
