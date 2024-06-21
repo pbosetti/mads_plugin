@@ -93,7 +93,7 @@ public:
     try {
       _agent_id = _params["agent_id"];
     } catch (nlohmann::json::exception &e) {
-      _agent_id = "undefined";
+      _agent_id = "";
     }
   };
 

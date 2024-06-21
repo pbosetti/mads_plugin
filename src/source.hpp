@@ -42,7 +42,7 @@ Base class for source plugins
 template <typename Tout = std::vector<double>>
 class Source {
 public:
-  Source() : _error("No error") , _blob_format("none"), _agent_id("undefined") {}
+  Source() : _error("No error") , _blob_format("none"), _agent_id("") {}
   virtual ~Source() {}
 
   /*!
@@ -84,7 +84,7 @@ public:
     try {
       _agent_id = _params["agent_id"];
     } catch (nlohmann::json::exception &e) {
-      _agent_id = "undefined";
+      _agent_id = "";
     }
   };
 

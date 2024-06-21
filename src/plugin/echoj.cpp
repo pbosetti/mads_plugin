@@ -30,9 +30,10 @@ public:
     return return_type::success;
   }
   return_type process(json &out) override {
+    out.clear();
     out["data"] = _data;
     out["params"] = _params;
-    out["agent_id"] = _agent_id;
+    if (!_agent_id.empty()) out["agent_id"] = _agent_id;
     return return_type::success;
   }
 

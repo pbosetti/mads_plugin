@@ -33,8 +33,7 @@ public:
     vector<double> data_vector{data.data(), data.data() + data.size()};
     out.clear();
     out["result"] = data_vector;
-    out["agent_id"] = _agent_id;
-    out["_agent_id"] = _agent_id;
+    if (!_agent_id.empty()) out["agent_id"] = _agent_id;
     return return_type::success;
   }
 

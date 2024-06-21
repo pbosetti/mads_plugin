@@ -64,7 +64,7 @@ public:
 
       }
     } while (success == false);
-    out["agent_id"] = _agent_id;
+    if (!_agent_id.empty()) out["agent_id"] = _agent_id;
     return return_type::success;
   }
 

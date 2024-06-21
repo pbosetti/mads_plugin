@@ -39,30 +39,30 @@ public:
 
     return (
                stringstream()
-               << put_time(tt2, "%FT%T")              // "2023-03-30T19:49:53"
+               << put_time(tt2, "%FT%T")               // "2023-03-30T19:49:53"
                << "." << setw(3) << setfill('0') << ms // ".005"
                << put_time(tt2, "%z") // "+0200" (time zone offset, optional)
                )
         .str();
   }
 
-  return_type get_output(json &out, std::vector<unsigned char> *blob = nullptr) override {
+  return_type get_output(json &out,
+                         std::vector<unsigned char> *blob = nullptr) override {
     auto now = chrono::system_clock::now();
+    out.clear();
     out["time_raw"] = now.time_since_epoch().count();
     out["time"] = get_ISO8601(now);
     out["params"] = _params;
-    out["agent_id"] = _agent_id;
+    if (!_agent_id.empty()) out["agent_id"] = _agent_id;
     return return_type::success;
   }
 
-  void set_params(void const *params) override { 
+  void set_params(void const *params) override {
     Source::set_params(params);
-    _params = *(json *)params; 
+    _params = *(json *)params;
   }
 
-  map<string, string> info() override {
-    return {};
-  };
+  map<string, string> info() override { return {}; };
 
 private:
   json _data, _params;

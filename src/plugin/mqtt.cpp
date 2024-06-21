@@ -93,14 +93,14 @@ public:
       return return_type::critical;
     }
     loop();
-    out.clear();
     if(_data.is_null() || _data.empty()) {
       _data.clear();
       return return_type::retry;
     }
+    out.clear();
     out["payload"] = _data;
     out["topic"] = _topic;
-    out["agent_id"] = _agent_id;
+    if (!_agent_id.empty()) out["agent_id"] = _agent_id;
     _data.clear();
     this_thread::sleep_for(chrono::microseconds(500));
     if (_error != "No error") 
