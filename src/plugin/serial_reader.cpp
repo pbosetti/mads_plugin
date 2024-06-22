@@ -51,9 +51,6 @@ public:
     string line;
     bool success = false;
     out.clear();
-    if (setup() != return_type::success) {
-      return return_type::critical;
-    }
     do {
       line.clear();
       _serialPort->readLine(line);
@@ -73,12 +70,20 @@ public:
     _params["port"] = "/dev/ttyUSB0";
     _params["baudrate"] = 115200;
     _params.merge_patch(*(json *)params);
+    if (setup() != return_type::success) {
+      throw std::runtime_error("Error setting up serial port");
+    }
+    if (_params.find("cfg_cmd") != _params.end()) {
+      _serialPort->write(_params["cfg_cmd"].get<string>().c_str());
+      _serialPort->write("\n");
+    }
   }
 
   map<string, string> info() override {
     return {
       {"port", _params["port"].get<string>()},
-      {"baudrate", to_string(_params["baudrate"].get<unsigned>())}
+      {"baudrate", to_string(_params["baudrate"].get<unsigned>())},
+      {"cfg_cmd", _params["cfg_cmd"].get<string>()}
     };
   };
 
