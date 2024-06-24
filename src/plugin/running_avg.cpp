@@ -95,7 +95,7 @@ INSTALL_FILTER_DRIVER(RunningAverage, json, json);
 int main(int argc, char const *argv[])
 {
   RunningAverage ra;
-  json params{{"queue_size", 3}};
+  json params{{"capa", 3}};
   json output;
   ra.set_params(&params);
 

@@ -1,5 +1,5 @@
 #include <ArduinoJson.h>
-#define VERSION "1.0.0"
+#define VERSION "1.1.0"
 #define BAUD_RATE 115200
 #define CURRENT_X A0
 #define CURRENT_Y A1
@@ -22,6 +22,11 @@ void setup() {
   Serial.begin(BAUD_RATE);
   Serial.print("# Starting power meter v" VERSION "\n");
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(CURRENT_X, INPUT);
+  pinMode(CURRENT_Y, INPUT);
+  pinMode(CURRENT_Z, INPUT);
+  pinMode(CURRENT_B, INPUT);
+  pinMode(CURRENT_C, INPUT);
 }
 
 void loop() {
@@ -60,6 +65,7 @@ void loop() {
         raw = !raw;
         break;
       case '?':
+        Serial.print("Version: " VERSION "\n");
         Serial.print("Usage:\n");
         Serial.print("- 10p  set sampling period to 10 milliseconds (now ");
         Serial.print(timestep_us / 1000);
@@ -78,29 +84,37 @@ void loop() {
 
   if (pause) return;
   if (now - prev_time >= timestep_us) {
+    bool active = false;
     digitalWrite(LED_BUILTIN, onoff);
     onoff = !onoff;
     doc["millis"] = millis();
     doc[DATA_FIELD]["AX"] = limit(analogRead(CURRENT_X), threshold_mV / 1000.0, to_V, to_A);
+    active = active || (doc[DATA_FIELD]["AX"].as<double>() > 0);
     doc[DATA_FIELD]["AY"] = limit(analogRead(CURRENT_Y), threshold_mV / 1000.0, to_V, to_A);
+    active = active || (doc[DATA_FIELD]["AY"].as<double>() > 0);
     doc[DATA_FIELD]["AZ"] = limit(analogRead(CURRENT_Z), threshold_mV / 1000.0, to_V, to_A);
+    active = active || (doc[DATA_FIELD]["AZ"].as<double>() > 0);
     doc[DATA_FIELD]["AB"] = limit(analogRead(CURRENT_B), threshold_mV / 1000.0, to_V, to_A);
+    active = active || (doc[DATA_FIELD]["AB"].as<double>() > 0);
     doc[DATA_FIELD]["AC"] = limit(analogRead(CURRENT_C), threshold_mV / 1000.0, to_V, to_A);
-    if (raw) {
-      Serial.print(doc[DATA_FIELD]["AX"].as<double>());
-      Serial.print(" "); 
-      Serial.print(doc[DATA_FIELD]["AY"].as<double>());
-      Serial.print(" "); 
-      Serial.print(doc[DATA_FIELD]["AZ"].as<double>());
-      Serial.print(" "); 
-      Serial.print(doc[DATA_FIELD]["AB"].as<double>());
-      Serial.print(" "); 
-      Serial.print(doc[DATA_FIELD]["AC"].as<double>());
-      Serial.print("\n");
-    } else {
-      serializeJson(doc, out);
-      Serial.print(out);
-      Serial.print("\n");
+    active = active || (doc[DATA_FIELD]["AC"].as<double>() > 0);
+    if (active > 0) {
+      if (raw) {
+        Serial.print(doc[DATA_FIELD]["AX"].as<double>());
+        Serial.print(" "); 
+        Serial.print(doc[DATA_FIELD]["AY"].as<double>());
+        Serial.print(" "); 
+        Serial.print(doc[DATA_FIELD]["AZ"].as<double>());
+        Serial.print(" "); 
+        Serial.print(doc[DATA_FIELD]["AB"].as<double>());
+        Serial.print(" "); 
+        Serial.print(doc[DATA_FIELD]["AC"].as<double>());
+        Serial.print("\n");
+      } else {
+        serializeJson(doc, out);
+        Serial.print(out);
+        Serial.print("\n");
+      }
     }
     prev_time = now;
   }
