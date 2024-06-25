@@ -1,13 +1,12 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" href="$classFilter.html" title=" " alt="" coords="5,81,152,108"/>
-<area shape="rect" id="node2" href="$classPluginClassName.html" title=" " alt="" coords="200,107,336,133"/>
-<area shape="rect" id="node3" href="$classRunningAverage.html" title=" " alt="" coords="204,56,332,83"/>
+<area shape="rect" id="node2" href="$classPluginClassName.html" title=" " alt="" coords="200,56,336,83"/>
+<area shape="rect" id="node3" href="$classRunningAverage.html" title=" " alt="" coords="204,107,332,133"/>
 <area shape="rect" id="node4" title=" " alt="" coords="27,157,131,184"/>
 <area shape="rect" id="node5" href="$classMQTTBridge.html" title=" " alt="" coords="217,157,319,184"/>
 <area shape="rect" id="node6" href="$classSink.html" title=" " alt="" coords="25,19,132,45"/>
 <area shape="rect" id="node7" href="$classToConsole.html" title=" " alt="" coords="224,5,312,32"/>
 <area shape="rect" id="node8" href="$classSource.html" title=" " alt="" coords="17,208,140,235"/>
-<area shape="rect" id="node9" href="$classRESTway.html" title=" " alt="" coords="228,208,308,235"/>
-<area shape="rect" id="node10" href="$classRandom.html" title=" " alt="" coords="230,259,306,285"/>
-<area shape="rect" id="node11" href="$classSerialReader.html" title=" " alt="" coords="215,309,321,336"/>
+<area shape="rect" id="node9" href="$classRandom.html" title=" " alt="" coords="230,208,306,235"/>
+<area shape="rect" id="node10" href="$classSerialReader.html" title=" " alt="" coords="215,259,321,285"/>
 </map>
