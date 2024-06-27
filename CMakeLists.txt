@@ -119,21 +119,17 @@ include_directories(${gcem_SOURCE_DIR}/include)
 include_directories(${stats_SOURCE_DIR}/include)
 include_directories(${eigen_SOURCE_DIR})
 
-# TARGETS ######################################################################
-add_plugin(echoj)
-add_plugin(clock)
-add_plugin(to_console)
-add_plugin(random)
-add_plugin(running_avg)
-if(NOT WIN32 AND NOT MADS_NO_DEPS_ONLY)
-  # Serial port plugin is not supported on Windows
-  add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
-  add_plugin(mqtt LIBS mosquittopp)
-endif()
-
 add_loader(load_filter)
 add_loader(load_source)
 add_loader(load_sink)
+
+# These plugins are always build and use for testing
+add_plugin(echoj)
+add_plugin(clock)
+
+# DO NOT ADD PLUGINS HERE; USE add_plugin() MACRO IN THE 
+# src/plugin/CMakeLists.txt FILE INSTEAD
+include_directories(${SRC_DIR}/plugin)
 
 
 # INSTALL ######################################################################
