@@ -9,8 +9,9 @@ To build the project, you need to have CMake installed. Then, you can run the fo
 
 ```bash
 mkdir build
-ccmake -Bbuild -DCMAKE_BUILD_TYPE=Release
-cmake --build build -t install
+ccmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr/local
+cmake --build build -j 8
+sudo cmake --build build -t install
 ```
 
 Plugins can be runtime loaded by MADS agents as `mads-source`, `mads-filter`, and `mads-sink` executables. The plugins are compiled as shared libraries, and they are installed in the `<install prefix>/lib` directory.
