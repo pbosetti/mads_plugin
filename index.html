@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>plugin: Plugins!</title>
+<title>plugin: Availabe plugins</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,58 +63,91 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Plugins! </div>  </div>
+<div class="title">Availabe plugins </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a><img src="https://github.com/pbosetti/mads_plugin/actions/workflows/cmake-multi-platform.yml/badge.svg" alt="Build status" style="pointer-events: none;" class="inline"/></p>
-<p>This example project explores how to develop a plugin system for a C++ application. It is based on the [pugg plugin system]().</p>
+<div class="textblock"><p><a class="anchor" id="md_src_plugin_README"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Building</h1>
-<p>To build the project, you need to have CMake installed. Then, you can run the following commands:</p>
-<div class="fragment"><div class="line">mkdir build</div>
-<div class="line">ccmake -Bbuild -DCMAKE_BUILD_TYPE=Release</div>
-<div class="line">cmake --build build -t install</div>
-</div><!-- fragment --><p>This creates three plugins in the form of executable files <b>that also export symbols</b>, so that they can be externally loaded by the main application. The plugins are named <code>echo.plugin</code>, <code>twice.plugin</code>, and <code>echoj.plugin</code>.</p>
-<p>The latter plugin is a template for complete plugins, and it is pretty extensible. Indeed, it accepts a JSON object as settings, a JSON object as input, and produces a JSON object as output. The other two plugins are simple examples of how to implement a plugin.</p>
-<p>Plugins are named <b>Filters</b>, for they are expected to act as filters, taking an input and producing an output. The plugins must be implemented as derived classes of the templated class <code><a class="el" href="classFilter.html">Filter</a></code> (see <code><a class="el" href="filter_8hpp_source.html">src/filter.hpp</a></code>).</p>
-<p>If needed, this project will be extended by adding base classes for other types of plugins, such as <b>Sources</b> (output only) and <b>Sinks</b> (input only).</p>
+Templates</h1>
+<p>The available templates are:</p>
+<ul>
+<li><code>template_source.cpp</code> for implementing source plugins</li>
+<li><code>template_sink.cpp</code> for implementing sink plugins</li>
+<li><code>template_filter.cpp</code> for implementing filter plugins</li>
+</ul>
+<p>Use these files as a starting point for your own plugins.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Executing</h1>
-<p>The install step creates and populates the <code>usr</code> directory in the project root folder. You can run the executable that loads the plugin with the following command:</p>
-<div class="fragment"><div class="line">cd usr</div>
-<div class="line">bin/loaderj bin/echoj.plugin</div>
-</div><!-- fragment --><p>Note that <b>on MacOS only</b> the <code>echoj.plugin</code> file is actually an executable file that exports symbols. It is not a shared library, but it is a plugin that can also be directly executed (using its internal <code>main()</code>) as:</p>
-<div class="fragment"><div class="line">bin/echoj.plugin</div>
-</div><!-- fragment --><p>This is a very flexible way for implementing standalone apps that can also be used as plugins within the Miroscic framework of distributed agents.</p>
-<p>On Windows and Linux, the plugin is a shared library that can only be loaded by the <code>loader</code> executable. Beside the plugin, an equivalent executable is also generated.</p>
+Example plugins</h1>
+<p>The followings are example plugins of little practucalu use, but they are good for learning the basics of plugin development.</p>
+<ul>
+<li><code>clock</code>: a source that provides clock values</li>
+<li><code>echoj</code>: a filter that echoes the input message</li>
+<li><code>random</code>: a source that provides random values</li>
+<li><code>to_console</code>: a sink that prints the input message to the console</li>
+<li><code>twice</code>: a filter that duplicates the input message</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Plugin Versioning</h1>
-<p>The plugin system uses an internal version number <code><a class="el" href="classFilter.html#a7110a1aae1ae96563c00c8f0592d929e">Filter::version</a></code> to check compatibility between the main application and the plugins. To invalidate a previously released plugin, simply imcrease the version number in the base class.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Derived classes</h1>
-<p>To create a new plugin, fork this repository and implement a derived class of <code><a class="el" href="classFilter.html">Filter</a></code> or <code><a class="el" href="classSource.html">Source</a></code> in a new file. At the end of the new derived class definition, add the macros that set up the plugin driver: if it is a source, add</p>
-<div class="fragment"><div class="line"><a class="code" href="common_8hpp.html#ab7463bc9c9b40ff018d92b01c237c452">INSTALL_SOURCE_DRIVER</a>(MySourceClassName, json)</div>
-<div class="ttc" id="acommon_8hpp_html_ab7463bc9c9b40ff018d92b01c237c452"><div class="ttname"><a href="common_8hpp.html#ab7463bc9c9b40ff018d92b01c237c452">INSTALL_SOURCE_DRIVER</a></div><div class="ttdeci">#define INSTALL_SOURCE_DRIVER(klass, type)</div><div class="ttdoc">Call this macro after defining a source class to install it into the kernel.</div><div class="ttdef"><b>Definition:</b> common.hpp:19</div></div>
-</div><!-- fragment --><p>If it is a filter, add</p>
-<div class="fragment"><div class="line"><a class="code" href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db">INSTALL_FILTER_DRIVER</a>(MyFilterClassName, json, json)</div>
-<div class="ttc" id="acommon_8hpp_html_ac2ca73400d23bb4f12e23a64071588db"><div class="ttname"><a href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db">INSTALL_FILTER_DRIVER</a></div><div class="ttdeci">#define INSTALL_FILTER_DRIVER(klass, type_in, type_out)</div><div class="ttdoc">Call this macro after defining a filter class to install it into the kernel.</div><div class="ttdef"><b>Definition:</b> common.hpp:38</div></div>
-</div><!-- fragment --><p>If it is a sink, add</p>
-<div class="fragment"><div class="line"><a class="code" href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4">INSTALL_SINK_DRIVER</a>(MySinkClassName, json)</div>
-<div class="ttc" id="acommon_8hpp_html_a1bbc82f63035c765ea291fb1051afad4"><div class="ttname"><a href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4">INSTALL_SINK_DRIVER</a></div><div class="ttdeci">#define INSTALL_SINK_DRIVER(klass, type)</div><div class="ttdoc">Call this macro after defining a source class to install it into the kernel.</div><div class="ttdef"><b>Definition:</b> common.hpp:57</div></div>
-</div><!-- fragment --><p>Finally, create a new target in the <code>CMakeLists.txt</code> file that compiles the new plugin. Something like:</p>
-<div class="fragment"><div class="line">add_plugin(webcam LIBS LibsNeeded)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
-HTTPS Client Certificates</h1>
-<p>To connect with the Siemens Edge device, we need a SSL client certificate. To configure it, follow the next steps:</p>
-<ol type="1">
-<li>on the Siemens Edge miniweb interface, create a new certificate in .p12 format (if it is not exsiting yet)</li>
-<li>download the certificate in this project root folder: when exporting, check the "Export key" option and give a passphrase</li>
-<li>now the encripted certificate must be extracted in two separate files: the certificate itself and the private key. To do so, run the following commands (which will ask you the same passphrase used in the previous step):</li>
-</ol>
-<div class="fragment"><div class="line">openssl pkcs12 -in amwcapture.p12 -clcerts -nokeys -out amwcapture.crt -legacy</div>
-<div class="line">openssl pkcs12 -in amwcapture.p12 -nocerts -nodes -out amwcapture.key -legacy</div>
-</div><!-- fragment --><p>The executable will look for these two files in the current working directory. </p>
-</div></div><!-- PageDoc -->
+Plugins of actual use</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+MQTT</h2>
+<p>This acts as a source plugin, which reads messages from an MQTT broker and sends them to the MADS broker.</p>
+<p>Note that the plugin <b>only subscribes to the topic as specified in the configuration file</b> and does not publish any messages.</p>
+<p>The <b>frequency</b> of messages depends on when they are received from the MQTT broker. The plugin will send the messages to the MADS broker as soon as they are received.</p>
+<h3><a class="anchor" id="autotoc_md5"></a>
+Parameters</h3>
+<p>The accepted parameters are:</p>
+<div class="fragment"><div class="line">[mqtt]</div>
+<div class="line">broker_host = &quot;localhost&quot;</div>
+<div class="line">broker_port = 1883</div>
+<div class="line">topic = &quot;capture/#&quot;</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
+Notes</h3>
+<p>The MQTT broker must be running on the same address that has been set into the Siemens MindSphere settings. The root publishing topic (e.g. <code>capture</code>) is defined in the settings of the Siemens MindSphere application, while each acquisition procedure defined in the Edge internal webapp will append a unique identifier to the root topic (e.g. <code>capture/mads</code>). So, you typically want to subscribe to <code>capture/#</code> to get all the messages.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Serial Reader</h2>
+<p>This acts as a source plugin, which reads messages from a serial port (typically connected to an Arduino) and sends them to the MADS broker.</p>
+<p>The <b>frequency</b> of messages depends on the configuration of the Arduino board. The plugin will send the messages to the MADS broker as soon as they are received from the Arduino board. In turn, this frequency can be set in the configuration file (<code>cfg_cmd</code> parameter).</p>
+<h3><a class="anchor" id="autotoc_md8"></a>
+Parameters</h3>
+<p>The accepted parameters are:</p>
+<div class="fragment"><div class="line">[serial_reader]</div>
+<div class="line">port=&quot;/dev/ttyACM0&quot;</div>
+<div class="line">baudrate=115200</div>
+<div class="line"># Arduino config serial command</div>
+<div class="line">cfg_cmd = &quot;40p&quot;</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
+Notes</h3>
+<p>The <code>cfg_cmd</code> parameter is used to configure the Arduino board. The default value is <code>40p</code>, which sets the Arduino board to send a message every 40 ms.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Running average</h2>
+<p>This acts as a filter plugin, which calculates the running average of the input values.</p>
+<h3><a class="anchor" id="autotoc_md11"></a>
+Parameters</h3>
+<p>The accepted parameters are:</p>
+<div class="fragment"><div class="line">[running_avg]</div>
+<div class="line">sub_topic = [&quot;serial_reader&quot;]</div>
+<div class="line">capa = 10          # running window size</div>
+<div class="line">field = &quot;data&quot;     # agerage all values in the dictionary &quot;data&quot;</div>
+<div class="line">out_field = &quot;avg&quot;  # output field</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md12"></a>
+Notes</h3>
+<p>It searches for a field in the message payload having the name specified in the <code>field</code> parameter. the data field must be a dictionary. of numerical values, e.g.:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;data&quot;: {</div>
+<div class="line">    &quot;value1&quot;: 1,</div>
+<div class="line">    &quot;value2&quot;: 2,</div>
+<div class="line">    &quot;value3&quot;: 3</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>The plugin will calculate the average of all the values in the dictionary and store it in a new field, whose name is specified in the <code>out_field</code> parameter:</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;avg&quot;: {</div>
+<div class="line">    &quot;value1&quot;: 1,</div>
+<div class="line">    &quot;value2&quot;: 2,</div>
+<div class="line">    &quot;value3&quot;: 3</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

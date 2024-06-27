@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['blob_5fformat_0',['blob_format',['../classSource.html#a119129cc44d86a108285b52b7c496212',1,'Source']]]
+  ['availabe_20plugins_0',['Availabe plugins',['../index.html',1,'']]]
 ];

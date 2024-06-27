@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pluginclassname_15',['PluginClassName',['../classPluginClassName.html',1,'']]],
-  ['plugins_21_16',['Plugins!',['../index.html',1,'']]],
-  ['process_17',['process',['../classFilter.html#a2579e37b989e96ceab3fe1809269a1ba',1,'Filter::process()'],['../classRunningAverage.html#a90b927f75b99e017195d0165a8635351',1,'RunningAverage::process()'],['../classPluginClassName.html#aad7f395bde575ad2babae1b9560ad767',1,'PluginClassName::process()']]]
+  ['mfiledesc_14',['mFileDesc',['../classSerialPort.html#a67cd62f1d1bd222989abc83d11d4ac47',1,'SerialPort']]],
+  ['mqttbridge_15',['MQTTBridge',['../classMQTTBridge.html',1,'']]]
 ];

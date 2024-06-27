@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_3',['error',['../classFilter.html#a4f5237964d639b9f3c43a4a1d540174d',1,'Filter::error()'],['../classSink.html#a5d3da423ff6979ec8150a43fadfbd5ab',1,'Sink::error()'],['../classSource.html#aeb408a2891887138206fd602bf2357cb',1,'Source::error()']]]
+  ['dummy_3',['dummy',['../classFilter.html#a29bce8d312ef763d7beb39f13851d9d3',1,'Filter::dummy()'],['../classSink.html#a21eb67669b967111d8f92f3fd9524d48',1,'Sink::dummy()'],['../classSource.html#a504d988ace793cf47a4301151ebdf570',1,'Source::dummy()']]]
 ];
