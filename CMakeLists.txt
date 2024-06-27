@@ -125,7 +125,7 @@ add_plugin(clock)
 add_plugin(to_console)
 add_plugin(random)
 add_plugin(running_avg)
-if(NOT WIN32 && NOT MADS_NO_DEPS_ONLY)
+if(NOT WIN32 AND NOT MADS_NO_DEPS_ONLY)
   # Serial port plugin is not supported on Windows
   add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
   add_plugin(mqtt LIBS mosquittopp)
