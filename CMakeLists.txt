@@ -129,7 +129,7 @@ add_plugin(clock)
 
 # DO NOT ADD PLUGINS HERE; USE add_plugin() MACRO IN THE 
 # src/plugin/CMakeLists.txt FILE INSTEAD
-include_directories(${SRC_DIR}/plugin)
+add_subdirectory(${SRC_DIR}/plugin)
 
 
 # INSTALL ######################################################################
