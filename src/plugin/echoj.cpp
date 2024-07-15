@@ -25,7 +25,7 @@ using json = nlohmann::json;
 class Echo : public Filter<json, json> {
 public:
   string kind() override { return PLUGIN_NAME; }
-  return_type load_data(json const &d) override {
+  return_type load_data(json const &d, string topic = "") override {
     _data = d;
     return return_type::success;
   }

@@ -25,9 +25,9 @@ using json = nlohmann::json;
 class ToConsole : public Sink<json> {
 public:
   string kind() override { return PLUGIN_NAME; }
-  return_type load_data(json const &d) override {
+  return_type load_data(json const &d, string topic = "") override {
     _data = d;
-    cout << "Data: " << _data << endl;
+    cout << "[" << topic << "] Data: " << _data << endl;
     return return_type::success;
   }
 

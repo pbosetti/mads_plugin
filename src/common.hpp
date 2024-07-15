@@ -1,6 +1,8 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
+#define PLUGIN_PROTOCOL_VERSION 4
+
 /*!
 * @file common.hpp
 * @brief Common definitions for the pugg library

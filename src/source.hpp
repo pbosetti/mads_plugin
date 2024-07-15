@@ -118,7 +118,7 @@ public:
   bool dummy;
 
 
-  static const int version = 3;
+  static const int version = PLUGIN_PROTOCOL_VERSION;
 
   /*!
    * Returns the plugin server name.

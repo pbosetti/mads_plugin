@@ -63,9 +63,10 @@ public:
    * data was loaded successfully, and false otherwise.
    *
    * @param data The input data
+   * @param topic The topic of the data
    * @return True if the data was loaded successfully, and false otherwise
    */
-  virtual return_type load_data(Tin const &data) = 0;
+  virtual return_type load_data(Tin const &data, std::string topic = "") = 0;
 
   /*!
    * Sets the parameters
@@ -112,7 +113,7 @@ public:
   /*!
    * Returns the plugin protocol version.
    */
-  static const int version = 3;
+  static const int version = PLUGIN_PROTOCOL_VERSION;
 
   /*!
    * Returns the plugin server name.

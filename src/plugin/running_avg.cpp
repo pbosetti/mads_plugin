@@ -29,7 +29,7 @@ public:
   // We expect to have a dictionary of values in the input, and we feed them
   // into a map of double-ended queues (deques) to keep track of the last N
   // values for each key.
-  return_type load_data(json const &input) override {
+  return_type load_data(json const &input, string topic = "") override {
     if (input[_params["field"]].is_object() == false) {
       return return_type::error;
     }
