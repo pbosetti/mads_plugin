@@ -119,7 +119,7 @@ public:
    */
   static const std::string server_name() { return "SinkServer"; }
 
-private:
+protected:
   std::string _error;
   std::string _agent_id;
   nlohmann::json _params;
