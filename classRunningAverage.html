@@ -92,8 +92,9 @@ Collaboration diagram for RunningAverage:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a292611672634dd7c9b0f2cc9d3d28671"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRunningAverage.html#a292611672634dd7c9b0f2cc9d3d28671">kind</a> () override</td></tr>
 <tr class="separator:a292611672634dd7c9b0f2cc9d3d28671"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab08fe6e22b19fe33def4d9db5cd9e107"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRunningAverage.html#ab08fe6e22b19fe33def4d9db5cd9e107">load_data</a> (json const &amp;input) override</td></tr>
-<tr class="separator:ab08fe6e22b19fe33def4d9db5cd9e107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63921ffed60d6534c066fbb5e8d31218"><td class="memItemLeft" align="right" valign="top"><a id="a63921ffed60d6534c066fbb5e8d31218"></a>
+<a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>load_data</b> (json const &amp;input, string topic=&quot;&quot;) override</td></tr>
+<tr class="separator:a63921ffed60d6534c066fbb5e8d31218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90b927f75b99e017195d0165a8635351"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRunningAverage.html#a90b927f75b99e017195d0165a8635351">process</a> (json &amp;out) override</td></tr>
 <tr class="separator:a90b927f75b99e017195d0165a8635351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb4b495d95200dbe387138f41e27aa53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRunningAverage.html#abb4b495d95200dbe387138f41e27aa53">set_params</a> (void const *params) override</td></tr>
@@ -101,6 +102,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a246a9741870901734a7e3db5d5ffb797"><td class="memItemLeft" align="right" valign="top">map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRunningAverage.html#a246a9741870901734a7e3db5d5ffb797">info</a> () override</td></tr>
 <tr class="separator:a246a9741870901734a7e3db5d5ffb797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classFilter"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classFilter')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classFilter.html">Filter&lt; json, json &gt;</a></td></tr>
+<tr class="memitem:ab8831e2dea1e2c966697cc6599fc01e5 inherit pub_methods_classFilter"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">load_data</a> (json const &amp;data, std::string topic=&quot;&quot;)=0</td></tr>
+<tr class="separator:ab8831e2dea1e2c966697cc6599fc01e5 inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f5237964d639b9f3c43a4a1d540174d inherit pub_methods_classFilter"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a4f5237964d639b9f3c43a4a1d540174d">error</a> ()</td></tr>
 <tr class="separator:a4f5237964d639b9f3c43a4a1d540174d inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -184,43 +187,6 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 <dl class="section return"><dt>Returns</dt><dd>The kind of filter </dd></dl>
 
 <p>Implements <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter&lt; json, json &gt;</a>.</p>
-
-</div>
-</div>
-<a id="ab08fe6e22b19fe33def4d9db5cd9e107"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab08fe6e22b19fe33def4d9db5cd9e107">&#9670;&nbsp;</a></span>load_data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> RunningAverage::load_data </td>
-          <td>(</td>
-          <td class="paramtype">json const &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Loads the input data</p>
-<p>This method loads the input data into the filter. It returns true if the data was loaded successfully, and false otherwise.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>The input data </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the data was loaded successfully, and false otherwise </dd></dl>
-
-<p>Implements <a class="el" href="classFilter.html#ad9477371843930c37fd8d6a371c473f1">Filter&lt; json, json &gt;</a>.</p>
 
 </div>
 </div>

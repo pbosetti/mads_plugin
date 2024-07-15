@@ -80,8 +80,8 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a91a969919077f3ecade055db183676ea"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">kind</a> ()=0</td></tr>
 <tr class="separator:a91a969919077f3ecade055db183676ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9477371843930c37fd8d6a371c473f1"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#ad9477371843930c37fd8d6a371c473f1">load_data</a> (Tin const &amp;data)=0</td></tr>
-<tr class="separator:ad9477371843930c37fd8d6a371c473f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8831e2dea1e2c966697cc6599fc01e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">load_data</a> (Tin const &amp;data, std::string topic=&quot;&quot;)=0</td></tr>
+<tr class="separator:ab8831e2dea1e2c966697cc6599fc01e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2579e37b989e96ceab3fe1809269a1ba"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">process</a> (Tout &amp;out)=0</td></tr>
 <tr class="separator:a2579e37b989e96ceab3fe1809269a1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4228450b2102ca29c20c305d6c98178d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a4228450b2102ca29c20c305d6c98178d">set_params</a> (void const *params)</td></tr>
@@ -103,7 +103,7 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a7110a1aae1ae96563c00c8f0592d929e"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a7110a1aae1ae96563c00c8f0592d929e">version</a> = 3</td></tr>
+<tr class="memitem:a7110a1aae1ae96563c00c8f0592d929e"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a7110a1aae1ae96563c00c8f0592d929e">version</a> = PLUGIN_PROTOCOL_VERSION</td></tr>
 <tr class="separator:a7110a1aae1ae96563c00c8f0592d929e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -123,7 +123,7 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 class Filter&lt; Tin, Tout &gt;</h3>
 
 <p>Base class for filters</p>
-<p>This class is the base class for all filters. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter::kind</a>, <a class="el" href="classFilter.html#ad9477371843930c37fd8d6a371c473f1">Filter::load_data</a> and <a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">Filter::process</a> methods. Optionally, they can implement the <a class="el" href="classFilter.html#a4228450b2102ca29c20c305d6c98178d">Filter::set_params</a> method to receive parameters as a void pointer.</p>
+<p>This class is the base class for all filters. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter::kind</a>, <a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">Filter::load_data</a> and <a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">Filter::process</a> methods. Optionally, they can implement the <a class="el" href="classFilter.html#a4228450b2102ca29c20c305d6c98178d">Filter::set_params</a> method to receive parameters as a void pointer.</p>
 <p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db" title="Call this macro after defining a filter class to install it into the kernel.">INSTALL_FILTER_DRIVER(klass, type_in, type_out)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -227,8 +227,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 
 </div>
 </div>
-<a id="ad9477371843930c37fd8d6a371c473f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9477371843930c37fd8d6a371c473f1">&#9670;&nbsp;</a></span>load_data()</h2>
+<a id="ab8831e2dea1e2c966697cc6599fc01e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8831e2dea1e2c966697cc6599fc01e5">&#9670;&nbsp;</a></span>load_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,8 +242,18 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
           <td class="memname">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::load_data </td>
           <td>(</td>
           <td class="paramtype">Tin const &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>topic</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -257,12 +267,11 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>The input data </td></tr>
+    <tr><td class="paramname">topic</td><td>The topic of the data </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the data was loaded successfully, and false otherwise </dd></dl>
-
-<p>Implemented in <a class="el" href="classPluginClassName.html#ac467a1b6715d8d024fe2df9692f38038">PluginClassName</a>, <a class="el" href="classPluginClassName.html#ac467a1b6715d8d024fe2df9692f38038">PluginClassName</a>, and <a class="el" href="classRunningAverage.html#ab08fe6e22b19fe33def4d9db5cd9e107">RunningAverage</a>.</p>
 
 </div>
 </div>
@@ -401,7 +410,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const int <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::version = 3</td>
+          <td class="memname">const int <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::version = PLUGIN_PROTOCOL_VERSION</td>
         </tr>
       </table>
   </td>
