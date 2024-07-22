@@ -34,7 +34,7 @@ public:
   string kind() override { return PLUGIN_NAME; }
 
   // Implement the actual functionality here
-  return_type load_data(json const &input) override {
+  return_type load_data(json const &input, string topic = "") override {
     // Do something with the input data
     return return_type::success;
   }
