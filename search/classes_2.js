@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pluginclassname_37',['PluginClassName',['../classPluginClassName.html',1,'']]]
+  ['pluginclassname_39',['PluginClassName',['../classPluginClassName.html',1,'']]]
 ];

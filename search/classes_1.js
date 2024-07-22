@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mqttbridge_36',['MQTTBridge',['../classMQTTBridge.html',1,'']]]
+  ['mqttbridge_38',['MQTTBridge',['../classMQTTBridge.html',1,'']]]
 ];

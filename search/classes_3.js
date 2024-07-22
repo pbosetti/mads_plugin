@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['random_38',['Random',['../classRandom.html',1,'']]],
-  ['runningaverage_39',['RunningAverage',['../classRunningAverage.html',1,'']]]
+  ['random_40',['Random',['../classRandom.html',1,'']]],
+  ['runningaverage_41',['RunningAverage',['../classRunningAverage.html',1,'']]]
 ];
