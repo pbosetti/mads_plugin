@@ -22,8 +22,11 @@ add_plugin(to_console)
 add_plugin(random)
 add_plugin(running_avg)
 add_plugin(worker)
-add_plugin(spawner)
-
+if(UNIX AND NOT APPLE)
+  add_plugin(spawner LIBS uuid)
+elseif(APPLE)
+  add_plugin(spawner)
+endif()
 
 # CONDITIONAL PLUGINS ##########################################################
 # These plugins are only built if the required dependencies are available.
