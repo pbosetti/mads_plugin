@@ -25,7 +25,7 @@ public:
     save();
   }
 
-  void prepare_datastore(std::string name) {
+  void prepare(std::string name) {
     if (name.size() < 5 || name.substr(name.size() - 5) != ".json")
       name += ".json";
     _datastore_path = std::filesystem::temp_directory_path() / "mads" / name;
