@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pluginclassname_39',['PluginClassName',['../classPluginClassName.html',1,'']]]
+  ['mqttbridge_0',['MQTTBridge',['../classMQTTBridge.html',1,'']]]
 ];

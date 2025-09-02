@@ -1,5 +1,7 @@
 <map id="MQTTBridge" name="MQTTBridge">
-<area shape="rect" id="node1" title=" " alt="" coords="83,80,186,107"/>
-<area shape="rect" id="node2" href="$classSource.html" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="152,5,256,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,79,186,104"/>
+<area shape="rect" id="Node000002" href="$classSource.html" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,39,126,77,122,80,85,42"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="152,5,256,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,43,148,80,144,77,181,39"/>
 </map>

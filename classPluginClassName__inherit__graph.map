@@ -1,6 +1,9 @@
 <map id="PluginClassName" name="PluginClassName">
-<area shape="rect" id="node1" title=" " alt="" coords="161,80,297,107"/>
-<area shape="rect" id="node2" href="$classFilter.html" title=" " alt="" coords="5,5,152,32"/>
-<area shape="rect" id="node3" href="$classSink.html" title=" " alt="" coords="176,5,283,32"/>
-<area shape="rect" id="node4" href="$classSource.html" title=" " alt="" coords="307,5,429,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="161,79,297,104"/>
+<area shape="rect" id="Node000002" href="$classFilter.html" title=" " alt="" coords="5,5,152,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,34,206,76,204,81,114,39"/>
+<area shape="rect" id="Node000003" href="$classSink.html" title=" " alt="" coords="176,5,283,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,44,232,79,227,79,227,44"/>
+<area shape="rect" id="Node000004" href="$classSource.html" title=" " alt="" coords="307,5,429,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="335,39,253,81,251,76,332,34"/>
 </map>

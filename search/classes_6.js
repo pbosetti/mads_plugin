@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['workerplugin_50',['WorkerPlugin',['../classWorkerPlugin.html',1,'']]]
+  ['toconsole_0',['ToConsole',['../classToConsole.html',1,'']]]
 ];
