@@ -109,7 +109,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    save();</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  }</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordtype">void</span> prepare_datastore(std::string name) {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordtype">void</span> prepare(std::string name) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> (name.size() &lt; 5 || name.substr(name.size() - 5) != <span class="stringliteral">&quot;.json&quot;</span>)</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>      name += <span class="stringliteral">&quot;.json&quot;</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    _datastore_path = std::filesystem::temp_directory_path() / <span class="stringliteral">&quot;mads&quot;</span> / name;</div>
