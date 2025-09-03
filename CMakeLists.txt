@@ -174,6 +174,6 @@ if(DOXYGEN_FOUND)
   doxygen_add_docs(Doxygen
     ${SRC_DIR} ${SRC_DIR}/plugin ${MARKDOWN_FILES}
     WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/doc
-    CONFIG_FILE Doxyfile
+    CONFIG_FILE ${CMAKE_CURRENT_LIST_DIR}/doc/Doxyfile
   )
 endif()
