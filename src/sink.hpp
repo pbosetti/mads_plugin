@@ -82,6 +82,7 @@ public:
     try {
       _agent_id = _params["agent_id"];
     } catch (nlohmann::json::exception &e) {
+      _error = e.what();
       _agent_id = "";
     }
   };
