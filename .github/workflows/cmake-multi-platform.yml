@@ -69,6 +69,7 @@ jobs:
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -DMADS_NO_DEPS_ONLY=ON
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         -S ${{ github.workspace }}
 
     - name: Build
