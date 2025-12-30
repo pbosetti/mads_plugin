@@ -19,7 +19,7 @@
 
 class Datastore {
 public:
-  Datastore() {}
+  Datastore() : _datastore_path("") {}
 
   ~Datastore() {
     save();
@@ -28,7 +28,8 @@ public:
   void prepare(std::string name) {
     if (name.size() < 5 || name.substr(name.size() - 5) != ".json")
       name += ".json";
-    _datastore_path = std::filesystem::temp_directory_path() / "mads" / name;
+    if (_datastore_path.empty())
+      _datastore_path = std::filesystem::temp_directory_path() / "mads" / name;
     if (!std::filesystem::exists(_datastore_path.parent_path())) {
       std::filesystem::create_directories(_datastore_path.parent_path());
     }
@@ -45,6 +46,17 @@ public:
     } else {
       _data = nlohmann::json{};
     }
+  }
+
+  void prepare(std::string name, std::filesystem::path path) {
+    if (!path.has_stem()) 
+      throw(std::runtime_error("Wrong path, must be a file"));
+    _datastore_path = path;
+    prepare(name);
+  }
+
+  void prepare(std::string name, std::string path) {
+    prepare(name, std::filesystem::path(path));
   }
 
   nlohmann::json & operator[](const std::string &key) {
