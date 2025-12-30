@@ -40,25 +40,7 @@ FetchContent_Declare(json
   GIT_SHALLOW    TRUE
 )
 
-FetchContent_Declare(eigen
-  GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
-  GIT_TAG        HEAD
-  GIT_SHALLOW    TRUE
-)
-
-FetchContent_Declare(gcem
-  GIT_REPOSITORY https://github.com/kthohr/gcem.git
-  GIT_TAG        HEAD
-  GIT_SHALLOW    TRUE
-)
-
-FetchContent_Declare(stats
-  GIT_REPOSITORY https://github.com/kthohr/stats.git
-  GIT_TAG        HEAD
-  GIT_SHALLOW    TRUE
-)
-
-FetchContent_MakeAvailable(pugg json eigen gcem stats)
+FetchContent_MakeAvailable(pugg json)
 
 if(NOT MADS_NO_DEPS_ONLY)
   set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")

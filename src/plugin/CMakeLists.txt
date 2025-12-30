@@ -19,7 +19,6 @@
 # These plugins are built unconditionally.
 
 add_plugin(to_console)
-add_plugin(random)
 add_plugin(running_avg)
 add_plugin(worker)
 if(UNIX AND NOT APPLE)
