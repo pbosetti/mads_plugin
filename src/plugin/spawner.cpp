@@ -65,13 +65,13 @@ public:
     return return_type::success;
   }
 
-  void set_params(void const *params) override {
+  void set_params(const json &params) override {
     Source::set_params(params);
     _params["period_min"] = 100;
     _params["period_max"] = 5000;
     _params["number"] = 50;
 
-    _params.merge_patch(*(json *)params);
+    _params.merge_patch(params);
     _number = _params["number"];
     _period_min = _params["period_min"];
     _period_max = _params["period_max"];
@@ -130,7 +130,7 @@ int main(int argc, char const *argv[]) {
   params["period_max"] = 5000;
 
   // Set the parameters
-  plugin.set_params(&params);
+  plugin.set_params(params);
 
   for(int i = 0; i < params["number"]; i++) {
     // Process data

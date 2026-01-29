@@ -31,9 +31,9 @@ public:
     return return_type::success;
   }
 
-  void set_params(void const *params) override { 
+  void set_params(const json &params) override { 
     Sink::set_params(params);
-    _params = *(json *)params; 
+    _params.merge_patch(params); 
   }
 
   map<string, string> info() override {
@@ -94,7 +94,7 @@ int main(int argc, char const *argv[]) {
   cout << "Input: " << data << endl;
 
   // Process data
-  tc.set_params(&params);
+  tc.set_params(params);
   tc.load_data(data);
 
   return 0;

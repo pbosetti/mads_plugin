@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
   } else {
     params["name"] = "echo test";
   }
-  sink->set_params(&params);
+  sink->set_params(params);
   for (auto &[k, v]: sink->info()) {
     cout << k << ": " << v << endl;
   }

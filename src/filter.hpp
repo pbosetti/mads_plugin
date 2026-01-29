@@ -131,7 +131,7 @@ public:
   /*!
    * The desired duration of current loop iteration
    */
-  std::chrono::duration loop_duration;
+  std::chrono::duration<long long, std::milli> loop_duration;
 
 protected:
   std::string _error;

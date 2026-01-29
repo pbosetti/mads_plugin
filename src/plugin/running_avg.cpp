@@ -58,12 +58,12 @@ public:
     return return_type::success;
   }
   
-  void set_params(void const *params) override {
+  void set_params(const json &params) override {
     Filter::set_params(params);
     _params["capa"] = 10;
     _params["field"] = "data";
     _params["out_field"] = "avg";
-    _params.merge_patch(*(json *)params);
+    _params.merge_patch(params);
   }
 
   map<string, string> info() override {
@@ -97,7 +97,7 @@ int main(int argc, char const *argv[])
   RunningAverage ra;
   json params{{"capa", 3}};
   json output;
-  ra.set_params(&params);
+  ra.set_params(params);
 
   json data{
     {"data", {

@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
   } else {
     params["name"] = "plugin test";
   }
-  source->set_params(&params);
+  source->set_params(params);
   for (auto &p: source->info()) {
     cout << p.first << ": " << p.second << endl;
   }

@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
   } else {
     params["name"] = "echo test";
   }
-  filter->set_params(&params);
+  filter->set_params(params);
   for (auto &[k, v]: filter->info()) {
     cout << k << ": " << v << endl;
   }

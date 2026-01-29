@@ -37,9 +37,9 @@ public:
     return return_type::success;
   }
 
-  void set_params(void const *params) override { 
+  void set_params(const json &params) override { 
     Filter::set_params(params);
-    _params = *(json *)params; 
+    _params.merge_patch(params); 
   }
 
   map<string, string> info() override {
@@ -98,7 +98,7 @@ int main(int argc, char const *argv[]) {
   }
 
   // Process data
-  echo.set_params(&params);
+  echo.set_params(params);
   echo.load_data(data);
   json result;
   if (echo.process(result) != return_type::success) {

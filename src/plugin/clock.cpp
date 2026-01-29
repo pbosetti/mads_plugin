@@ -57,9 +57,9 @@ public:
     return return_type::success;
   }
 
-  void set_params(void const *params) override {
+  void set_params(const json &params) override {
     Source::set_params(params);
-    _params = *(json *)params;
+    _params.merge_patch(params);
   }
 
   map<string, string> info() override { return {}; };

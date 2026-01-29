@@ -65,11 +65,11 @@ public:
     return return_type::success;
   }
 
-  void set_params(void const *params) override { 
+  void set_params(const json &params) override { 
     Source::set_params(params);
     _params["port"] = "/dev/ttyUSB0";
     _params["baudrate"] = 115200;
-    _params.merge_patch(*(json *)params);
+    _params.merge_patch(params);
     if (setup() != return_type::success) {
       throw std::runtime_error("Error setting up serial port");
     }
@@ -125,7 +125,7 @@ int main(int argc, char const *argv[]) {
   json params;
   params["port"] = argv[1];
   params["baudrate"] = 115200;
-  sr.set_params(&params);
+  sr.set_params(params);
 
   for (int i = 0; i < 10; i++) {
     sr.get_output(output);

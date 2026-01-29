@@ -109,11 +109,11 @@ public:
       return return_type::success;
   }
 
-  void set_params(void const *params) override { 
+  void set_params(const json &params) override { 
     Source::set_params(params);
     _params["broker_host"] = "localhost";
     _params["broker_port"] = 1883;
-    _params.merge_patch(*(json *)params);
+    _params.merge_patch(params);
   }
 
   map<string, string> info() override {
@@ -158,7 +158,7 @@ int main(int argc, char const *argv[]) {
   params["topic"] = "capture/#";
 
   // Set parameters
-  bridge.set_params(&params);
+  bridge.set_params(params);
 
   // Process data
   while (true) {
