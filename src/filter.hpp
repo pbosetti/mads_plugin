@@ -91,8 +91,7 @@ public:
    * @param params The parameters 
    */
   virtual void set_params(const nlohmann::json &params){
-    _params = params; 
-    _agent_id = _params.value("agent_id", "");
+    _agent_id = params.value("agent_id", "");
   };
 
   /*!
