@@ -25,7 +25,13 @@ Typically, each plugin code can contain a conditionally available `main()` funct
 
 ## Plugin Versioning
 
-The plugin system uses an internal version number `Filter::version` to check compatibility between the main application and the plugins. To invalidate a previously released plugin, simply imcrease the version number in the base class.
+The plugin system uses an internal version number `Filter::version` to check compatibility between the main application and the plugins. When loaded, the version number are checked and if the plugin protocol version is lower than that used by the plugin loader (i.e. one of the MADS commands), the loading fails.
+
+When this happens, you have to:
+
+* delete the content of `build\_deps\plugin_src`
+* update the version of the plugin in the proper `FetchContent_Populate` command in `CMakeLists.txt`: for example if your current MADS version 2.x says that the minimum plugin protocolo version is 6, then you have to look at <https://github.com/pbosetti/mads_plugin> and find the latest tag ending in `P6` (e.g. v2.0-P6), and replace the value `GIT_TAG` with that new tag
+* recompile (and possibly reinstall) the plugin
 
 ## Implement new plugins
 
