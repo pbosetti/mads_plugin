@@ -75,10 +75,10 @@ public:
    * to the parameters. The child class must cast the pointer to the correct
    * type.
    *
-   * @param params The parameters (typically a pointer to a struct)
+   * @param params The parameters 
    */
-  virtual void set_params(void const *params){
-    _params = *(nlohmann::json *)params; 
+  virtual void set_params(const nlohmann::json &params){
+    _params = params;  
     try {
       _agent_id = _params["agent_id"];
     } catch (nlohmann::json::exception &e) {

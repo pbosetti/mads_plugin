@@ -14,6 +14,7 @@ Base class for source plugins
 #include <string>
 #include <vector>
 #include <map>
+#include <chrono>
 #include <nlohmann/json.hpp>
 #include "common.hpp"
 
@@ -77,10 +78,10 @@ public:
    * Derived classes shall call the parent class method to set the `_agent_id`
    * field in the `_params` json object.
    *
-   * @param params The parameters (typically a pointer to a struct)
+   * @param params The parameters 
    */
-  virtual void set_params(void const *params){
-    _params = *(nlohmann::json *)params; 
+  virtual void set_params(const nlohmann::json &params){
+    _params = params; 
     try {
       _agent_id = _params["agent_id"];
     } catch (nlohmann::json::exception &e) {
@@ -125,6 +126,11 @@ public:
    * Returns the plugin server name.
    */
   static const std::string server_name() { return "SourceServer"; }
+  
+  /*!
+   * The desired duration of current loop iteration
+   */
+  std::chrono::duration loop_duration;
 
 protected:
   nlohmann::json _params;

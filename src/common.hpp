@@ -1,7 +1,7 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
-#define PLUGIN_PROTOCOL_VERSION 5
+#define PLUGIN_PROTOCOL_VERSION 6
 
 /*!
 * @file common.hpp

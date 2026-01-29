@@ -15,6 +15,7 @@ Base class for filter plugins
 #include <vector>
 #include <map>
 #include <nlohmann/json.hpp>
+#include <chrono>
 #include "common.hpp"
 
 #ifdef _WIN32
@@ -87,10 +88,10 @@ public:
    * to the parameters. The child class must cast the pointer to the correct
    * type.
    *
-   * @param params The parameters (typically a pointer to a struct)
+   * @param params The parameters 
    */
-  virtual void set_params(void const *params){
-    _params = *(nlohmann::json *)params; 
+  virtual void set_params(const nlohmann::json &params){
+    _params = params; 
     try {
       _agent_id = _params["agent_id"];
     } catch (nlohmann::json::exception &e) {
@@ -132,6 +133,11 @@ public:
    * Returns the plugin server name.
    */
   static const std::string server_name() { return "FilterServer"; }
+
+  /*!
+   * The desired duration of current loop iteration
+   */
+  std::chrono::duration loop_duration;
 
 protected:
   std::string _error;
