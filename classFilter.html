@@ -90,8 +90,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab8831e2dea1e2c966697cc6599fc01e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2579e37b989e96ceab3fe1809269a1ba" id="r_a2579e37b989e96ceab3fe1809269a1ba"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">process</a> (Tout &amp;out)=0</td></tr>
 <tr class="separator:a2579e37b989e96ceab3fe1809269a1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4228450b2102ca29c20c305d6c98178d" id="r_a4228450b2102ca29c20c305d6c98178d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a4228450b2102ca29c20c305d6c98178d">set_params</a> (void const *params)</td></tr>
-<tr class="separator:a4228450b2102ca29c20c305d6c98178d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e150e9cf66c769524cbefad64fe8b9" id="r_aa5e150e9cf66c769524cbefad64fe8b9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#aa5e150e9cf66c769524cbefad64fe8b9">set_params</a> (const nlohmann::json &amp;params)</td></tr>
+<tr class="separator:aa5e150e9cf66c769524cbefad64fe8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60502e92ed6679684f0627662a690a70" id="r_a60502e92ed6679684f0627662a690a70"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a60502e92ed6679684f0627662a690a70">info</a> ()=0</td></tr>
 <tr class="separator:a60502e92ed6679684f0627662a690a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f5237964d639b9f3c43a4a1d540174d" id="r_a4f5237964d639b9f3c43a4a1d540174d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a4f5237964d639b9f3c43a4a1d540174d">error</a> ()</td></tr>
@@ -106,6 +106,8 @@ Static Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a29bce8d312ef763d7beb39f13851d9d3" id="r_a29bce8d312ef763d7beb39f13851d9d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a29bce8d312ef763d7beb39f13851d9d3">dummy</a> = false</td></tr>
 <tr class="separator:a29bce8d312ef763d7beb39f13851d9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05a06179940b35c63018f027ea8c2581" id="r_a05a06179940b35c63018f027ea8c2581"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a05a06179940b35c63018f027ea8c2581">loop_duration</a></td></tr>
+<tr class="separator:a05a06179940b35c63018f027ea8c2581"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -127,7 +129,7 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Tin = std::vector&lt;double&gt;, typename Tout = std::vector&lt;double&gt;&gt;<br />
 class Filter&lt; Tin, Tout &gt;</div><p>Base class for filters</p>
-<p>This class is the base class for all filters. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter::kind</a>, <a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">Filter::load_data</a> and <a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">Filter::process</a> methods. Optionally, they can implement the <a class="el" href="classFilter.html#a4228450b2102ca29c20c305d6c98178d">Filter::set_params</a> method to receive parameters as a void pointer.</p>
+<p>This class is the base class for all filters. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter::kind</a>, <a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">Filter::load_data</a> and <a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">Filter::process</a> methods. Optionally, they can implement the <a class="el" href="classFilter.html#aa5e150e9cf66c769524cbefad64fe8b9">Filter::set_params</a> method to receive parameters as a void pointer.</p>
 <p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db" title="Call this macro after defining a filter class to install it into the kernel.">INSTALL_FILTER_DRIVER(klass, type_in, type_out)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -346,8 +348,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 
 </div>
 </div>
-<a id="a4228450b2102ca29c20c305d6c98178d" name="a4228450b2102ca29c20c305d6c98178d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4228450b2102ca29c20c305d6c98178d">&#9670;&#160;</a></span>set_params()</h2>
+<a id="aa5e150e9cf66c769524cbefad64fe8b9" name="aa5e150e9cf66c769524cbefad64fe8b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e150e9cf66c769524cbefad64fe8b9">&#9670;&#160;</a></span>set_params()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,7 +362,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
         <tr>
           <td class="memname">virtual void <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::set_params </td>
           <td>(</td>
-          <td class="paramtype">void const *&#160;</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -375,12 +377,10 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 <p>This method sets the parameters for the filter. It receives a void pointer to the parameters. The child class must cast the pointer to the correct type.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">params</td><td>The parameters (typically a pointer to a struct) </td></tr>
+    <tr><td class="paramname">params</td><td>The parameters </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Reimplemented in <a class="el" href="classRunningAverage.html#abb4b495d95200dbe387138f41e27aa53">RunningAverage</a>, <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, and <a class="el" href="classWorkerPlugin.html#a22b69c23b677c6a0852ead5fc829b4e3">WorkerPlugin</a>.</p>
 
 </div>
 </div>
@@ -399,6 +399,23 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
       </table>
 </div><div class="memdoc">
 <p>Set it to true to enable dummy mode </p>
+
+</div>
+</div>
+<a id="a05a06179940b35c63018f027ea8c2581" name="a05a06179940b35c63018f027ea8c2581"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05a06179940b35c63018f027ea8c2581">&#9670;&#160;</a></span>loop_duration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vector&lt;double&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::duration <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::loop_duration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The desired duration of current loop iteration </p>
 
 </div>
 </div>

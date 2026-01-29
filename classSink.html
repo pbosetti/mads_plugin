@@ -88,8 +88,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab890a163c212e897ae04c6ad3d1d72c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d9d0cdd42d94a83baf9bafb885f9903" id="r_a7d9d0cdd42d94a83baf9bafb885f9903"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#a7d9d0cdd42d94a83baf9bafb885f9903">load_data</a> (Tin const &amp;data, std::string topic=&quot;&quot;)=0</td></tr>
 <tr class="separator:a7d9d0cdd42d94a83baf9bafb885f9903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad188b670f9780066b344bd2b3ca00bf9" id="r_ad188b670f9780066b344bd2b3ca00bf9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#ad188b670f9780066b344bd2b3ca00bf9">set_params</a> (void const *params)</td></tr>
-<tr class="separator:ad188b670f9780066b344bd2b3ca00bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df683b6aa4e9df7523b0df6b0cbf299" id="r_a6df683b6aa4e9df7523b0df6b0cbf299"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#a6df683b6aa4e9df7523b0df6b0cbf299">set_params</a> (const nlohmann::json &amp;params)</td></tr>
+<tr class="separator:a6df683b6aa4e9df7523b0df6b0cbf299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a560fafd744e1752dca83d7d0d01ecdad" id="r_a560fafd744e1752dca83d7d0d01ecdad"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#a560fafd744e1752dca83d7d0d01ecdad">info</a> ()=0</td></tr>
 <tr class="separator:a560fafd744e1752dca83d7d0d01ecdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3da423ff6979ec8150a43fadfbd5ab" id="r_a5d3da423ff6979ec8150a43fadfbd5ab"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSink.html#a5d3da423ff6979ec8150a43fadfbd5ab">error</a> ()</td></tr>
@@ -125,7 +125,7 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Tin = std::vector&lt;double&gt;&gt;<br />
 class Sink&lt; Tin &gt;</div><p>Base class for sinks</p>
-<p>This class is the base class for all sinks. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classSink.html#ab890a163c212e897ae04c6ad3d1d72c2">Sink::kind</a>, <a class="el" href="classSink.html#a7d9d0cdd42d94a83baf9bafb885f9903">Sink::load_data</a> and Sink::process methods. Optionally, they can implement the <a class="el" href="classSink.html#ad188b670f9780066b344bd2b3ca00bf9">Sink::set_params</a> method to receive parameters as a void pointer.</p>
+<p>This class is the base class for all sinks. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classSink.html#ab890a163c212e897ae04c6ad3d1d72c2">Sink::kind</a>, <a class="el" href="classSink.html#a7d9d0cdd42d94a83baf9bafb885f9903">Sink::load_data</a> and Sink::process methods. Optionally, they can implement the <a class="el" href="classSink.html#a6df683b6aa4e9df7523b0df6b0cbf299">Sink::set_params</a> method to receive parameters as a void pointer.</p>
 <p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4" title="Call this macro after defining a source class to install it into the kernel.">INSTALL_SINK_DRIVER(klass, type_in, type_out)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -305,8 +305,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
 
 </div>
 </div>
-<a id="ad188b670f9780066b344bd2b3ca00bf9" name="ad188b670f9780066b344bd2b3ca00bf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad188b670f9780066b344bd2b3ca00bf9">&#9670;&#160;</a></span>set_params()</h2>
+<a id="a6df683b6aa4e9df7523b0df6b0cbf299" name="a6df683b6aa4e9df7523b0df6b0cbf299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df683b6aa4e9df7523b0df6b0cbf299">&#9670;&#160;</a></span>set_params()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,7 +319,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classSink.html">Sink</a>&lt; Tin &gt;::set_params </td>
           <td>(</td>
-          <td class="paramtype">void const *&#160;</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -334,12 +334,10 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
 <p>This method sets the parameters for the sink. It receives a void pointer to the parameters. The child class must cast the pointer to the correct type.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">params</td><td>The parameters (typically a pointer to a struct) </td></tr>
+    <tr><td class="paramname">params</td><td>The parameters </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Reimplemented in <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, and <a class="el" href="classToConsole.html#a3a95379b792147044099f41dee806e6e">ToConsole</a>.</p>
 
 </div>
 </div>

@@ -88,8 +88,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afc952efdbef1cbee52db276b276defa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53b4ab2f47b84e811232e0301682bb8" id="r_ae53b4ab2f47b84e811232e0301682bb8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">get_output</a> (Tout &amp;out, std::vector&lt; unsigned char &gt; *blob=nullptr)=0</td></tr>
 <tr class="separator:ae53b4ab2f47b84e811232e0301682bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43b4922fb8d1a363a447ea3b530f3871" id="r_a43b4922fb8d1a363a447ea3b530f3871"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a43b4922fb8d1a363a447ea3b530f3871">set_params</a> (void const *params)</td></tr>
-<tr class="separator:a43b4922fb8d1a363a447ea3b530f3871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67633531d8c0a95b000f50d59de240c9" id="r_a67633531d8c0a95b000f50d59de240c9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a67633531d8c0a95b000f50d59de240c9">set_params</a> (const nlohmann::json &amp;params)</td></tr>
+<tr class="separator:a67633531d8c0a95b000f50d59de240c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecbb75128542b4688864f8da57aa0191" id="r_aecbb75128542b4688864f8da57aa0191"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#aecbb75128542b4688864f8da57aa0191">info</a> ()=0</td></tr>
 <tr class="separator:aecbb75128542b4688864f8da57aa0191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb408a2891887138206fd602bf2357cb" id="r_aeb408a2891887138206fd602bf2357cb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#aeb408a2891887138206fd602bf2357cb">error</a> ()</td></tr>
@@ -106,6 +106,8 @@ Static Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a504d988ace793cf47a4301151ebdf570" id="r_a504d988ace793cf47a4301151ebdf570"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a504d988ace793cf47a4301151ebdf570">dummy</a></td></tr>
 <tr class="separator:a504d988ace793cf47a4301151ebdf570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f" id="r_a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f">loop_duration</a></td></tr>
+<tr class="separator:a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -131,7 +133,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Tout = std::vector&lt;double&gt;&gt;<br />
 class Source&lt; Tout &gt;</div><p>Base class for sources</p>
-<p>This class is the base class for all sources. It defines the interface for providing output of data internally acquired. Child classes must implement the <a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">Source::kind()</a> and <a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">Source::get_output()</a> methods. Optionally, they can implement the <a class="el" href="classSource.html#a43b4922fb8d1a363a447ea3b530f3871">Source::set_params()</a> method to receive parameters as a void pointer.</p>
+<p>This class is the base class for all sources. It defines the interface for providing output of data internally acquired. Child classes must implement the <a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">Source::kind()</a> and <a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">Source::get_output()</a> methods. Optionally, they can implement the <a class="el" href="classSource.html#a67633531d8c0a95b000f50d59de240c9">Source::set_params()</a> method to receive parameters as a void pointer.</p>
 <p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#ab7463bc9c9b40ff018d92b01c237c452" title="Call this macro after defining a source class to install it into the kernel.">INSTALL_SOURCE_DRIVER(klass, type)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -339,8 +341,8 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 
 </div>
 </div>
-<a id="a43b4922fb8d1a363a447ea3b530f3871" name="a43b4922fb8d1a363a447ea3b530f3871"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43b4922fb8d1a363a447ea3b530f3871">&#9670;&#160;</a></span>set_params()</h2>
+<a id="a67633531d8c0a95b000f50d59de240c9" name="a67633531d8c0a95b000f50d59de240c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67633531d8c0a95b000f50d59de240c9">&#9670;&#160;</a></span>set_params()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,7 +355,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::set_params </td>
           <td>(</td>
-          <td class="paramtype">void const *&#160;</td>
+          <td class="paramtype">const nlohmann::json &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
           <td></td>
         </tr>
@@ -369,12 +371,10 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 <p>Derived classes shall call the parent class method to set the <code>_agent_id</code> field in the <code>_params</code> json object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">params</td><td>The parameters (typically a pointer to a struct) </td></tr>
+    <tr><td class="paramname">params</td><td>The parameters </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Reimplemented in <a class="el" href="classMQTTBridge.html#a2e35316b229ad97832684fb84160d224">MQTTBridge</a>, <a class="el" href="classSerialReader.html#a164ef33b1f6b3bde055c8a7838450737">SerialReader</a>, <a class="el" href="classSpawnerPlugin.html#a689de70d3c62e4ba1fbe92c4919964c5">SpawnerPlugin</a>, <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>, and <a class="el" href="classPluginClassName.html#a0493b6a2dcaaae2fac1b6df9e59d532b">PluginClassName</a>.</p>
 
 </div>
 </div>
@@ -393,6 +393,23 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Set it to true to enable dummy mode </p>
+
+</div>
+</div>
+<a id="a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f" name="a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f">&#9670;&#160;</a></span>loop_duration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::duration <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::loop_duration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The desired duration of current loop iteration </p>
 
 </div>
 </div>

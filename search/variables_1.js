@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mfiledesc_0',['mFileDesc',['../classSerialPort.html#a67cd62f1d1bd222989abc83d11d4ac47',1,'SerialPort']]]
+  ['loop_5fduration_0',['loop_duration',['../classFilter.html#a05a06179940b35c63018f027ea8c2581',1,'Filter::loop_duration'],['../classSource.html#a4bbdd5e6bb3bcd1b4a0eb5eab5abab6f',1,'Source::loop_duration']]]
 ];
