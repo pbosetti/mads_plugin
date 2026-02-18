@@ -60,7 +60,10 @@ public:
   }
 
   nlohmann::json & operator[](const std::string &key) {
-    return _data[key];
+    if (_data.contains(key))
+      return _data[key];
+    else
+      return nlohmann::json{};
   }
 
   nlohmann::json & data() {
