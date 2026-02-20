@@ -100,18 +100,21 @@ Collaboration diagram for WorkerPlugin:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5db9a551c66ac33bbbdda6736bbe037a" id="r_a5db9a551c66ac33bbbdda6736bbe037a"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWorkerPlugin.html#a5db9a551c66ac33bbbdda6736bbe037a">kind</a> () override</td></tr>
 <tr class="separator:a5db9a551c66ac33bbbdda6736bbe037a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60a383646223e077b3103506b99d3572" id="r_a60a383646223e077b3103506b99d3572"><td class="memItemLeft" align="right" valign="top"><a id="a60a383646223e077b3103506b99d3572" name="a60a383646223e077b3103506b99d3572"></a>
-<a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>load_data</b> (json const &amp;input, string topic=&quot;&quot;) override</td></tr>
-<tr class="separator:a60a383646223e077b3103506b99d3572"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85525d08dcfa41e857a4d60ae68c0e3f" id="r_a85525d08dcfa41e857a4d60ae68c0e3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWorkerPlugin.html#a85525d08dcfa41e857a4d60ae68c0e3f">process</a> (json &amp;out) override</td></tr>
-<tr class="separator:a85525d08dcfa41e857a4d60ae68c0e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35614bf957bd1c2956c3f7ada829f212" id="r_a35614bf957bd1c2956c3f7ada829f212"><td class="memItemLeft" align="right" valign="top"><a id="a35614bf957bd1c2956c3f7ada829f212" name="a35614bf957bd1c2956c3f7ada829f212"></a>
+<a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>load_data</b> (json const &amp;input, string topic=&quot;&quot;, vector&lt; unsigned char &gt; const *blob=nullptr) override</td></tr>
+<tr class="separator:a35614bf957bd1c2956c3f7ada829f212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ed2f217ae71afa823796c9099d97e7" id="r_aa2ed2f217ae71afa823796c9099d97e7"><td class="memItemLeft" align="right" valign="top"><a id="aa2ed2f217ae71afa823796c9099d97e7" name="aa2ed2f217ae71afa823796c9099d97e7"></a>
+<a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (json &amp;out, vector&lt; unsigned char &gt; *blob=nullptr) override</td></tr>
+<tr class="separator:aa2ed2f217ae71afa823796c9099d97e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a957b8e7631391ea686d2f4f56b464bb3" id="r_a957b8e7631391ea686d2f4f56b464bb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWorkerPlugin.html#a957b8e7631391ea686d2f4f56b464bb3">set_params</a> (const json &amp;params) override</td></tr>
 <tr class="separator:a957b8e7631391ea686d2f4f56b464bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f6f6fd598127fae28277da905382fae" id="r_a5f6f6fd598127fae28277da905382fae"><td class="memItemLeft" align="right" valign="top">map&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWorkerPlugin.html#a5f6f6fd598127fae28277da905382fae">info</a> () override</td></tr>
 <tr class="separator:a5f6f6fd598127fae28277da905382fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classFilter"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classFilter')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classFilter.html">Filter&lt; json, json &gt;</a></td></tr>
-<tr class="memitem:ab8831e2dea1e2c966697cc6599fc01e5 inherit pub_methods_classFilter" id="r_ab8831e2dea1e2c966697cc6599fc01e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">load_data</a> (json const &amp;data, std::string topic=&quot;&quot;)=0</td></tr>
-<tr class="separator:ab8831e2dea1e2c966697cc6599fc01e5 inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c4dfbfb5125a96e6bc04ce09da169aa inherit pub_methods_classFilter" id="r_a7c4dfbfb5125a96e6bc04ce09da169aa"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a7c4dfbfb5125a96e6bc04ce09da169aa">load_data</a> (json const &amp;data, std::string topic=&quot;&quot;, std::vector&lt; unsigned char &gt; const *blob=nullptr)=0</td></tr>
+<tr class="separator:a7c4dfbfb5125a96e6bc04ce09da169aa inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a7f36fe101c5ed82d4965a6a8b375f9 inherit pub_methods_classFilter" id="r_a3a7f36fe101c5ed82d4965a6a8b375f9"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a3a7f36fe101c5ed82d4965a6a8b375f9">process</a> (json &amp;out, std::vector&lt; unsigned char &gt; *blob=nullptr)=0</td></tr>
+<tr class="separator:a3a7f36fe101c5ed82d4965a6a8b375f9 inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f5237964d639b9f3c43a4a1d540174d inherit pub_methods_classFilter" id="r_a4f5237964d639b9f3c43a4a1d540174d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a4f5237964d639b9f3c43a4a1d540174d">error</a> ()</td></tr>
 <tr class="separator:a4f5237964d639b9f3c43a4a1d540174d inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -197,43 +200,6 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 <dl class="section return"><dt>Returns</dt><dd>The kind of filter </dd></dl>
 
 <p>Implements <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter&lt; json, json &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a85525d08dcfa41e857a4d60ae68c0e3f" name="a85525d08dcfa41e857a4d60ae68c0e3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85525d08dcfa41e857a4d60ae68c0e3f">&#9670;&#160;</a></span>process()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> WorkerPlugin::process </td>
-          <td>(</td>
-          <td class="paramtype">json &amp;&#160;</td>
-          <td class="paramname"><em>out</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Processes the input data</p>
-<p>This method processes the input data and returns the result. It returns true if the data was processed successfully, and false otherwise.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">out</td><td>The output data </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the data was processed successfully, and false otherwise </dd></dl>
-
-<p>Implements <a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">Filter&lt; json, json &gt;</a>.</p>
 
 </div>
 </div>

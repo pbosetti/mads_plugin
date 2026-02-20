@@ -86,10 +86,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a91a969919077f3ecade055db183676ea" id="r_a91a969919077f3ecade055db183676ea"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">kind</a> ()=0</td></tr>
 <tr class="separator:a91a969919077f3ecade055db183676ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8831e2dea1e2c966697cc6599fc01e5" id="r_ab8831e2dea1e2c966697cc6599fc01e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">load_data</a> (Tin const &amp;data, std::string topic=&quot;&quot;)=0</td></tr>
-<tr class="separator:ab8831e2dea1e2c966697cc6599fc01e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2579e37b989e96ceab3fe1809269a1ba" id="r_a2579e37b989e96ceab3fe1809269a1ba"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">process</a> (Tout &amp;out)=0</td></tr>
-<tr class="separator:a2579e37b989e96ceab3fe1809269a1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c4dfbfb5125a96e6bc04ce09da169aa" id="r_a7c4dfbfb5125a96e6bc04ce09da169aa"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a7c4dfbfb5125a96e6bc04ce09da169aa">load_data</a> (Tin const &amp;data, std::string topic=&quot;&quot;, std::vector&lt; unsigned char &gt; const *blob=nullptr)=0</td></tr>
+<tr class="separator:a7c4dfbfb5125a96e6bc04ce09da169aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a7f36fe101c5ed82d4965a6a8b375f9" id="r_a3a7f36fe101c5ed82d4965a6a8b375f9"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a3a7f36fe101c5ed82d4965a6a8b375f9">process</a> (Tout &amp;out, std::vector&lt; unsigned char &gt; *blob=nullptr)=0</td></tr>
+<tr class="separator:a3a7f36fe101c5ed82d4965a6a8b375f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5e150e9cf66c769524cbefad64fe8b9" id="r_aa5e150e9cf66c769524cbefad64fe8b9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#aa5e150e9cf66c769524cbefad64fe8b9">set_params</a> (const nlohmann::json &amp;params)</td></tr>
 <tr class="separator:aa5e150e9cf66c769524cbefad64fe8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60502e92ed6679684f0627662a690a70" id="r_a60502e92ed6679684f0627662a690a70"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a60502e92ed6679684f0627662a690a70">info</a> ()=0</td></tr>
@@ -129,7 +129,7 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Tin = std::vector&lt;double&gt;, typename Tout = std::vector&lt;double&gt;&gt;<br />
 class Filter&lt; Tin, Tout &gt;</div><p>Base class for filters</p>
-<p>This class is the base class for all filters. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter::kind</a>, <a class="el" href="classFilter.html#ab8831e2dea1e2c966697cc6599fc01e5">Filter::load_data</a> and <a class="el" href="classFilter.html#a2579e37b989e96ceab3fe1809269a1ba">Filter::process</a> methods. Optionally, they can implement the <a class="el" href="classFilter.html#aa5e150e9cf66c769524cbefad64fe8b9">Filter::set_params</a> method to receive parameters as a void pointer.</p>
+<p>This class is the base class for all filters. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter::kind</a>, <a class="el" href="classFilter.html#a7c4dfbfb5125a96e6bc04ce09da169aa">Filter::load_data</a> and <a class="el" href="classFilter.html#a3a7f36fe101c5ed82d4965a6a8b375f9">Filter::process</a> methods. Optionally, they can implement the <a class="el" href="classFilter.html#aa5e150e9cf66c769524cbefad64fe8b9">Filter::set_params</a> method to receive parameters as a void pointer.</p>
 <p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db" title="Call this macro after defining a filter class to install it into the kernel.">INSTALL_FILTER_DRIVER(klass, type_in, type_out)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -233,8 +233,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 
 </div>
 </div>
-<a id="ab8831e2dea1e2c966697cc6599fc01e5" name="ab8831e2dea1e2c966697cc6599fc01e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8831e2dea1e2c966697cc6599fc01e5">&#9670;&#160;</a></span>load_data()</h2>
+<a id="a7c4dfbfb5125a96e6bc04ce09da169aa" name="a7c4dfbfb5125a96e6bc04ce09da169aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c4dfbfb5125a96e6bc04ce09da169aa">&#9670;&#160;</a></span>load_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -254,7 +254,13 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>topic</em> = <code>&quot;&quot;</code>&#160;</td>
+          <td class="paramname"><em>topic</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; unsigned char &gt; const *&#160;</td>
+          <td class="paramname"><em>blob</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -274,6 +280,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
   <table class="params">
     <tr><td class="paramname">data</td><td>The input data </td></tr>
     <tr><td class="paramname">topic</td><td>The topic of the data </td></tr>
+    <tr><td class="paramname">blob</td><td>Pointer to binary data object (received) </td></tr>
   </table>
   </dd>
 </dl>
@@ -281,8 +288,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 
 </div>
 </div>
-<a id="a2579e37b989e96ceab3fe1809269a1ba" name="a2579e37b989e96ceab3fe1809269a1ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2579e37b989e96ceab3fe1809269a1ba">&#9670;&#160;</a></span>process()</h2>
+<a id="a3a7f36fe101c5ed82d4965a6a8b375f9" name="a3a7f36fe101c5ed82d4965a6a8b375f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a7f36fe101c5ed82d4965a6a8b375f9">&#9670;&#160;</a></span>process()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -296,8 +303,18 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
           <td class="memname">virtual <a class="el" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::process </td>
           <td>(</td>
           <td class="paramtype">Tout &amp;&#160;</td>
-          <td class="paramname"><em>out</em></td><td>)</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::vector&lt; unsigned char &gt; *&#160;</td>
+          <td class="paramname"><em>blob</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -311,12 +328,11 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">out</td><td>The output data </td></tr>
+    <tr><td class="paramname">blob</td><td>Pointer to binary data object (produced) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the data was processed successfully, and false otherwise </dd></dl>
-
-<p>Implemented in <a class="el" href="classRunningAverage.html#a90b927f75b99e017195d0165a8635351">RunningAverage</a>, <a class="el" href="classPluginClassName.html#aad7f395bde575ad2babae1b9560ad767">PluginClassName</a>, and <a class="el" href="classWorkerPlugin.html#a85525d08dcfa41e857a4d60ae68c0e3f">WorkerPlugin</a>.</p>
 
 </div>
 </div>

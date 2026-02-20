@@ -5,5 +5,5 @@ var searchData=
   ['pluginclassname_2',['PluginClassName',['../classPluginClassName.html',1,'']]],
   ['plugins_3',['plugins',['../index.html',1,'Availabe plugins'],['../index.html#autotoc_md2',1,'Example plugins'],['..//home/runner/work/mads_plugin/mads_plugin/README.md#autotoc_md16',1,'Implement new plugins']]],
   ['plugins_20of_20actual_20use_4',['Plugins of actual use',['../index.html#autotoc_md3',1,'']]],
-  ['process_5',['process',['../classFilter.html#a2579e37b989e96ceab3fe1809269a1ba',1,'Filter::process()'],['../classRunningAverage.html#a90b927f75b99e017195d0165a8635351',1,'RunningAverage::process()'],['../classPluginClassName.html#aad7f395bde575ad2babae1b9560ad767',1,'PluginClassName::process()'],['../classWorkerPlugin.html#a85525d08dcfa41e857a4d60ae68c0e3f',1,'WorkerPlugin::process()']]]
+  ['process_5',['process',['../classFilter.html#a3a7f36fe101c5ed82d4965a6a8b375f9',1,'Filter']]]
 ];
