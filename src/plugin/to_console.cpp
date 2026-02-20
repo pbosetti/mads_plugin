@@ -25,7 +25,7 @@ using json = nlohmann::json;
 class ToConsole : public Sink<json> {
 public:
   string kind() override { return PLUGIN_NAME; }
-  return_type load_data(json const &d, string topic = "") override {
+  return_type load_data(json const &d, string topic = "", vector<unsigned char> const *blob = nullptr) override {
     _data = d;
     cout << "[" << topic << "] Data: " << _data << endl;
     return return_type::success;

@@ -25,11 +25,11 @@ using json = nlohmann::json;
 class Echo : public Filter<json, json> {
 public:
   string kind() override { return PLUGIN_NAME; }
-  return_type load_data(json const &d, string topic = "") override {
+  return_type load_data(json const &d, string topic = "", vector<unsigned char> const *blob = nullptr) override {
     _data = d;
     return return_type::success;
   }
-  return_type process(json &out) override {
+  return_type process(json &out, vector<unsigned char> *blob = nullptr) override {
     out.clear();
     out["data"] = _data;
     out["params"] = _params;

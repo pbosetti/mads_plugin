@@ -64,9 +64,10 @@ public:
    *
    * @param data The input data
    * @param topic The topic of the data
+   * @param blob Pointer to binary data object (received)
    * @return True if the data was loaded successfully, and false otherwise
    */
-  virtual return_type load_data(Tin const &data, std::string topic = "") = 0;
+  virtual return_type load_data(Tin const &data, std::string topic = "", std::vector<unsigned char> const *blob = nullptr) = 0;
 
   /*!
    * Sets the parameters

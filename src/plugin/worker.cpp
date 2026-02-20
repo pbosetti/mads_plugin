@@ -33,7 +33,7 @@ public:
 
   string kind() override { return PLUGIN_NAME; }
 
-  return_type load_data(json const &input, string topic = "") override {
+  return_type load_data(json const &input, string topic = "", vector<unsigned char> const *blob = nullptr) override {
     if (!input.contains("data")) {
       _error = "No data field in input";
       return return_type::error;
@@ -43,7 +43,7 @@ public:
     return return_type::success;
   }
 
-  return_type process(json &out) override {
+  return_type process(json &out, vector<unsigned char> *blob = nullptr) override {
     out.clear();
     if (_sleep_request.count() < 0) {
       _error = "Invalid sleep period";

@@ -29,7 +29,7 @@ public:
   // We expect to have a dictionary of values in the input, and we feed them
   // into a map of double-ended queues (deques) to keep track of the last N
   // values for each key.
-  return_type load_data(json const &input, string topic = "") override {
+  return_type load_data(json const &input, string topic = "", vector<unsigned char> const *blob = nullptr) override {
     if (input[_params["field"]].is_object() == false) {
       return return_type::error;
     }
@@ -44,7 +44,7 @@ public:
 
   // We calculate the average of the last N values for each key and store it
   // into the output json object
-  return_type process(json &out) override {
+  return_type process(json &out, vector<unsigned char> *blob = nullptr) override {
     out.clear();
     for (auto &[key, queue] : _queues) {
       double sum = 0;

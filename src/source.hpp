@@ -63,6 +63,7 @@ public:
    * true if the data was fetched successfully, and false otherwise.
    *
    * @param out The output data
+   * @param blob Pointer to binary data object (produced)
    * @return True if the data was processed successfully, and false otherwise
    */
   virtual return_type get_output(Tout &out, std::vector<unsigned char> *blob = nullptr) = 0;
