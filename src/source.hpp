@@ -43,7 +43,7 @@ Base class for source plugins
 template <typename Tout = std::vector<double>>
 class Source {
 public:
-  Source() : _error("No error") , _blob_format("none"), _agent_id("") {}
+  Source() : _blob_format("none"), _error("No error"), _agent_id("") {}
   virtual ~Source() {}
 
   /*!

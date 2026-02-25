@@ -43,7 +43,7 @@ Base class for sink plugins
 template <typename Tin = std::vector<double>>
 class Sink {
 public:
-  Sink() : _error("No error"), dummy(false) {}
+  Sink() : dummy(false), _error("No error") {}
   virtual ~Sink() {}
 
   /*!
