@@ -45,7 +45,7 @@ template <typename Tin = std::vector<double>,
           typename Tout = std::vector<double>>
 class Filter {
 public:
-  Filter() : _error("No error"), dummy(false) {}
+  Filter() : dummy(false), _error("No error")  {}
   virtual ~Filter() {}
 
   /*!
