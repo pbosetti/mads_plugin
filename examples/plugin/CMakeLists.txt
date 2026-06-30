@@ -22,7 +22,7 @@ add_plugin(to_console)
 add_plugin(running_avg)
 add_plugin(worker)
 if(UNIX AND NOT APPLE)
-  add_plugin(spawner LIBS uuid)
+  add_plugin(spawner LIBS ${PLUGIN_UUID_LIB})
 elseif(APPLE)
   add_plugin(spawner)
 endif()
@@ -33,7 +33,12 @@ endif()
 if(NOT MADS_NO_DEPS_ONLY)
   if(NOT WIN32)
     # Serial port plugin is not supported on Windows
-    add_plugin(serial_reader SRCS ${SRC_DIR}/serialport.cpp)
+    add_plugin(serial_reader SRCS ${PLUGIN_EXAMPLES_DIR}/serialport.cpp)
   endif()
-  add_plugin(mqtt LIBS mosquittopp)
+  if(PLUGIN_HAS_MOSQUITTOPP)
+    add_plugin(mqtt
+      INCLUDES ${PLUGIN_MOSQUITTOPP_INCLUDE_DIR}
+      LIBS ${PLUGIN_MOSQUITTOPP_LIBRARY}
+    )
+  endif()
 endif()

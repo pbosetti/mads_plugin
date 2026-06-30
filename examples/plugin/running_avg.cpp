@@ -6,7 +6,7 @@
  |_| \_\\__,_|_| |_|_| |_|_|_| |_|\__, | /_/   \_\_/ \__, |       
                                   |___/              |___/        
 */
-#include "../filter.hpp"
+#include "filter.hpp"
 #include <pugg/Kernel.h>
 #include <nlohmann/json.hpp>
 #include <deque>

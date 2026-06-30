@@ -8,7 +8,7 @@
 A Template for a Filter Plugin
 */
 // Mandatory included headers
-#include "../filter.hpp"
+#include "filter.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
 // other includes as needed here

@@ -9,8 +9,8 @@ Serial reader plugin, reads data from a serial port and outputs it
 as a JSON object
 */
 
-#include "../source.hpp"
-#include "../serialport.hpp"
+#include "source.hpp"
+#include "serialport.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
 #include <sstream>

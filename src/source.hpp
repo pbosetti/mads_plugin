@@ -7,8 +7,8 @@
                                  
 Base class for source plugins
 */
-#ifndef FILTER_HPP
-#define FILTER_HPP
+#ifndef SOURCE_HPP
+#define SOURCE_HPP
 
 #include <iostream>
 #include <string>
@@ -149,4 +149,4 @@ public:
 
 #endif
 
-#endif // FILTER_HPP
+#endif // SOURCE_HPP

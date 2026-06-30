@@ -8,7 +8,7 @@
 Acts as a bridge with a MQTT network
 */
 
-#include "../source.hpp"
+#include "source.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
 #include <mosquittopp.h>

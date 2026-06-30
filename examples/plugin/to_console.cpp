@@ -8,7 +8,7 @@
 It takes a JSON input and returns it as output, enriched with the parameters
 */
 
-#include "../sink.hpp"
+#include "sink.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
 

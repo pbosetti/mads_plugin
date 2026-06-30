@@ -8,7 +8,7 @@
 A Template for a Source Plugin
 */
 // Mandatory included headers
-#include "../source.hpp"
+#include "source.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
 #include <queue>

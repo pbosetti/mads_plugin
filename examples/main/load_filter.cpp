@@ -1,4 +1,4 @@
-#include "../sink.hpp"
+#include "filter.hpp"
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
@@ -9,16 +9,16 @@
 using namespace std;
 
 using json = nlohmann::json;
-using SinkJ = Sink<json>;
-using SinkDriverJ = SinkDriver<json>;
+using FilterJ = Filter<json, json>;
+using FilterDriverJ = FilterDriver<json, json>;
 
 int main(int argc, char *argv[]) {
   pugg::Kernel kernel;
   string json_file = "";
   // add a generic server to the kernel to initilize it
-  // kernel.add_server(Sink<>::sink_name(),
-  //                   Sink<>::version);
-  kernel.add_server<Sink<>>();
+  // kernel.add_server(Filter<>::filter_name(),
+  //                   Filter<>::version);
+  kernel.add_server<Filter<>>();
 
   // CLI needs unoe or two plugin paths
   // the first on must have doubles as input and output
@@ -30,13 +30,16 @@ int main(int argc, char *argv[]) {
   cout << "Loading plugin... ";
   cout.flush();
   // load the plugin
-  kernel.load_plugin(argv[1]);
+  if (!kernel.load_plugin(argv[1])) {
+    cerr << "Failed to load plugin" << endl;
+    return 1;
+  }
 
   // find the proper driver in the plugin
   // - if there's only one, load it
   // - if there are more, list them and select the one passed on the CLI
-  auto drivers = kernel.get_all_drivers<SinkDriverJ>(SinkJ::server_name());
-  SinkDriverJ *driver = nullptr;
+  auto drivers = kernel.get_all_drivers<FilterDriverJ>(FilterJ::server_name());
+  FilterDriverJ *driver = nullptr;
   if (drivers.size() == 1) {
     driver = drivers[0];
     cout << "loaded default driver " << driver->name();
@@ -61,25 +64,27 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  SinkJ *sink = driver->create();
-  // Now we can create an instance of class SinkJ from the driver
-  cout << "\nLoaded plugin: " << sink->kind() << endl;
+  FilterJ *filter = driver->create();
+  // Now we can create an instance of class FilterJ from the driver
+  cout << "\nLoaded plugin: " << filter->kind() << endl;
 
   json in = {{"array", {1, 2, 3, 4}}};
-  json params;
+  json params, out;
   if (argc == 3) {
     ifstream file(argv[2]);
     params = json::parse(file);
   } else {
     params["name"] = "echo test";
   }
-  sink->set_params(params);
-  for (auto &[k, v]: sink->info()) {
+  filter->set_params(params);
+  for (auto &[k, v]: filter->info()) {
     cout << k << ": " << v << endl;
   }
-  sink->load_data(in);
+  filter->load_data(in);
+  filter->process(out);
   cout << "Input: " << in << endl;
-  delete sink;
+  cout << "Output: " << out << endl;
+  delete filter;
 
   kernel.clear_drivers();
 }

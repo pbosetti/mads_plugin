@@ -5,7 +5,36 @@ This example project explores how to develop a plugin system for a C++ applicati
 
 ## Building
 
-To build the project, you need to have CMake installed. Then, you can run the following commands:
+The project is primarily consumed with `FetchContent` as a header-only interface
+target, `MADS::Plugin`, which exposes the public headers in `src/`:
+
+* `common.hpp`
+* `datastore.hpp`
+* `source.hpp`
+* `filter.hpp`
+* `sink.hpp`
+
+In a consuming CMake project:
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(mads_plugin
+  GIT_REPOSITORY https://github.com/pbosetti/mads_plugin.git
+  GIT_TAG        main
+)
+FetchContent_MakeAvailable(mads_plugin)
+
+target_link_libraries(your_target PRIVATE MADS::Plugin)
+```
+
+The equivalent `mads_plugin::mads_plugin` target alias is also available.
+
+Example targets are disabled by default for FetchContent users. To build them,
+set `PLUGIN_ENABLE_EXAMPLES=ON` before `FetchContent_MakeAvailable()`.
+
+To build the package without examples, you need to have CMake installed. Then,
+you can run the following commands:
 
 ```bash
 mkdir build
@@ -14,11 +43,18 @@ cmake --build build -j 8
 sudo cmake --build build -t install
 ```
 
+To build the example loaders and plugins, enable `PLUGIN_ENABLE_EXAMPLES`:
+
+```bash
+cmake -Bbuild -DPLUGIN_ENABLE_EXAMPLES=ON
+cmake --build build -j 8
+```
+
 Plugins can be runtime loaded by MADS agents as `mads-source`, `mads-filter`, and `mads-sink` executables. The plugins are compiled as shared libraries, and they are installed in the `<install prefix>/lib` directory.
 
 There can be three types of plugins: **sources**, **filters**, and **sinks**, suitable to be loaded by the corresponding MADS agents.
 
-In the `src/plugins` directory there are three templates for the three types of plugins, plus some example plugins, such as `echo`, `twice`, and `echoj`.
+In the `examples/plugin` directory there are three templates for the three types of plugins, plus some example plugins, such as `echoj`, `clock`, and `running_avg`.
 
 Typically, each plugin code can contain a conditionally available `main()` function that can be used to test the plugin as a standalone executable. This is useful for debugging and testing the plugin before integrating it into the MADS framework. On MacOS, the plugin can be executed as a standalone executable, while on Linux and Windows, it can only be loaded by the corresponding agent executable. On the latter platforms, the plugin is also compiled as an executable that can be run directly. For example, the `clock.cpp` source is compiled on Linux and Windows as the library `clock.plugin` and the executable `clock`.
 
@@ -37,7 +73,7 @@ When this happens, you have to:
 
 To create a new plugin, implement a derived class of `Filter`, `Source` or `Sink` by copying one of the templates. 
 
-Finally, create a new target in the `src/plugin/CMakeLists.txt` file that compiles the new plugin. Something like:
+Finally, create a new target in the `examples/plugin/CMakeLists.txt` file that compiles the new plugin. Something like:
 
 ```cmake
 add_plugin(webcam SRCS other/possibly/needed/source.cpp LIBS LibsNeeded)

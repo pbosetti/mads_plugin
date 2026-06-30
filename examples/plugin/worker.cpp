@@ -8,7 +8,7 @@
 This is a worker plugin to show how to use the dealer/worker pattern
 */
 // Mandatory included headers
-#include "../filter.hpp"
+#include "filter.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
 #include <chrono>

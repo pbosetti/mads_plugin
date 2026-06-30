@@ -8,7 +8,7 @@
 It takes a JSON input and returns it as output, enriched with the parameters
 */
 
-#include "../filter.hpp"
+#include "filter.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
 
