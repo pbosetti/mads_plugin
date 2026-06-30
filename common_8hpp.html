@@ -168,7 +168,9 @@ Enumerations</h2></td></tr>
 <div class="line">    <a class="code hl_class" href="classFilter.html">Filter&lt;type_in, type_out&gt;</a> *create() { <span class="keywordflow">return</span> <span class="keyword">new</span> klass(); }                \</div>
 <div class="line">  };                                                                           \</div>
 <div class="line">  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> EXPORTIT <span class="keywordtype">void</span> register_pugg_plugin(pugg::Kernel *kernel) {        \</div>
-<div class="line">    kernel-&gt;add_driver(<span class="keyword">new</span> klass##Driver());                                   \</div>
+<div class="line">    if (!kernel-&gt;add_driver(<span class="keyword">new</span> klass##Driver())) {                            \</div>
+<div class="line">      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to add filter driver&quot;</span>);                 \</div>
+<div class="line">    }                                                                          \</div>
 <div class="line">  }</div>
 <div class="ttc" id="aclassFilter_html"><div class="ttname"><a href="classFilter.html">Filter</a></div><div class="ttdef"><b>Definition</b> filter.hpp:46</div></div>
 </div><!-- fragment -->
@@ -209,13 +211,15 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keyword">class </span>klass##Driver : <span class="keyword">public</span> SinkDriver&lt;type&gt; {                            \</div>
+<b>Value:</b><div class="fragment"><div class="line">  <span class="keyword">class </span>klass##Driver : <span class="keyword">public</span> SinkDriver&lt;type&gt; {                              \</div>
 <div class="line">  <span class="keyword">public</span>:                                                                      \</div>
-<div class="line">    klass##Driver() : SinkDriver(PLUGIN_NAME, klass::version) {}             \</div>
-<div class="line">    <a class="code hl_class" href="classSink.html">Sink&lt;type&gt;</a> *create() { <span class="keywordflow">return</span> <span class="keyword">new</span> klass(); }                             \</div>
+<div class="line">    klass##Driver() : SinkDriver(PLUGIN_NAME, klass::version) {}               \</div>
+<div class="line">    <a class="code hl_class" href="classSink.html">Sink&lt;type&gt;</a> *create() { <span class="keywordflow">return</span> <span class="keyword">new</span> klass(); }                               \</div>
 <div class="line">  };                                                                           \</div>
 <div class="line">  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> EXPORTIT <span class="keywordtype">void</span> register_pugg_plugin(pugg::Kernel *kernel) {        \</div>
-<div class="line">    kernel-&gt;add_driver(<span class="keyword">new</span> klass##Driver());                                   \</div>
+<div class="line">    if (!kernel-&gt;add_driver(<span class="keyword">new</span> klass##Driver())) {                            \</div>
+<div class="line">      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to add sink driver&quot;</span>);                   \</div>
+<div class="line">    }                                                                          \</div>
 <div class="line">  }</div>
 <div class="ttc" id="aclassSink_html"><div class="ttname"><a href="classSink.html">Sink</a></div><div class="ttdef"><b>Definition</b> sink.hpp:44</div></div>
 </div><!-- fragment -->
@@ -262,7 +266,9 @@ Enumerations</h2></td></tr>
 <div class="line">    <a class="code hl_class" href="classSource.html">Source&lt;type&gt;</a> *create() { <span class="keywordflow">return</span> <span class="keyword">new</span> klass(); }                             \</div>
 <div class="line">  };                                                                           \</div>
 <div class="line">  <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> EXPORTIT <span class="keywordtype">void</span> register_pugg_plugin(pugg::Kernel *kernel) {        \</div>
-<div class="line">    kernel-&gt;add_driver(<span class="keyword">new</span> klass##Driver());                                   \</div>
+<div class="line">    if (!kernel-&gt;add_driver(<span class="keyword">new</span> klass##Driver())) {                            \</div>
+<div class="line">      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to add source driver&quot;</span>);                 \</div>
+<div class="line">    }                                                                          \</div>
 <div class="line">  }</div>
 <div class="ttc" id="aclassSource_html"><div class="ttname"><a href="classSource.html">Source</a></div><div class="ttdef"><b>Definition</b> source.hpp:44</div></div>
 </div><!-- fragment -->
