@@ -137,7 +137,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classFilter.html#aa1b65e7624a0cb08746857acd04fb953">  131</a></span>  <span class="keyword">static</span> <span class="keyword">const</span> std::string <a class="code hl_function" href="classFilter.html#aa1b65e7624a0cb08746857acd04fb953">server_name</a>() { <span class="keywordflow">return</span> <span class="stringliteral">&quot;FilterServer&quot;</span>; }</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classFilter.html#a8ed4a91a9c95290194705f3a1700e96d">  136</a></span>  std::chrono::duration&lt;long long, std::milli&gt; <a class="code hl_variable" href="classFilter.html#a8ed4a91a9c95290194705f3a1700e96d">next_loop_duration</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classFilter.html#a8ed4a91a9c95290194705f3a1700e96d">  136</a></span>  std::chrono::duration&lt;long long, std::milli&gt; <a class="code hl_variable" href="classFilter.html#a8ed4a91a9c95290194705f3a1700e96d">next_loop_duration</a>{0};</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  std::string _error;</div>
@@ -154,7 +154,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="keyword">class </span>FilterDriver : <span class="keyword">public</span> pugg::Driver {</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  FilterDriver(std::string name, <span class="keywordtype">int</span> version)</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      : pugg::Driver(<a class="code hl_class" href="classFilter.html">Filter&lt;Tin, Tout&gt;::server_name</a>(), name, version) {}</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      : pugg::Driver(<a class="code hl_class" href="classFilter.html">Filter</a>&lt;Tin, Tout&gt;::server_name(), name, version) {}</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  <span class="keyword">virtual</span> <a class="code hl_class" href="classFilter.html">Filter&lt;Tin, Tout&gt;</a> *create() = 0;</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>};</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">// @endcond</span></div>

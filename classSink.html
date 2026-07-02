@@ -126,11 +126,10 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Tin = std::vector&lt;double&gt;&gt;<br />
 class Sink&lt; Tin &gt;</div><p>Base class for sinks</p>
 <p>This class is the base class for all sinks. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classSink.html#ab890a163c212e897ae04c6ad3d1d72c2">Sink::kind</a>, <a class="el" href="classSink.html#af0b33c220b3812385402e1fadb3ea9c2">Sink::load_data</a> and Sink::process methods. Optionally, they can implement the <a class="el" href="classSink.html#a6df683b6aa4e9df7523b0df6b0cbf299">Sink::set_params</a> method to receive parameters as a void pointer.</p>
-<p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4" title="Call this macro after defining a source class to install it into the kernel.">INSTALL_SINK_DRIVER(klass, type_in, type_out)</a> macro to enable the plugin to be loaded by the kernel.</p>
+<p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4" title="Call this macro after defining a source class to install it into the kernel.">INSTALL_SINK_DRIVER(klass, type)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Tin</td><td>Input data type </td></tr>
-    <tr><td class="paramname">Tout</td><td>Output data type </td></tr>
   </table>
   </dd>
 </dl>
@@ -346,7 +345,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;&gt; </div>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classToConsole.html#a5f7cd8773bd3fa8b0e62b0cf28f562cd">ToConsole</a>.</p>
+<p>Reimplemented in <a class="el" href="classToConsole.html#a5f7cd8773bd3fa8b0e62b0cf28f562cd">ToConsole</a>, <a class="el" href="classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7">PluginClassName</a>, <a class="el" href="classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7">PluginClassName</a>, and <a class="el" href="classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7">PluginClassName</a>.</p>
 
 </div>
 </div>

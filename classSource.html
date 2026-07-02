@@ -104,9 +104,9 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a504d988ace793cf47a4301151ebdf570" id="r_a504d988ace793cf47a4301151ebdf570"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a504d988ace793cf47a4301151ebdf570">dummy</a></td></tr>
+<tr class="memitem:a504d988ace793cf47a4301151ebdf570" id="r_a504d988ace793cf47a4301151ebdf570"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a504d988ace793cf47a4301151ebdf570">dummy</a> = false</td></tr>
 <tr class="separator:a504d988ace793cf47a4301151ebdf570"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a223bfb69b07fbcab739921e978fab67f" id="r_a223bfb69b07fbcab739921e978fab67f"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&lt; long long, std::milli &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a223bfb69b07fbcab739921e978fab67f">next_loop_duration</a></td></tr>
+<tr class="memitem:a223bfb69b07fbcab739921e978fab67f" id="r_a223bfb69b07fbcab739921e978fab67f"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&lt; long long, std::milli &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a223bfb69b07fbcab739921e978fab67f">next_loop_duration</a> {0}</td></tr>
 <tr class="separator:a223bfb69b07fbcab739921e978fab67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
@@ -274,9 +274,9 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the filter information</p>
-<p>This method returns the filter information. It returns a map with keys and values describing the filter.</p>
-<dl class="section return"><dt>Returns</dt><dd>The filter information </dd></dl>
+<p>Returns the source information</p>
+<p>This method returns the source information. It returns a map with keys and values describing the source.</p>
+<dl class="section return"><dt>Returns</dt><dd>The source information </dd></dl>
 
 <p>Implemented in <a class="el" href="classMQTTBridge.html#aecef812791ef86ab3b6280f11b69c049">MQTTBridge</a>, <a class="el" href="classSerialReader.html#a8ea69d8443442e00d88d1e6ab21eb59c">SerialReader</a>, <a class="el" href="classSpawnerPlugin.html#afa2af1206dfe04884fb93f7174a48f91">SpawnerPlugin</a>, <a class="el" href="classPluginClassName.html#a165609d888abe4f609a0fed1f76f9f59">PluginClassName</a>, <a class="el" href="classPluginClassName.html#a165609d888abe4f609a0fed1f76f9f59">PluginClassName</a>, and <a class="el" href="classPluginClassName.html#a165609d888abe4f609a0fed1f76f9f59">PluginClassName</a>.</p>
 
@@ -377,7 +377,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classMQTTBridge.html#affffc1ec622ede507088b8e6d784d090">MQTTBridge</a>, <a class="el" href="classSerialReader.html#a2316a03ebb088c52f19b5f26df9f35c0">SerialReader</a>, and <a class="el" href="classSpawnerPlugin.html#a046ab4c9134fa5cb87cc51b1bc59720f">SpawnerPlugin</a>.</p>
+<p>Reimplemented in <a class="el" href="classMQTTBridge.html#affffc1ec622ede507088b8e6d784d090">MQTTBridge</a>, <a class="el" href="classSerialReader.html#a2316a03ebb088c52f19b5f26df9f35c0">SerialReader</a>, <a class="el" href="classSpawnerPlugin.html#a046ab4c9134fa5cb87cc51b1bc59720f">SpawnerPlugin</a>, <a class="el" href="classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7">PluginClassName</a>, <a class="el" href="classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7">PluginClassName</a>, and <a class="el" href="classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7">PluginClassName</a>.</p>
 
 </div>
 </div>
@@ -391,7 +391,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::dummy</td>
+          <td class="memname">bool <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::dummy = false</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -408,7 +408,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::chrono::duration&lt;long long, std::milli&gt; <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::next_loop_duration</td>
+          <td class="memname">std::chrono::duration&lt;long long, std::milli&gt; <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::next_loop_duration {0}</td>
         </tr>
       </table>
 </div><div class="memdoc">
