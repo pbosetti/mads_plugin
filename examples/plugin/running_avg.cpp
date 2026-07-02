@@ -84,7 +84,7 @@ private:
 
 
 // Enable the class as plugin
-INSTALL_FILTER_DRIVER(RunningAverage, json, json);
+MADS_REGISTER_PLUGINS(RunningAverage)
 
 
 /*

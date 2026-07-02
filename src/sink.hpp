@@ -11,30 +11,27 @@ Base class for sink plugins
 #define SINK_HPP
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 #include <map>
 #include <nlohmann/json.hpp>
 #include "common.hpp"
 
-#ifdef _WIN32
-#define EXPORTIT __declspec(dllexport)
-#else
-#define EXPORTIT
-#endif
+template <typename Tin = std::vector<double>> class SinkDriver;
 
 /*!
  * Base class for sinks
  *
  * This class is the base class for all sinks. It defines the interface for
  * loading data and processing it.
- * Derived classes must implement Sink::kind, Sink::load_data and 
+ * Derived classes must implement Sink::kind, Sink::load_data and
  * Sink::process methods.
- * Optionally, they can implement the Sink::set_params method to receive 
+ * Optionally, they can implement the Sink::set_params method to receive
  * parameters as a void pointer.
- * 
+ *
  * After deriving the class, remember to call the
- * #INSTALL_SINK_DRIVER(klass, type) macro
+ * #MADS_REGISTER_PLUGINS(...) macro
  * to enable the plugin to be loaded by the kernel.
  *
  * @tparam Tin Input data type
@@ -42,6 +39,16 @@ Base class for sink plugins
 template <typename Tin = std::vector<double>>
 class Sink {
 public:
+  /*!
+   * The base type of this plugin class, used by mads::PluginDriver.
+   */
+  using plugin_base = Sink;
+
+  /*!
+   * The driver type matching this plugin class, used by mads::PluginDriver.
+   */
+  using driver_type = SinkDriver<Tin>;
+
   Sink() : dummy(false), _error("No error") {}
   virtual ~Sink() {}
 
@@ -113,7 +120,7 @@ public:
   /*!
    * Returns the plugin server name.
    */
-  static const std::string server_name() { return "SinkServer"; }
+  static std::string server_name() { return "SinkServer"; }
 
 protected:
   std::string _error;
@@ -125,12 +132,12 @@ protected:
 #include <pugg/Driver.h>
 
 /// @cond SKIP
-template <typename Tin = std::vector<double>>
+template <typename Tin>
 class SinkDriver : public pugg::Driver {
 public:
   SinkDriver(std::string name, int version)
-      : pugg::Driver(Sink<Tin>::server_name(), name, version) {}
-  virtual Sink<Tin> *create() = 0;
+      : pugg::Driver(Sink<Tin>::server_name(), std::move(name), version) {}
+  virtual std::unique_ptr<Sink<Tin>> create() = 0;
 };
 // @endcond
 

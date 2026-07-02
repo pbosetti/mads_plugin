@@ -155,7 +155,7 @@ private:
                 |___/
 Enable the class as plugin
 */
-INSTALL_SOURCE_DRIVER(MQTTBridge, json)
+MADS_REGISTER_PLUGINS(MQTTBridge)
 
 /*
                   _

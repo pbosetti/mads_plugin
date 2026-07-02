@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
   cout.flush();
   // load the plugin
   if (!kernel.load_plugin(argv[1])) {
-    cerr << "Failed to load plugin" << endl;
+    cerr << "Failed to load plugin: " << kernel.last_error() << endl;
     return 1;
   }
 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  SinkJ *sink = driver->create();
+  auto sink = driver->create();
   // Now we can create an instance of class SinkJ from the driver
   cout << "\nLoaded plugin: " << sink->kind() << endl;
 
@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
   }
   sink->load_data(in);
   cout << "Input: " << in << endl;
-  delete sink;
+  sink.reset();
 
   kernel.clear_drivers();
 }

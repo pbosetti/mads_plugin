@@ -81,7 +81,7 @@ private:
                 |___/
 Enable the class as plugin
 */
-INSTALL_SOURCE_DRIVER(PluginClassName, json)
+MADS_REGISTER_PLUGINS(PluginClassName)
 
 
 /*

@@ -11,6 +11,7 @@ Base class for filter plugins
 #define FILTER_HPP
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 #include <map>
@@ -18,24 +19,22 @@ Base class for filter plugins
 #include <chrono>
 #include "common.hpp"
 
-#ifdef _WIN32
-#define EXPORTIT __declspec(dllexport)
-#else
-#define EXPORTIT
-#endif
+template <typename Tin = std::vector<double>,
+          typename Tout = std::vector<double>>
+class FilterDriver;
 
 /*!
  * Base class for filters
  *
  * This class is the base class for all filters. It defines the interface for
  * loading data and processing it.
- * Derived classes must implement Filter::kind, Filter::load_data and 
+ * Derived classes must implement Filter::kind, Filter::load_data and
  * Filter::process methods.
- * Optionally, they can implement the Filter::set_params method to receive 
+ * Optionally, they can implement the Filter::set_params method to receive
  * parameters as a void pointer.
- * 
+ *
  * After deriving the class, remember to call the
- * #INSTALL_FILTER_DRIVER(klass, type_in, type_out) macro
+ * #MADS_REGISTER_PLUGINS(...) macro
  * to enable the plugin to be loaded by the kernel.
  *
  * @tparam Tin Input data type
@@ -45,6 +44,16 @@ template <typename Tin = std::vector<double>,
           typename Tout = std::vector<double>>
 class Filter {
 public:
+  /*!
+   * The base type of this plugin class, used by mads::PluginDriver.
+   */
+  using plugin_base = Filter;
+
+  /*!
+   * The driver type matching this plugin class, used by mads::PluginDriver.
+   */
+  using driver_type = FilterDriver<Tin, Tout>;
+
   Filter() : dummy(false), _error("No error")  {}
   virtual ~Filter() {}
 
@@ -128,7 +137,7 @@ public:
   /*!
    * Returns the plugin server name.
    */
-  static const std::string server_name() { return "FilterServer"; }
+  static std::string server_name() { return "FilterServer"; }
 
   /*!
    * The desired duration of current loop iteration
@@ -145,13 +154,12 @@ protected:
 #include <pugg/Driver.h>
 
 /// @cond SKIP
-template <typename Tin = std::vector<double>,
-          typename Tout = std::vector<double>>
+template <typename Tin, typename Tout>
 class FilterDriver : public pugg::Driver {
 public:
   FilterDriver(std::string name, int version)
-      : pugg::Driver(Filter<Tin, Tout>::server_name(), name, version) {}
-  virtual Filter<Tin, Tout> *create() = 0;
+      : pugg::Driver(Filter<Tin, Tout>::server_name(), std::move(name), version) {}
+  virtual std::unique_ptr<Filter<Tin, Tout>> create() = 0;
 };
 // @endcond
 

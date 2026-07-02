@@ -11,6 +11,7 @@ Base class for source plugins
 #define SOURCE_HPP
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 #include <map>
@@ -18,24 +19,20 @@ Base class for source plugins
 #include <nlohmann/json.hpp>
 #include "common.hpp"
 
-#ifdef _WIN32
-#define EXPORTIT __declspec(dllexport)
-#else
-#define EXPORTIT
-#endif
+template <typename Tout = std::vector<double>> class SourceDriver;
 
 /*!
  * Base class for sources
  *
  * This class is the base class for all sources. It defines the interface for
  * providing output of data internally acquired.
- * Child classes must implement the Source::kind() and Source::get_output() 
+ * Child classes must implement the Source::kind() and Source::get_output()
  * methods.
- * Optionally, they can implement the Source::set_params() method to receive 
+ * Optionally, they can implement the Source::set_params() method to receive
  * parameters as a void pointer.
- * 
+ *
  * After deriving the class, remember to call the
- * #INSTALL_SOURCE_DRIVER(klass, type) macro to enable the plugin to be loaded 
+ * #MADS_REGISTER_PLUGINS(...) macro to enable the plugin to be loaded
  * by the kernel.
  *
  * @tparam Tout Output data type
@@ -43,6 +40,16 @@ Base class for source plugins
 template <typename Tout = std::vector<double>>
 class Source {
 public:
+  /*!
+   * The base type of this plugin class, used by mads::PluginDriver.
+   */
+  using plugin_base = Source;
+
+  /*!
+   * The driver type matching this plugin class, used by mads::PluginDriver.
+   */
+  using driver_type = SourceDriver<Tout>;
+
   Source() : _blob_format("none"), _error("No error"), _agent_id("") {}
   virtual ~Source() {}
 
@@ -120,7 +127,7 @@ public:
   /*!
    * Returns the plugin server name.
    */
-  static const std::string server_name() { return "SourceServer"; }
+  static std::string server_name() { return "SourceServer"; }
   
   /*!
    * The desired duration of current loop iteration
@@ -138,12 +145,12 @@ protected:
 #include <pugg/Driver.h>
 
 /// @cond SKIP
-template <typename Tout = std::vector<double>>
+template <typename Tout>
 class SourceDriver : public pugg::Driver {
 public:
   SourceDriver(std::string name, int version)
-      : pugg::Driver(Source<Tout>::server_name(), name, version) {}
-  virtual Source<Tout> *create() = 0;
+      : pugg::Driver(Source<Tout>::server_name(), std::move(name), version) {}
+  virtual std::unique_ptr<Source<Tout>> create() = 0;
 };
 /// @endcond
 

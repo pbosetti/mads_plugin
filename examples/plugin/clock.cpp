@@ -82,7 +82,7 @@ private:
                 |___/
 Enable the class as plugin
 */
-INSTALL_SOURCE_DRIVER(Clock, json)
+MADS_REGISTER_PLUGINS(Clock)
 
 /*
                   _

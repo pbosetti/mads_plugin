@@ -84,7 +84,7 @@ private:
                 |___/
 Enable the class as plugin
 */
-INSTALL_FILTER_DRIVER(WorkerPlugin, json, json);
+MADS_REGISTER_PLUGINS(WorkerPlugin)
 
 
 /*

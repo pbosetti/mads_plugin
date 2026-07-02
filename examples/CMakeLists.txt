@@ -28,7 +28,7 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   if(NOT TARGET pugg)
     FetchContent_Declare(pugg
       GIT_REPOSITORY https://github.com/pbosetti/pugg.git
-      GIT_TAG        1.1.0
+      GIT_TAG        1.2.0
       GIT_SHALLOW    TRUE
     )
     FetchContent_MakeAvailable(pugg)

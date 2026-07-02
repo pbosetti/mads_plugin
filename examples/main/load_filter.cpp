@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
   cout.flush();
   // load the plugin
   if (!kernel.load_plugin(argv[1])) {
-    cerr << "Failed to load plugin" << endl;
+    cerr << "Failed to load plugin: " << kernel.last_error() << endl;
     return 1;
   }
 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  FilterJ *filter = driver->create();
+  auto filter = driver->create();
   // Now we can create an instance of class FilterJ from the driver
   cout << "\nLoaded plugin: " << filter->kind() << endl;
 
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
   filter->process(out);
   cout << "Input: " << in << endl;
   cout << "Output: " << out << endl;
-  delete filter;
+  filter.reset();
 
   kernel.clear_drivers();
 }

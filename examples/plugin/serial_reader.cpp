@@ -114,7 +114,7 @@ private:
                 |___/
 Enable the class as plugin
 */
-INSTALL_SOURCE_DRIVER(SerialReader, json)
+MADS_REGISTER_PLUGINS(SerialReader)
 
 /*
                   _

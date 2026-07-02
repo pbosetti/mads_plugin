@@ -63,7 +63,7 @@ private:
                 |___/                                      
 Enable the class as plugin
 */
-INSTALL_FILTER_DRIVER(Echo, json, json)
+MADS_REGISTER_PLUGINS(Echo)
 
 
 

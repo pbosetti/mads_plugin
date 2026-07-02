@@ -57,7 +57,7 @@ private:
                 |___/                                      
 Enable the class as plugin 
 */
-INSTALL_SINK_DRIVER(ToConsole, json)
+MADS_REGISTER_PLUGINS(ToConsole)
 
 
 

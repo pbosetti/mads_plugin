@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
   cout.flush();
   // load the plugin
   if (!kernel.load_plugin(argv[1])) {
-    cerr << "Failed to load plugin" << endl;
+    cerr << "Failed to load plugin: " << kernel.last_error() << endl;
     return 1;
   }
 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  SourceJ *source = driver->create();
+  auto source = driver->create();
   // Now we can create an instance of class SourceJ from the driver
   cout << "\nLoaded plugin: " << source->kind() << endl;
 
@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
   }
   source->get_output(out);
   cout << "Output: " << out << endl;
-  delete source;
+  source.reset();
 
   kernel.clear_drivers();
 }

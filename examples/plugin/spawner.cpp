@@ -112,7 +112,7 @@ private:
                 |___/
 Enable the class as plugin
 */
-INSTALL_SOURCE_DRIVER(SpawnerPlugin, json)
+MADS_REGISTER_PLUGINS(SpawnerPlugin)
 
 
 /*
