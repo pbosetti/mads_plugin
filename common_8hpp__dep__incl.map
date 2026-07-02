@@ -1,5 +1,5 @@
 <map id="src/common.hpp" name="src/common.hpp">
-<area shape="rect" id="Node000001" title="Common definitions for the pugg library." alt="" coords="117,5,247,31"/>
+<area shape="rect" id="Node000001" title="Common definitions for MADS plugins." alt="" coords="117,5,247,31"/>
 <area shape="rect" id="Node000002" href="$filter_8hpp_source.html" title=" " alt="" coords="5,79,108,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,40,78,81,76,76,149,35"/>
 <area shape="rect" id="Node000003" href="$sink_8hpp_source.html" title=" " alt="" coords="132,79,232,104"/>

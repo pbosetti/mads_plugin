@@ -84,54 +84,74 @@ $(document).ready(function() { init_codefold(0); });
 <a href="common_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef COMMON_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define COMMON_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define PLUGIN_PROTOCOL_VERSION 7</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define PLUGIN_PROTOCOL_VERSION 8</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00020" data-start="" data-end="">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="common_8hpp.html#ab7463bc9c9b40ff018d92b01c237c452">   20</a></span><span class="preprocessor">#define INSTALL_SOURCE_DRIVER(klass, type)                                     \</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">  class klass##Driver : public SourceDriver&lt;type&gt; {                            \</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">  public:                                                                      \</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    klass##Driver() : SourceDriver(PLUGIN_NAME, klass::version) {}             \</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    Source&lt;type&gt; *create() { return new klass(); }                             \</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">  };                                                                           \</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">  extern &quot;C&quot; EXPORTIT void register_pugg_plugin(pugg::Kernel *kernel) {        \</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">    if (!kernel-&gt;add_driver(new klass##Driver())) {                            \</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">      throw std::runtime_error(&quot;Failed to add source driver&quot;);                 \</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">  }</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#if defined(_WIN32)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define EXPORTIT __declspec(dllexport)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="common_8hpp.html#a8c64d19053a9a19a4a8bcc78dbd8a02c">   19</a></span><span class="preprocessor">#define EXPORTIT __attribute__((visibility(&quot;default&quot;)))</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">   25</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> { success = 0, retry, warning, error, critical };</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#ifndef HAVE_MAIN</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;pugg/Kernel.h&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span>mads {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> P&gt;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">class </span>PluginDriver final : <span class="keyword">public</span> P::driver_type {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">using </span>Base = <span class="keyword">typename</span> P::driver_type;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">explicit</span> PluginDriver(std::string name)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      : Base(std::move(name), P::version) {}</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  std::unique_ptr&lt;typename P::plugin_base&gt; create()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">return</span> std::make_unique&lt;P&gt;();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">template</span> &lt;<span class="keyword">class</span>... Plugins&gt;</div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="common_8hpp.html#aef3415c90dfdfbf32f024cd51586895b">   75</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="common_8hpp.html#aef3415c90dfdfbf32f024cd51586895b">install</a>(pugg::Kernel &amp;kernel, <span class="keyword">const</span> std::string &amp;name) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// Bitwise | so that every class is attempted, without short-circuiting</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordflow">return</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(kernel.add_driver(</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                std::make_unique&lt;PluginDriver&lt;Plugins&gt;&gt;(name))) |</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            ...);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00041" data-start="" data-end="">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db">   41</a></span><span class="preprocessor">#define INSTALL_FILTER_DRIVER(klass, type_in, type_out)                        \</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">  class klass##Driver : public FilterDriver&lt;type_in, type_out&gt; {               \</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">  public:                                                                      \</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">    klass##Driver() : FilterDriver(PLUGIN_NAME, klass::version) {}             \</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">    Filter&lt;type_in, type_out&gt; *create() { return new klass(); }                \</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">  };                                                                           \</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">  extern &quot;C&quot; EXPORTIT void register_pugg_plugin(pugg::Kernel *kernel) {        \</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">    if (!kernel-&gt;add_driver(new klass##Driver())) {                            \</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">      throw std::runtime_error(&quot;Failed to add filter driver&quot;);                 \</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">  }</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>} <span class="comment">// namespace mads</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00104" data-start="" data-end="">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="common_8hpp.html#aff20d34636b24b5e6076740578e1f776">  104</a></span><span class="preprocessor">#define MADS_REGISTER_PLUGINS(...)                                            \</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">  extern &quot;C&quot; EXPORTIT bool register_pugg_plugin(pugg::Kernel *kernel) {       \</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">    return kernel != nullptr &amp;&amp;                                               \</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">           mads::install&lt;__VA_ARGS__&gt;(*kernel, PLUGIN_NAME);                  \</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">  }</span></div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="foldopen" id="foldopen00062" data-start="" data-end="">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="common_8hpp.html#a1bbc82f63035c765ea291fb1051afad4">   62</a></span><span class="preprocessor">#define INSTALL_SINK_DRIVER(klass, type)                                       \</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">  class klass##Driver : public SinkDriver&lt;type&gt; {                              \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">  public:                                                                      \</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">    klass##Driver() : SinkDriver(PLUGIN_NAME, klass::version) {}               \</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">    Sink&lt;type&gt; *create() { return new klass(); }                               \</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">  };                                                                           \</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">  extern &quot;C&quot; EXPORTIT void register_pugg_plugin(pugg::Kernel *kernel) {        \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">    if (!kernel-&gt;add_driver(new klass##Driver())) {                            \</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">      throw std::runtime_error(&quot;Failed to add sink driver&quot;);                   \</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    }                                                                          \</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">  }</span></div>
-</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">   77</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a> { success = 0, retry, warning, error, critical };</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif </span><span class="comment">// COMMON_HPP</span></div>
-<div class="ttc" id="acommon_8hpp_html_a8158a2d869c53eb8f38c869b380a1209"><div class="ttname"><a href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a></div><div class="ttdeci">return_type</div><div class="ttdoc">The return type of common interface functions.</div><div class="ttdef"><b>Definition</b> common.hpp:77</div></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#else </span><span class="comment">// HAVE_MAIN: build without pugg, registration compiles away</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#define MADS_REGISTER_PLUGINS(...)</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif </span><span class="comment">// HAVE_MAIN</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#define INSTALL_SOURCE_DRIVER(klass, type) MADS_REGISTER_PLUGINS(klass)</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">#define INSTALL_FILTER_DRIVER(klass, type_in, type_out) MADS_REGISTER_PLUGINS(klass)</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#define INSTALL_SINK_DRIVER(klass, type) MADS_REGISTER_PLUGINS(klass)</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#endif </span><span class="comment">// COMMON_HPP</span></div>
+<div class="ttc" id="acommon_8hpp_html_a8158a2d869c53eb8f38c869b380a1209"><div class="ttname"><a href="common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209">return_type</a></div><div class="ttdeci">return_type</div><div class="ttdoc">The return type of common interface functions.</div><div class="ttdef"><b>Definition</b> common.hpp:25</div></div>
+<div class="ttc" id="acommon_8hpp_html_aef3415c90dfdfbf32f024cd51586895b"><div class="ttname"><a href="common_8hpp.html#aef3415c90dfdfbf32f024cd51586895b">mads::install</a></div><div class="ttdeci">bool install(pugg::Kernel &amp;kernel, const std::string &amp;name) noexcept</div><div class="ttdef"><b>Definition</b> common.hpp:75</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

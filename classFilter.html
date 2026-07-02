@@ -70,6 +70,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -82,6 +83,13 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="filter_8hpp_source.html">filter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a1ff8dc22488cf294078891f306deb798" id="r_a1ff8dc22488cf294078891f306deb798"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a1ff8dc22488cf294078891f306deb798">plugin_base</a> = <a class="el" href="classFilter.html">Filter</a></td></tr>
+<tr class="separator:a1ff8dc22488cf294078891f306deb798"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac7e304c3d0623e85a11858e10d61648" id="r_aac7e304c3d0623e85a11858e10d61648"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#aac7e304c3d0623e85a11858e10d61648">driver_type</a> = <a class="el" href="classFilterDriver.html">FilterDriver</a>&lt; Tin, Tout &gt;</td></tr>
+<tr class="separator:aac7e304c3d0623e85a11858e10d61648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a91a969919077f3ecade055db183676ea" id="r_a91a969919077f3ecade055db183676ea"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">kind</a> ()=0</td></tr>
@@ -99,8 +107,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aa1b65e7624a0cb08746857acd04fb953" id="r_aa1b65e7624a0cb08746857acd04fb953"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#aa1b65e7624a0cb08746857acd04fb953">server_name</a> ()</td></tr>
-<tr class="separator:aa1b65e7624a0cb08746857acd04fb953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657d76bd2a240ebad038710a0a366f1b" id="r_a657d76bd2a240ebad038710a0a366f1b"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#a657d76bd2a240ebad038710a0a366f1b">server_name</a> ()</td></tr>
+<tr class="separator:a657d76bd2a240ebad038710a0a366f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -130,7 +138,7 @@ nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><b>_params</b>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Tin = std::vector&lt;double&gt;, typename Tout = std::vector&lt;double&gt;&gt;<br />
 class Filter&lt; Tin, Tout &gt;</div><p>Base class for filters</p>
 <p>This class is the base class for all filters. It defines the interface for loading data and processing it. Derived classes must implement <a class="el" href="classFilter.html#a91a969919077f3ecade055db183676ea">Filter::kind</a>, <a class="el" href="classFilter.html#a7c4dfbfb5125a96e6bc04ce09da169aa">Filter::load_data</a> and <a class="el" href="classFilter.html#a3a7f36fe101c5ed82d4965a6a8b375f9">Filter::process</a> methods. Optionally, they can implement the <a class="el" href="classFilter.html#aa5e150e9cf66c769524cbefad64fe8b9">Filter::set_params</a> method to receive parameters as a void pointer.</p>
-<p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#ac2ca73400d23bb4f12e23a64071588db" title="Call this macro after defining a filter class to install it into the kernel.">INSTALL_FILTER_DRIVER(klass, type_in, type_out)</a> macro to enable the plugin to be loaded by the kernel.</p>
+<p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#aff20d34636b24b5e6076740578e1f776" title="Call this macro once per shared library, after defining the plugin classes, to make them loadable by ...">MADS_REGISTER_PLUGINS(...)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Tin</td><td>Input data type </td></tr>
@@ -138,7 +146,42 @@ class Filter&lt; Tin, Tout &gt;</div><p>Base class for filters</p>
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aac7e304c3d0623e85a11858e10d61648" name="aac7e304c3d0623e85a11858e10d61648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac7e304c3d0623e85a11858e10d61648">&#9670;&#160;</a></span>driver_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vector&lt;double&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::driver_type =  <a class="el" href="classFilterDriver.html">FilterDriver</a>&lt;Tin, Tout&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The driver type matching this plugin class, used by <a class="el" href="common_8hpp.html#aef3415c90dfdfbf32f024cd51586895b">mads::PluginDriver</a>. </p>
+
+</div>
+</div>
+<a id="a1ff8dc22488cf294078891f306deb798" name="a1ff8dc22488cf294078891f306deb798"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff8dc22488cf294078891f306deb798">&#9670;&#160;</a></span>plugin_base</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vector&lt;double&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::plugin_base =  <a class="el" href="classFilter.html">Filter</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The base type of this plugin class, used by <a class="el" href="common_8hpp.html#aef3415c90dfdfbf32f024cd51586895b">mads::PluginDriver</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4f5237964d639b9f3c43a4a1d540174d" name="a4f5237964d639b9f3c43a4a1d540174d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f5237964d639b9f3c43a4a1d540174d">&#9670;&#160;</a></span>error()</h2>
 
@@ -336,8 +379,8 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
 
 </div>
 </div>
-<a id="aa1b65e7624a0cb08746857acd04fb953" name="aa1b65e7624a0cb08746857acd04fb953"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1b65e7624a0cb08746857acd04fb953">&#9670;&#160;</a></span>server_name()</h2>
+<a id="a657d76bd2a240ebad038710a0a366f1b" name="a657d76bd2a240ebad038710a0a366f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657d76bd2a240ebad038710a0a366f1b">&#9670;&#160;</a></span>server_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -348,7 +391,7 @@ template&lt;typename Tin  = std::vector&lt;double&gt;, typename Tout  = std::vec
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static const std::string <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::server_name </td>
+          <td class="memname">static std::string <a class="el" href="classFilter.html">Filter</a>&lt; Tin, Tout &gt;::server_name </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

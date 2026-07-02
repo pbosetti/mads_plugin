@@ -70,6 +70,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -82,6 +83,13 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="source_8hpp_source.html">source.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a1f9f8a9351fef86233618f3c5d556491" id="r_a1f9f8a9351fef86233618f3c5d556491"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a1f9f8a9351fef86233618f3c5d556491">plugin_base</a> = <a class="el" href="classSource.html">Source</a></td></tr>
+<tr class="separator:a1f9f8a9351fef86233618f3c5d556491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab11623a5d09bfe0839c6070a1f0494b9" id="r_ab11623a5d09bfe0839c6070a1f0494b9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ab11623a5d09bfe0839c6070a1f0494b9">driver_type</a> = <a class="el" href="classSourceDriver.html">SourceDriver</a>&lt; Tout &gt;</td></tr>
+<tr class="separator:ab11623a5d09bfe0839c6070a1f0494b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afc952efdbef1cbee52db276b276defa0" id="r_afc952efdbef1cbee52db276b276defa0"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">kind</a> ()=0</td></tr>
@@ -99,8 +107,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:abd593f10b24f9a9d0dfc4e56b5a74bf6" id="r_abd593f10b24f9a9d0dfc4e56b5a74bf6"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#abd593f10b24f9a9d0dfc4e56b5a74bf6">server_name</a> ()</td></tr>
-<tr class="separator:abd593f10b24f9a9d0dfc4e56b5a74bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a3536853ce537a3aa9260ef6dd32bf" id="r_a67a3536853ce537a3aa9260ef6dd32bf"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a67a3536853ce537a3aa9260ef6dd32bf">server_name</a> ()</td></tr>
+<tr class="separator:a67a3536853ce537a3aa9260ef6dd32bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -134,14 +142,49 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_agent_id</b><
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Tout = std::vector&lt;double&gt;&gt;<br />
 class Source&lt; Tout &gt;</div><p>Base class for sources</p>
 <p>This class is the base class for all sources. It defines the interface for providing output of data internally acquired. Child classes must implement the <a class="el" href="classSource.html#afc952efdbef1cbee52db276b276defa0">Source::kind()</a> and <a class="el" href="classSource.html#ae53b4ab2f47b84e811232e0301682bb8">Source::get_output()</a> methods. Optionally, they can implement the <a class="el" href="classSource.html#a67633531d8c0a95b000f50d59de240c9">Source::set_params()</a> method to receive parameters as a void pointer.</p>
-<p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#ab7463bc9c9b40ff018d92b01c237c452" title="Call this macro after defining a source class to install it into the kernel.">INSTALL_SOURCE_DRIVER(klass, type)</a> macro to enable the plugin to be loaded by the kernel.</p>
+<p>After deriving the class, remember to call the <a class="el" href="common_8hpp.html#aff20d34636b24b5e6076740578e1f776" title="Call this macro once per shared library, after defining the plugin classes, to make them loadable by ...">MADS_REGISTER_PLUGINS(...)</a> macro to enable the plugin to be loaded by the kernel.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Tout</td><td>Output data type </td></tr>
   </table>
   </dd>
 </dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ab11623a5d09bfe0839c6070a1f0494b9" name="ab11623a5d09bfe0839c6070a1f0494b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab11623a5d09bfe0839c6070a1f0494b9">&#9670;&#160;</a></span>driver_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::driver_type =  <a class="el" href="classSourceDriver.html">SourceDriver</a>&lt;Tout&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The driver type matching this plugin class, used by <a class="el" href="common_8hpp.html#aef3415c90dfdfbf32f024cd51586895b">mads::PluginDriver</a>. </p>
+
+</div>
+</div>
+<a id="a1f9f8a9351fef86233618f3c5d556491" name="a1f9f8a9351fef86233618f3c5d556491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f9f8a9351fef86233618f3c5d556491">&#9670;&#160;</a></span>plugin_base</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::plugin_base =  <a class="el" href="classSource.html">Source</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The base type of this plugin class, used by <a class="el" href="common_8hpp.html#aef3415c90dfdfbf32f024cd51586895b">mads::PluginDriver</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a119129cc44d86a108285b52b7c496212" name="a119129cc44d86a108285b52b7c496212"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a119129cc44d86a108285b52b7c496212">&#9670;&#160;</a></span>blob_format()</h2>
 
@@ -314,8 +357,8 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
 
 </div>
 </div>
-<a id="abd593f10b24f9a9d0dfc4e56b5a74bf6" name="abd593f10b24f9a9d0dfc4e56b5a74bf6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd593f10b24f9a9d0dfc4e56b5a74bf6">&#9670;&#160;</a></span>server_name()</h2>
+<a id="a67a3536853ce537a3aa9260ef6dd32bf" name="a67a3536853ce537a3aa9260ef6dd32bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a3536853ce537a3aa9260ef6dd32bf">&#9670;&#160;</a></span>server_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -326,7 +369,7 @@ template&lt;typename Tout  = std::vector&lt;double&gt;&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static const std::string <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::server_name </td>
+          <td class="memname">static std::string <a class="el" href="classSource.html">Source</a>&lt; Tout &gt;::server_name </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
