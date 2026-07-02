@@ -13,6 +13,7 @@ as a JSON object
 #include "serialport.hpp"
 #include <nlohmann/json.hpp>
 #include <pugg/Kernel.h>
+#include <memory>
 #include <sstream>
 
 #ifndef PLUGIN_NAME
@@ -27,14 +28,14 @@ using json = nlohmann::json;
 class SerialReader : public Source<json> {
 
   return_type setup() {
-    if (_serialPort == nullptr) {
+    if (!_serialPort) {
       if (filesystem::exists(_params["port"].get<string>()) == false) {
         cout << "Error: port " << _params["port"].get<string>() << " does not exist" << endl;
         _error = "Port does not exist";
         return return_type::critical;
       }
       try {
-        _serialPort = new SerialPort(_params["port"].get<string>().c_str(), _params["baudrate"].get<unsigned>());
+        _serialPort = std::make_unique<SerialPort>(_params["port"].get<string>().c_str(), _params["baudrate"].get<unsigned>());
       } catch (std::exception &e) {
         cout << "Error: " << e.what() << endl;
         _error = e.what();
@@ -50,15 +51,26 @@ public:
   return_type get_output(json &out, std::vector<unsigned char> *blob = nullptr) override {
     string line;
     bool success = false;
+    size_t attempts = 0;
     out.clear();
+    if (!_serialPort) {
+      _error = "Serial port not initialized, call set_params() first";
+      return return_type::critical;
+    }
     do {
       line.clear();
-      _serialPort->readLine(line);
+      if (_serialPort->readLine(line) < 0) {
+        _error = "Error reading from serial port";
+        return return_type::error;
+      }
       try {
         out = json::parse(line);
         success = true;
       } catch (json::exception &e) {
-
+        if (++attempts >= _max_attempts) {
+          _error = "No valid JSON received from serial port";
+          return return_type::error;
+        }
       }
     } while (success == false);
     if (!_agent_id.empty()) out["agent_id"] = _agent_id;
@@ -83,13 +95,14 @@ public:
     return {
       {"port", _params["port"].get<string>()},
       {"baudrate", to_string(_params["baudrate"].get<unsigned>())},
-      {"cfg_cmd", _params["cfg_cmd"].get<string>()}
+      {"cfg_cmd", _params.value("cfg_cmd", "")}
     };
   };
 
 private:
   json _data, _params;
-  SerialPort *_serialPort = nullptr;
+  std::unique_ptr<SerialPort> _serialPort;
+  static const size_t _max_attempts = 100;
 };
 
 /*

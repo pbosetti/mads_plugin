@@ -216,14 +216,15 @@ int SerialPort::write(const std::string &string) {
 }
 
 int SerialPort::read(char *buf, size_t nBytes) {
-  int n = 0;
+  size_t n = 0;
   while (n < nBytes) {
     int ret = ::read(mFileDesc, &buf[n], nBytes - n);
     if (ret < 0) {
       return ret;
     }
+    n += ret;
   }
-  return n;
+  return static_cast<int>(n);
 }
 
 int SerialPort::readLine(char *line, size_t nmax) {

@@ -21,6 +21,12 @@
 add_plugin(to_console)
 add_plugin(running_avg)
 add_plugin(worker)
+
+# The plugin templates are built too, so that they cannot drift out of sync
+# with the plugin API.
+add_plugin(template_source)
+add_plugin(template_filter)
+add_plugin(template_sink)
 if(UNIX AND NOT APPLE)
   add_plugin(spawner LIBS ${PLUGIN_UUID_LIB})
 elseif(APPLE)

@@ -69,10 +69,13 @@ int main(int argc, char *argv[]) {
   cout << "\nLoaded plugin: " << source->kind() << endl;
 
   json params, out;
-  if (argc == 3) {
-    ifstream file(argv[2]);
+  if (!json_file.empty()) {
+    ifstream file(json_file);
+    if (!file) {
+      cerr << "Cannot open params file " << json_file << endl;
+      return 1;
+    }
     params = json::parse(file);
-    file.close();
   } else {
     params["name"] = "plugin test";
   }

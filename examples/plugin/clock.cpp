@@ -30,20 +30,25 @@ public:
 
   static string get_ISO8601(const system_clock::time_point &time) {
     time_t tt = system_clock::to_time_t(time);
-    tm *tt2 = localtime(&tt);
+    // localtime() returns a pointer to shared static storage and is not
+    // thread-safe; use the reentrant variants instead
+    tm tt2{};
+#ifdef _WIN32
+    localtime_s(&tt2, &tt);
+#else
+    localtime_r(&tt, &tt2);
+#endif
 
     // Get milliseconds hack
     auto timeTruncated = system_clock::from_time_t(tt);
     int ms =
         std::chrono::duration_cast<milliseconds>(time - timeTruncated).count();
 
-    return (
-               stringstream()
-               << put_time(tt2, "%FT%T")               // "2023-03-30T19:49:53"
-               << "." << setw(3) << setfill('0') << ms // ".005"
-               << put_time(tt2, "%z") // "+0200" (time zone offset, optional)
-               )
-        .str();
+    stringstream ss;
+    ss << put_time(&tt2, "%FT%T")               // "2023-03-30T19:49:53"
+       << "." << setw(3) << setfill('0') << ms // ".005"
+       << put_time(&tt2, "%z"); // "+0200" (time zone offset, optional)
+    return ss.str();
   }
 
   return_type get_output(json &out,

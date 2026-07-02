@@ -34,11 +34,10 @@ Base class for sink plugins
  * parameters as a void pointer.
  * 
  * After deriving the class, remember to call the
- * #INSTALL_SINK_DRIVER(klass, type_in, type_out) macro
+ * #INSTALL_SINK_DRIVER(klass, type) macro
  * to enable the plugin to be loaded by the kernel.
  *
  * @tparam Tin Input data type
- * @tparam Tout Output data type
  */
 template <typename Tin = std::vector<double>>
 class Sink {

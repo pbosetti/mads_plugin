@@ -30,12 +30,15 @@ public:
   // into a map of double-ended queues (deques) to keep track of the last N
   // values for each key.
   return_type load_data(json const &input, string topic = "", vector<unsigned char> const *blob = nullptr) override {
-    if (input[_params["field"]].is_object() == false) {
+    const string field = _params.value("field", "data");
+    const size_t capa = _params.value("capa", 10);
+    if (!input.contains(field) || !input[field].is_object()) {
+      _error = "Missing or invalid '" + field + "' field in input";
       return return_type::error;
     }
-    for (auto &[key, value] : input[_params["field"]].items()) {
+    for (auto &[key, value] : input[field].items()) {
       _queues[key].push_front(value);
-      if (_queues[key].size() > _params["capa"]) {
+      while (_queues[key].size() > capa) {
         _queues[key].pop_back();
       }
     }
@@ -45,13 +48,14 @@ public:
   // We calculate the average of the last N values for each key and store it
   // into the output json object
   return_type process(json &out, vector<unsigned char> *blob = nullptr) override {
+    const string out_field = _params.value("out_field", "avg");
     out.clear();
     for (auto &[key, queue] : _queues) {
       double sum = 0;
       for (auto &v : queue) {
         sum += v;
       }
-      out[_params["out_field"]][key] = sum / queue.size();
+      out[out_field][key] = sum / queue.size();
       out["size"] = queue.size();
     }
     if (!_agent_id.empty()) out["agent_id"] = _agent_id;

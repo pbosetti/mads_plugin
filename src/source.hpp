@@ -86,12 +86,12 @@ public:
   };
 
   /*!
-   * Returns the filter information
+   * Returns the source information
    *
-   * This method returns the filter information. It returns a map with keys and
-   * values describing the filter.
+   * This method returns the source information. It returns a map with keys and
+   * values describing the source.
    *
-   * @return The filter information
+   * @return The source information
    */
   virtual std::map<std::string, std::string> info() = 0;
 
@@ -112,7 +112,7 @@ public:
   /*!
    * Set it to true to enable dummy mode
    */
-  bool dummy;
+  bool dummy = false;
 
 
   static const int version = PLUGIN_PROTOCOL_VERSION;
@@ -125,7 +125,7 @@ public:
   /*!
    * The desired duration of current loop iteration
    */
-  std::chrono::duration<long long, std::milli> next_loop_duration;
+  std::chrono::duration<long long, std::milli> next_loop_duration{0};
 
 protected:
   nlohmann::json _params;

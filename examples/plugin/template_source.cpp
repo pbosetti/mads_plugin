@@ -45,8 +45,8 @@ public:
     return return_type::success;
   }
 
-  void set_params(void const *params) override {
-    // Call the parent class method to set the common parameters 
+  void set_params(json const &params) override {
+    // Call the parent class method to set the common parameters
     // (e.g. agent_id, etc.)
     Source::set_params(params);
 
@@ -55,8 +55,7 @@ public:
     // more here...
 
     // then merge the defaults with the actually provided parameters
-    // params needs to be cast to json
-    _params.merge_patch(*(json *)params);
+    _params.merge_patch(params);
   }
 
   // Implement this method if you want to provide additional information
@@ -101,7 +100,7 @@ int main(int argc, char const *argv[]) {
   params["test"] = "value";
 
   // Set the parameters
-  plugin.set_params(&params);
+  plugin.set_params(params);
 
   // Process data
   plugin.get_output(output);

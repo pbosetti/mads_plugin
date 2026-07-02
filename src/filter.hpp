@@ -133,7 +133,7 @@ public:
   /*!
    * The desired duration of current loop iteration
    */
-  std::chrono::duration<long long, std::milli> next_loop_duration;
+  std::chrono::duration<long long, std::milli> next_loop_duration{0};
 
 protected:
   std::string _error;

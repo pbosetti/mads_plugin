@@ -70,8 +70,12 @@ int main(int argc, char *argv[]) {
 
   json in = {{"array", {1, 2, 3, 4}}};
   json params, out;
-  if (argc == 3) {
-    ifstream file(argv[2]);
+  if (!json_file.empty()) {
+    ifstream file(json_file);
+    if (!file) {
+      cerr << "Cannot open params file " << json_file << endl;
+      return 1;
+    }
     params = json::parse(file);
   } else {
     params["name"] = "echo test";

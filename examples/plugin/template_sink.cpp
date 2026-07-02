@@ -34,13 +34,14 @@ public:
   string kind() override { return PLUGIN_NAME; }
 
   // Implement the actual functionality here
-  return_type load_data(json const &input, string topic = "") override {
+  return_type load_data(json const &input, string topic = "",
+                        vector<unsigned char> const *blob = nullptr) override {
     // Do something with the input data
     return return_type::success;
   }
 
-  void set_params(void const *params) override { 
-    // Call the parent class method to set the common parameters 
+  void set_params(json const &params) override {
+    // Call the parent class method to set the common parameters
     // (e.g. agent_id, etc.)
     Sink::set_params(params);
 
@@ -49,8 +50,7 @@ public:
     // more here...
 
     // then merge the defaults with the actually provided parameters
-    // params needs to be cast to json
-    _params.merge_patch(*(json *)params);
+    _params.merge_patch(params);
   }
 
   // Implement this method if you want to provide additional information
@@ -96,7 +96,7 @@ int main(int argc, char const *argv[]) {
   params["test"] = "value";
 
   // Set the parameters
-  plugin.set_params(&params);
+  plugin.set_params(params);
 
   // Process data
   plugin.load_data(input);

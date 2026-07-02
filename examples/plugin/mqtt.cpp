@@ -38,24 +38,35 @@ public:
 */
 
   return_type setup() {
-    return_type status = return_type::success;
-    if (_connected) return status;
+    if (_connected) return return_type::success;
+    if (!_params.contains("topic")) {
+      _error = "Missing 'topic' parameter";
+      return return_type::critical;
+    }
     string host = _params["broker_host"];
     string topic = _params["topic"];
     int port = _params["broker_port"];
 
     lib_init();
     reinitialise("MQTT2MADS-bridge", true);
-    connect(host.c_str(), port, 60);
-    subscribe(NULL, topic.c_str(), 0);
+    int rc = connect(host.c_str(), port, 60);
+    if (rc != MOSQ_ERR_SUCCESS) {
+      _error = mosqpp::strerror(rc);
+      return return_type::critical;
+    }
+    rc = subscribe(NULL, topic.c_str(), 0);
+    if (rc != MOSQ_ERR_SUCCESS) {
+      _error = mosqpp::strerror(rc);
+      return return_type::critical;
+    }
 
-    // Connect to MQTT
+    // Connected to MQTT
     _connected = true;
-    return status;
+    return return_type::success;
   }
 
   ~MQTTBridge() {
-    disconnect();
+    if (_connected) disconnect();
     mosqpp::lib_cleanup();
   }
 
@@ -65,15 +76,20 @@ public:
   // }
 	
   void on_message(const struct mosquitto_message *message) override {
+    // The payload is length-delimited binary data, not necessarily
+    // NUL-terminated
+    const char *payload = static_cast<const char *>(message->payload);
+    const string content =
+        message->payloadlen > 0 ? string(payload, message->payloadlen) : "";
     _data.clear();
     try {
-      _data = json::parse((char *)(message->payload));
+      _data = json::parse(content);
       _error = "No error";
     } catch (json::parse_error &e) {
       _error = e.what();
       _data["error"] = "Error parsing invalid JSON received from MQTT";
       _data["reason"] = _error;
-      _data["content"] = (char *)(message->payload);
+      _data["content"] = content;
     }
     _topic = message->topic;
     return;
@@ -119,7 +135,7 @@ public:
   map<string, string> info() override {
     return {
       {"Broker:", _params["broker_host"].get<string>() + ":" + to_string(_params["broker_port"])},
-      {"Topic:", _params["topic"]}
+      {"Topic:", _params.value("topic", "(not set)")}
     };
   };
 

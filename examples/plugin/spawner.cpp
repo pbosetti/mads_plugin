@@ -13,6 +13,7 @@ A Template for a Source Plugin
 #include <pugg/Kernel.h>
 #include <queue>
 #include <chrono>
+#include <random>
 #include <thread>
 #include <uuid/uuid.h>
 
@@ -75,10 +76,11 @@ public:
     _number = _params["number"];
     _period_min = _params["period_min"];
     _period_max = _params["period_max"];
+    if (_period_max < _period_min) swap(_period_min, _period_max);
 
+    uniform_int_distribution<size_t> period_dist(_period_min, _period_max);
     for (size_t i = 0; i < _number; i++) {
-      size_t period = _period_min + (rand() % (_period_max - _period_min + 1));
-      _periods.push(period);
+      _periods.push(period_dist(_rng));
     }
     this_thread::sleep_for(chrono::milliseconds(1000));
   }
@@ -97,6 +99,7 @@ private:
   size_t _period_max;
   size_t _number;
   queue<size_t> _periods;
+  mt19937 _rng{random_device{}()};
 };
 
 
