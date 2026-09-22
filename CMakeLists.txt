@@ -117,6 +117,7 @@ if(PLUGIN_IS_TOP_LEVEL)
       twice.cpp
       webcam.cpp
       */examples/main/*
+      */examples/test/*
     )
     doxygen_add_docs(Doxygen
       ${SRC_DIR} ${CMAKE_CURRENT_LIST_DIR}/examples ${MARKDOWN_FILES}

@@ -27,6 +27,15 @@ add_plugin(worker)
 add_plugin(template_source)
 add_plugin(template_filter)
 add_plugin(template_sink)
+
+# The serial port plugin only needs the standard library, and SerialPort
+# supports Linux, macOS and Windows alike.
+add_plugin(serial_reader SRCS ${PLUGIN_EXAMPLES_DIR}/serialport.cpp)
+# SerialPort uses std::span, designated initializers and ranges
+target_compile_features(serial_reader PRIVATE cxx_std_20)
+if(TARGET serial_reader_main)
+  target_compile_features(serial_reader_main PRIVATE cxx_std_20)
+endif()
 if(UNIX AND NOT APPLE)
   add_plugin(spawner LIBS ${PLUGIN_UUID_LIB})
 elseif(APPLE)
@@ -37,10 +46,6 @@ endif()
 # These plugins are only built if the required dependencies are available.
 
 if(NOT MADS_NO_DEPS_ONLY)
-  if(NOT WIN32)
-    # Serial port plugin is not supported on Windows
-    add_plugin(serial_reader SRCS ${PLUGIN_EXAMPLES_DIR}/serialport.cpp)
-  endif()
   if(PLUGIN_HAS_MOSQUITTOPP)
     add_plugin(mqtt
       INCLUDES ${PLUGIN_MOSQUITTOPP_INCLUDE_DIR}

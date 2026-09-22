@@ -164,6 +164,18 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   enable_testing()
 endif()
 
+# The SerialPort test suite needs nothing but the standard library. It runs
+# the checks that need a real port over a pty pair on POSIX systems, and the
+# subset that needs no device everywhere.
+add_executable(test_serialport
+  ${PLUGIN_EXAMPLES_DIR}/test/test_serialport.cpp
+  ${PLUGIN_EXAMPLES_DIR}/serialport.cpp
+)
+target_include_directories(test_serialport PRIVATE ${PLUGIN_EXAMPLES_DIR})
+target_compile_features(test_serialport PRIVATE cxx_std_20)
+add_test(NAME "serialport" COMMAND test_serialport)
+set_tests_properties("serialport" PROPERTIES TIMEOUT 120)
+
 add_test(NAME "echoj plugin exec" COMMAND $<TARGET_FILE:${echoj_EXEC_TARGET}>)
 add_test(NAME "clock plugin exec" COMMAND $<TARGET_FILE:${clock_EXEC_TARGET}>)
 add_test(

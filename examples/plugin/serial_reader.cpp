@@ -20,6 +20,13 @@ as a JSON object
 #define PLUGIN_NAME "serial_reader"
 #endif
 
+// Windows names its serial ports COMn, POSIX systems use a device file.
+#if defined(_WIN32)
+constexpr auto DefaultPort = "COM3";
+#else
+constexpr auto DefaultPort = "/dev/ttyUSB0";
+#endif
+
 using namespace std;
 using json = nlohmann::json;
 
@@ -29,11 +36,6 @@ class SerialReader : public Source<json> {
 
   return_type setup() {
     if (!_serialPort) {
-      if (filesystem::exists(_params["port"].get<string>()) == false) {
-        cout << "Error: port " << _params["port"].get<string>() << " does not exist" << endl;
-        _error = "Port does not exist";
-        return return_type::critical;
-      }
       try {
         _serialPort = std::make_unique<SerialPort>(_params["port"].get<string>().c_str(), _params["baudrate"].get<unsigned>());
       } catch (std::exception &e) {
@@ -79,7 +81,7 @@ public:
 
   void set_params(const json &params) override { 
     Source::set_params(params);
-    _params["port"] = "/dev/ttyUSB0";
+    _params["port"] = DefaultPort;
     _params["baudrate"] = 115200;
     _params.merge_patch(params);
     if (setup() != return_type::success) {
