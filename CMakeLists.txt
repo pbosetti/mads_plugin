@@ -24,15 +24,17 @@ endif()
 # Off by default: a plain FetchContent consumer only gets the headers in
 # src/, exposed through the MADS::Plugin interface target below. Turning
 # this on additionally compiles the reusable classes that live directly
-# under examples/ (currently just SerialPort) into a static library, and
-# adds examples/ to MADS::Plugin's header search path, so a dependent
-# project can `#include <serialport.hpp>` (and whatever else lands there
-# in the future) without vendoring the .cpp file itself. This is
-# independent of PLUGIN_ENABLE_EXAMPLES, which builds the full demo
-# plugin/loader/test tree and is meant for developing this repo, not for
-# consuming it.
-option(MADS_PLUGIN_BUILD_LIBRARY
-  "Compile examples/*.cpp into a static library and expose examples/ as a header search path"
+# under examples/ (currently just SerialPort) into a separate static
+# library, MADS::PluginAddonsLibrary, which a dependent project links
+# explicitly to get both the compiled code and examples/ on its header
+# search path, so it can `#include <serialport.hpp>` (and whatever else
+# lands there in the future) without vendoring the .cpp file itself. It
+# is not linked into MADS::Plugin, so a plain plugin consumer does not
+# pay for it. This option is independent of PLUGIN_ENABLE_EXAMPLES, which
+# builds the full demo plugin/loader/test tree and is meant for
+# developing this repo, not for consuming it.
+option(MADS_PLUGIN_BUILD_ADDONS
+  "Compile examples/*.cpp into the MADS::PluginAddonsLibrary static library"
   OFF
 )
 
@@ -97,29 +99,29 @@ if(NOT TARGET mads_plugin::mads_plugin)
   add_library(mads_plugin::mads_plugin ALIAS mads_plugin)
 endif()
 
-# LIBRARY (OPT-IN) ##############################################################
+# ADDONS (OPT-IN) ###############################################################
 # Only the sources directly under examples/ are picked up: examples/plugin,
 # examples/main and examples/test hold demo executables (several with their
 # own main()), not code meant to be linked into a dependent project.
-if(MADS_PLUGIN_BUILD_LIBRARY)
-  file(GLOB MADS_PLUGIN_LIBRARY_SOURCES CONFIGURE_DEPENDS ${EXAMPLES_DIR}/*.cpp)
-  if(NOT TARGET mads_plugin_library)
-    add_library(mads_plugin_library STATIC ${MADS_PLUGIN_LIBRARY_SOURCES})
+if(MADS_PLUGIN_BUILD_ADDONS)
+  file(GLOB MADS_PLUGIN_ADDONS_SOURCES CONFIGURE_DEPENDS ${EXAMPLES_DIR}/*.cpp)
+  if(NOT TARGET mads_plugin_addons)
+    add_library(mads_plugin_addons STATIC ${MADS_PLUGIN_ADDONS_SOURCES})
     # SerialPort uses std::span, designated initializers and ranges.
-    target_compile_features(mads_plugin_library PUBLIC cxx_std_20)
-    target_include_directories(mads_plugin_library
+    target_compile_features(mads_plugin_addons PUBLIC cxx_std_20)
+    target_include_directories(mads_plugin_addons
       PUBLIC
         $<BUILD_INTERFACE:${EXAMPLES_DIR}>
         $<INSTALL_INTERFACE:include>
     )
   endif()
-  if(NOT TARGET MADS::PluginLibrary)
-    add_library(MADS::PluginLibrary ALIAS mads_plugin_library)
+  if(NOT TARGET MADS::PluginAddonsLibrary)
+    add_library(MADS::PluginAddonsLibrary ALIAS mads_plugin_addons)
   endif()
-  # Linking it into mads_plugin means a consumer of MADS::Plugin gets the
-  # compiled library and the examples/ header search path transitively,
-  # with no separate target to link against.
-  target_link_libraries(mads_plugin INTERFACE mads_plugin_library)
+  # Deliberately not linked into mads_plugin: a plain MADS::Plugin consumer
+  # must not pay for the addons. A project that wants SerialPort links
+  # MADS::PluginAddonsLibrary explicitly (in addition to MADS::Plugin, or
+  # alone if it has no other use for the plugin system).
 endif()
 
 # EXAMPLES #####################################################################
@@ -138,7 +140,7 @@ if(PLUGIN_IS_TOP_LEVEL)
     DESTINATION include
     FILES_MATCHING PATTERN "*.hpp"
   )
-  if(MADS_PLUGIN_BUILD_LIBRARY)
+  if(MADS_PLUGIN_BUILD_ADDONS)
     install(DIRECTORY ${EXAMPLES_DIR}/
       DESTINATION include
       FILES_MATCHING PATTERN "*.hpp"
