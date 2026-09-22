@@ -21,6 +21,21 @@ if(PLUGIN_ENABLE_EXAMPLES)
   option(MADS_NO_DEPS_ONLY "Build only examples without external dependencies" OFF)
 endif()
 
+# Off by default: a plain FetchContent consumer only gets the headers in
+# src/, exposed through the MADS::Plugin interface target below. Turning
+# this on additionally compiles the reusable classes that live directly
+# under examples/ (currently just SerialPort) into a static library, and
+# adds examples/ to MADS::Plugin's header search path, so a dependent
+# project can `#include <serialport.hpp>` (and whatever else lands there
+# in the future) without vendoring the .cpp file itself. This is
+# independent of PLUGIN_ENABLE_EXAMPLES, which builds the full demo
+# plugin/loader/test tree and is meant for developing this repo, not for
+# consuming it.
+option(MADS_PLUGIN_BUILD_LIBRARY
+  "Compile examples/*.cpp into a static library and expose examples/ as a header search path"
+  OFF
+)
+
 # PROJECT SETTINGS #############################################################
 if(PLUGIN_IS_TOP_LEVEL)
   set(CMAKE_CXX_STANDARD 17)
@@ -28,6 +43,7 @@ if(PLUGIN_IS_TOP_LEVEL)
 endif()
 set(USR_DIR ${CMAKE_CURRENT_LIST_DIR}/usr)
 set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
+set(EXAMPLES_DIR ${CMAKE_CURRENT_LIST_DIR}/examples)
 if(PLUGIN_IS_TOP_LEVEL)
   set(FETCHCONTENT_QUIET OFF)
 endif()
@@ -81,6 +97,31 @@ if(NOT TARGET mads_plugin::mads_plugin)
   add_library(mads_plugin::mads_plugin ALIAS mads_plugin)
 endif()
 
+# LIBRARY (OPT-IN) ##############################################################
+# Only the sources directly under examples/ are picked up: examples/plugin,
+# examples/main and examples/test hold demo executables (several with their
+# own main()), not code meant to be linked into a dependent project.
+if(MADS_PLUGIN_BUILD_LIBRARY)
+  file(GLOB MADS_PLUGIN_LIBRARY_SOURCES CONFIGURE_DEPENDS ${EXAMPLES_DIR}/*.cpp)
+  if(NOT TARGET mads_plugin_library)
+    add_library(mads_plugin_library STATIC ${MADS_PLUGIN_LIBRARY_SOURCES})
+    # SerialPort uses std::span, designated initializers and ranges.
+    target_compile_features(mads_plugin_library PUBLIC cxx_std_20)
+    target_include_directories(mads_plugin_library
+      PUBLIC
+        $<BUILD_INTERFACE:${EXAMPLES_DIR}>
+        $<INSTALL_INTERFACE:include>
+    )
+  endif()
+  if(NOT TARGET MADS::PluginLibrary)
+    add_library(MADS::PluginLibrary ALIAS mads_plugin_library)
+  endif()
+  # Linking it into mads_plugin means a consumer of MADS::Plugin gets the
+  # compiled library and the examples/ header search path transitively,
+  # with no separate target to link against.
+  target_link_libraries(mads_plugin INTERFACE mads_plugin_library)
+endif()
+
 # EXAMPLES #####################################################################
 if(PLUGIN_ENABLE_EXAMPLES)
   enable_testing()
@@ -97,6 +138,12 @@ if(PLUGIN_IS_TOP_LEVEL)
     DESTINATION include
     FILES_MATCHING PATTERN "*.hpp"
   )
+  if(MADS_PLUGIN_BUILD_LIBRARY)
+    install(DIRECTORY ${EXAMPLES_DIR}/
+      DESTINATION include
+      FILES_MATCHING PATTERN "*.hpp"
+    )
+  endif()
 endif()
 
 # DOCUMENTATION ################################################################
