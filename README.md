@@ -81,6 +81,16 @@ add_plugin(webcam SRCS other/possibly/needed/source.cpp LIBS LibsNeeded)
 
 The main `CMakeLists.txt` file will automatically detect the new plugin and compile it. This file **shall not** be modified, unless you know what you're doing.
 
+# The `SerialPort` class
+
+The repo also contains a portable C++20 class `SerialPort` that can be used to read and write data from/to a serial port. The class is implemented in `src/serialport.hpp` and it is used in the `examples/serialport.cpp` example.
+
+The class is portable and tested on Windows, Linux, and macOS.
+
+# License
+
+Apache 2.0 License. See the LICENSE file for details.
+
 
 # Authors
 
