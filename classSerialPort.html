@@ -70,8 +70,11 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classSerialPort-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SerialPort Class Reference</div></div>
 </div><!--header-->
@@ -79,52 +82,261 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="serialport_8hpp_source.html">serialport.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSerialPort_1_1Config.html">Config</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSerialPort_1_1State.html">State</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a3a76ac2a9222062c94a0f236d4b025ed" id="r_a3a76ac2a9222062c94a0f236d4b025ed"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a3a76ac2a9222062c94a0f236d4b025ed">Parity</a> { <b>none</b>
+, <b>even</b>
+, <b>odd</b>
+ }</td></tr>
+<tr class="separator:a3a76ac2a9222062c94a0f236d4b025ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6392f5b895a305b7a4a253ae320a9a7f" id="r_a6392f5b895a305b7a4a253ae320a9a7f"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a6392f5b895a305b7a4a253ae320a9a7f">FlowControl</a> { <b>none</b>
+, <b>software</b>
+, <b>hardware</b>
+ }</td></tr>
+<tr class="separator:a6392f5b895a305b7a4a253ae320a9a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a434be2039352d3e027b5a9d09b2e1" id="r_a63a434be2039352d3e027b5a9d09b2e1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a63a434be2039352d3e027b5a9d09b2e1">Clock</a> = std::chrono::steady_clock</td></tr>
+<tr class="separator:a63a434be2039352d3e027b5a9d09b2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc050db68c06998cb5483c4b0c434b47" id="r_afc050db68c06998cb5483c4b0c434b47"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">Milliseconds</a> = std::chrono::milliseconds</td></tr>
+<tr class="separator:afc050db68c06998cb5483c4b0c434b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8c76213ce9dbbe345a09bd2ab04fc4" id="r_a0d8c76213ce9dbbe345a09bd2ab04fc4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a0d8c76213ce9dbbe345a09bd2ab04fc4">NativeHandle</a> = int</td></tr>
+<tr class="separator:a0d8c76213ce9dbbe345a09bd2ab04fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a10f6750809ba706417ed399bdad69754" id="r_a10f6750809ba706417ed399bdad69754"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a10f6750809ba706417ed399bdad69754">SerialPort</a> (const char *port, unsigned baudRate=57600, unsigned stopBits=1, bool canonical_mode=false)</td></tr>
-<tr class="separator:a10f6750809ba706417ed399bdad69754"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b4627dc37646df3be8b532372d0b399" id="r_a1b4627dc37646df3be8b532372d0b399"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a1b4627dc37646df3be8b532372d0b399">write</a> (const char *buf, size_t nBytes)</td></tr>
-<tr class="separator:a1b4627dc37646df3be8b532372d0b399"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9c4df34bd033c9fead180e235e1fe06" id="r_ac9c4df34bd033c9fead180e235e1fe06"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#ac9c4df34bd033c9fead180e235e1fe06">write</a> (const std::string &amp;string)</td></tr>
-<tr class="separator:ac9c4df34bd033c9fead180e235e1fe06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d255c80fa0495407c002e0b72f2bc6f" id="r_a7d255c80fa0495407c002e0b72f2bc6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a7d255c80fa0495407c002e0b72f2bc6f">read</a> (char *buf, size_t nBytes)</td></tr>
-<tr class="separator:a7d255c80fa0495407c002e0b72f2bc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad29d367d78413099faed9996623fc674" id="r_ad29d367d78413099faed9996623fc674"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#ad29d367d78413099faed9996623fc674">readLine</a> (char *line, size_t nmax)</td></tr>
-<tr class="separator:ad29d367d78413099faed9996623fc674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b7096011bac131f9b7c61d850aa67e" id="r_a31b7096011bac131f9b7c61d850aa67e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a31b7096011bac131f9b7c61d850aa67e">SerialPort</a> (std::string_view <a class="el" href="classSerialPort.html#af1c703b1c3b4845502d6fabde6ae0cf1">port</a>, unsigned <a class="el" href="classSerialPort.html#a37e1b78df2d49e17df2faeafd70ec060">baud_rate</a>=57600, unsigned stop_bits=1, bool canonical_mode=false)</td></tr>
+<tr class="separator:a31b7096011bac131f9b7c61d850aa67e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa46f80e610f99ea1558132663097ca08" id="r_aa46f80e610f99ea1558132663097ca08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#aa46f80e610f99ea1558132663097ca08">SerialPort</a> (std::string_view <a class="el" href="classSerialPort.html#af1c703b1c3b4845502d6fabde6ae0cf1">port</a>, const <a class="el" href="structSerialPort_1_1Config.html">Config</a> &amp;<a class="el" href="classSerialPort.html#ac6dbb4c11c79b4519e45155563515800">config</a>)</td></tr>
+<tr class="separator:aa46f80e610f99ea1558132663097ca08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e09f366ed9b26b0456b66ae7bd8c702" id="r_a8e09f366ed9b26b0456b66ae7bd8c702"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a8e09f366ed9b26b0456b66ae7bd8c702">~SerialPort</a> ()</td></tr>
+<tr class="separator:a8e09f366ed9b26b0456b66ae7bd8c702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b6350c9b601a2f3d8cf75cd28b9565f" id="r_a7b6350c9b601a2f3d8cf75cd28b9565f"><td class="memItemLeft" align="right" valign="top"><a id="a7b6350c9b601a2f3d8cf75cd28b9565f" name="a7b6350c9b601a2f3d8cf75cd28b9565f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SerialPort</b> (const <a class="el" href="classSerialPort.html">SerialPort</a> &amp;)=delete</td></tr>
+<tr class="separator:a7b6350c9b601a2f3d8cf75cd28b9565f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55078c813d39d8a755f409fa269c765f" id="r_a55078c813d39d8a755f409fa269c765f"><td class="memItemLeft" align="right" valign="top"><a id="a55078c813d39d8a755f409fa269c765f" name="a55078c813d39d8a755f409fa269c765f"></a>
+<a class="el" href="classSerialPort.html">SerialPort</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSerialPort.html">SerialPort</a> &amp;)=delete</td></tr>
+<tr class="separator:a55078c813d39d8a755f409fa269c765f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac66c4fdee70085dada0a6561e910db9" id="r_aac66c4fdee70085dada0a6561e910db9"><td class="memItemLeft" align="right" valign="top"><a id="aac66c4fdee70085dada0a6561e910db9" name="aac66c4fdee70085dada0a6561e910db9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SerialPort</b> (<a class="el" href="classSerialPort.html">SerialPort</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:aac66c4fdee70085dada0a6561e910db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9748547e95a3932ffd3e7a1db8d1d2e4" id="r_a9748547e95a3932ffd3e7a1db8d1d2e4"><td class="memItemLeft" align="right" valign="top"><a id="a9748547e95a3932ffd3e7a1db8d1d2e4" name="a9748547e95a3932ffd3e7a1db8d1d2e4"></a>
+<a class="el" href="classSerialPort.html">SerialPort</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classSerialPort.html">SerialPort</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:a9748547e95a3932ffd3e7a1db8d1d2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e42296713bb6c9cccc275dd73a1a3d4" id="r_a2e42296713bb6c9cccc275dd73a1a3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a2e42296713bb6c9cccc275dd73a1a3d4">write</a> (const char *buf, std::size_t n_bytes)</td></tr>
+<tr class="separator:a2e42296713bb6c9cccc275dd73a1a3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32b090f9cfb9311a2920522dbda65f02" id="r_a32b090f9cfb9311a2920522dbda65f02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a32b090f9cfb9311a2920522dbda65f02">write</a> (std::string_view data)</td></tr>
+<tr class="separator:a32b090f9cfb9311a2920522dbda65f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a283f2fe78729b680fea6b95246c0bbb8" id="r_a283f2fe78729b680fea6b95246c0bbb8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a283f2fe78729b680fea6b95246c0bbb8">write</a> (std::span&lt; const std::byte &gt; data)</td></tr>
+<tr class="separator:a283f2fe78729b680fea6b95246c0bbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d778fbca17ac2293c12b88a6a958510" id="r_a4d778fbca17ac2293c12b88a6a958510"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a4d778fbca17ac2293c12b88a6a958510">write_line</a> (std::string_view data, std::string_view eol=&quot;\n&quot;)</td></tr>
+<tr class="separator:a4d778fbca17ac2293c12b88a6a958510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9980a26d788ca7b2d32d2569bfd92c0" id="r_ad9980a26d788ca7b2d32d2569bfd92c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#ad9980a26d788ca7b2d32d2569bfd92c0">read</a> (char *buf, std::size_t n_bytes)</td></tr>
+<tr class="separator:ad9980a26d788ca7b2d32d2569bfd92c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a076024fa6694057af839e81992336f63" id="r_a076024fa6694057af839e81992336f63"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a076024fa6694057af839e81992336f63">read</a> (std::span&lt; char &gt; buf)</td></tr>
+<tr class="separator:a076024fa6694057af839e81992336f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e45a9afa9f99903a210f5a0870a469d" id="r_a7e45a9afa9f99903a210f5a0870a469d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a7e45a9afa9f99903a210f5a0870a469d">read</a> (std::span&lt; std::byte &gt; buf)</td></tr>
+<tr class="separator:a7e45a9afa9f99903a210f5a0870a469d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8970ba0f5e244e3ac82c94633ac10a0" id="r_aa8970ba0f5e244e3ac82c94633ac10a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#aa8970ba0f5e244e3ac82c94633ac10a0">read_some</a> (char *buf, std::size_t n_max)</td></tr>
+<tr class="separator:aa8970ba0f5e244e3ac82c94633ac10a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0460a20fb6b4a3c58be3fc05b5a339c0" id="r_a0460a20fb6b4a3c58be3fc05b5a339c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a0460a20fb6b4a3c58be3fc05b5a339c0">read_line</a> (char *line, std::size_t n_max)</td></tr>
+<tr class="separator:a0460a20fb6b4a3c58be3fc05b5a339c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a274220e292fa6ab3808c27ee38605c45" id="r_a274220e292fa6ab3808c27ee38605c45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a274220e292fa6ab3808c27ee38605c45">read_line</a> (std::string &amp;line)</td></tr>
+<tr class="separator:a274220e292fa6ab3808c27ee38605c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af12270f0e9da9e0a51c1e807a877e496" id="r_af12270f0e9da9e0a51c1e807a877e496"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#af12270f0e9da9e0a51c1e807a877e496">read_line</a> ()</td></tr>
+<tr class="separator:af12270f0e9da9e0a51c1e807a877e496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a047f7c569af38c1a8aef434e2ebf3d14" id="r_a047f7c569af38c1a8aef434e2ebf3d14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a047f7c569af38c1a8aef434e2ebf3d14">readLine</a> (char *line, std::size_t n_max)</td></tr>
+<tr class="separator:a047f7c569af38c1a8aef434e2ebf3d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa675e6546852ddb78f0248e840457f8f" id="r_aa675e6546852ddb78f0248e840457f8f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#aa675e6546852ddb78f0248e840457f8f">readLine</a> (std::string &amp;line)</td></tr>
 <tr class="separator:aa675e6546852ddb78f0248e840457f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac58f9ee21f5286f2ea037209715c96ae" id="r_ac58f9ee21f5286f2ea037209715c96ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#ac58f9ee21f5286f2ea037209715c96ae">is_open</a> () const noexcept</td></tr>
+<tr class="separator:ac58f9ee21f5286f2ea037209715c96ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd9d14f7e48e14d39fe207d368f6951e" id="r_abd9d14f7e48e14d39fe207d368f6951e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#abd9d14f7e48e14d39fe207d368f6951e">close</a> () noexcept</td></tr>
+<tr class="separator:abd9d14f7e48e14d39fe207d368f6951e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1d2045eeed51e6fe16c7b5fdc9995c" id="r_a3b1d2045eeed51e6fe16c7b5fdc9995c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSerialPort.html#a0d8c76213ce9dbbe345a09bd2ab04fc4">NativeHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a3b1d2045eeed51e6fe16c7b5fdc9995c">native_handle</a> () const noexcept</td></tr>
+<tr class="separator:a3b1d2045eeed51e6fe16c7b5fdc9995c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f857653c0be9d14e8e454e11aabace2" id="r_a3f857653c0be9d14e8e454e11aabace2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a3f857653c0be9d14e8e454e11aabace2">fd</a> () const noexcept</td></tr>
+<tr class="separator:a3f857653c0be9d14e8e454e11aabace2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c703b1c3b4845502d6fabde6ae0cf1" id="r_af1c703b1c3b4845502d6fabde6ae0cf1"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#af1c703b1c3b4845502d6fabde6ae0cf1">port</a> () const noexcept</td></tr>
+<tr class="separator:af1c703b1c3b4845502d6fabde6ae0cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6dbb4c11c79b4519e45155563515800" id="r_ac6dbb4c11c79b4519e45155563515800"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structSerialPort_1_1Config.html">Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#ac6dbb4c11c79b4519e45155563515800">config</a> () const noexcept</td></tr>
+<tr class="separator:ac6dbb4c11c79b4519e45155563515800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cfd5d6ae46b4068a0e1f083dc0910a9" id="r_a5cfd5d6ae46b4068a0e1f083dc0910a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">Milliseconds</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a5cfd5d6ae46b4068a0e1f083dc0910a9">timeout</a> () const noexcept</td></tr>
+<tr class="separator:a5cfd5d6ae46b4068a0e1f083dc0910a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53d3637b39b1f23e41b682fb1a09718b" id="r_a53d3637b39b1f23e41b682fb1a09718b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a53d3637b39b1f23e41b682fb1a09718b">set_timeout</a> (<a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">Milliseconds</a> value) noexcept</td></tr>
+<tr class="separator:a53d3637b39b1f23e41b682fb1a09718b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e1b78df2d49e17df2faeafd70ec060" id="r_a37e1b78df2d49e17df2faeafd70ec060"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a37e1b78df2d49e17df2faeafd70ec060">baud_rate</a> () const noexcept</td></tr>
+<tr class="separator:a37e1b78df2d49e17df2faeafd70ec060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9e7b2075aa4befe6497c23cb855fed6" id="r_af9e7b2075aa4befe6497c23cb855fed6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#af9e7b2075aa4befe6497c23cb855fed6">set_baud_rate</a> (unsigned value)</td></tr>
+<tr class="separator:af9e7b2075aa4befe6497c23cb855fed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a2579dddcd190e581e79247b5915bf9" id="r_a8a2579dddcd190e581e79247b5915bf9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a8a2579dddcd190e581e79247b5915bf9">timed_out</a> () const noexcept</td></tr>
+<tr class="separator:a8a2579dddcd190e581e79247b5915bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28789658b41ae486a170bbdfb25d5823" id="r_a28789658b41ae486a170bbdfb25d5823"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a28789658b41ae486a170bbdfb25d5823">last_error</a> () const noexcept</td></tr>
+<tr class="separator:a28789658b41ae486a170bbdfb25d5823"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab50ede6302cd34b7e2301e405531f480" id="r_ab50ede6302cd34b7e2301e405531f480"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#ab50ede6302cd34b7e2301e405531f480">available</a> () const</td></tr>
+<tr class="separator:ab50ede6302cd34b7e2301e405531f480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5331280a44f16ecf5655a4babda3af39" id="r_a5331280a44f16ecf5655a4babda3af39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a5331280a44f16ecf5655a4babda3af39">flush_input</a> ()</td></tr>
+<tr class="separator:a5331280a44f16ecf5655a4babda3af39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8978096fb219ae00ee96426a4f51cb56" id="r_a8978096fb219ae00ee96426a4f51cb56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a8978096fb219ae00ee96426a4f51cb56">flush_output</a> ()</td></tr>
+<tr class="separator:a8978096fb219ae00ee96426a4f51cb56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af414d78a85998604a33a62a3f58050d9" id="r_af414d78a85998604a33a62a3f58050d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#af414d78a85998604a33a62a3f58050d9">flush</a> ()</td></tr>
+<tr class="separator:af414d78a85998604a33a62a3f58050d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e97ab4ad9ca4d1a3dc2f8890a4fd238" id="r_a5e97ab4ad9ca4d1a3dc2f8890a4fd238"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a5e97ab4ad9ca4d1a3dc2f8890a4fd238">drain</a> ()</td></tr>
+<tr class="separator:a5e97ab4ad9ca4d1a3dc2f8890a4fd238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a996fe561ef944ad1f6957d6fd4caf062" id="r_a996fe561ef944ad1f6957d6fd4caf062"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a996fe561ef944ad1f6957d6fd4caf062">set_dtr</a> (bool on)</td></tr>
+<tr class="separator:a996fe561ef944ad1f6957d6fd4caf062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a182e8d2b16a1dde5030fb8598159cbb9" id="r_a182e8d2b16a1dde5030fb8598159cbb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a182e8d2b16a1dde5030fb8598159cbb9">set_rts</a> (bool on)</td></tr>
+<tr class="separator:a182e8d2b16a1dde5030fb8598159cbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d7adcb926d188a9695f93eddaf32994" id="r_a5d7adcb926d188a9695f93eddaf32994"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a5d7adcb926d188a9695f93eddaf32994">cts</a> () const</td></tr>
+<tr class="separator:a5d7adcb926d188a9695f93eddaf32994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1764ec99e5e09ff9d8165b72a468826c" id="r_a1764ec99e5e09ff9d8165b72a468826c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a1764ec99e5e09ff9d8165b72a468826c">dsr</a> () const</td></tr>
+<tr class="separator:a1764ec99e5e09ff9d8165b72a468826c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d466ce5f31325559cd57b0091e32952" id="r_a9d466ce5f31325559cd57b0091e32952"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a9d466ce5f31325559cd57b0091e32952">dcd</a> () const</td></tr>
+<tr class="separator:a9d466ce5f31325559cd57b0091e32952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a434721e618b0c01f1fbcb0b48aa51397" id="r_a434721e618b0c01f1fbcb0b48aa51397"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a434721e618b0c01f1fbcb0b48aa51397">send_break</a> (int duration=0)</td></tr>
+<tr class="separator:a434721e618b0c01f1fbcb0b48aa51397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a67cd62f1d1bd222989abc83d11d4ac47" id="r_a67cd62f1d1bd222989abc83d11d4ac47"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#a67cd62f1d1bd222989abc83d11d4ac47">mFileDesc</a></td></tr>
-<tr class="separator:a67cd62f1d1bd222989abc83d11d4ac47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ac4c1ceb32132f92b2e7455186b84726a" id="r_ac4c1ceb32132f92b2e7455186b84726a"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#ac4c1ceb32132f92b2e7455186b84726a">available_ports</a> ()</td></tr>
+<tr class="separator:ac4c1ceb32132f92b2e7455186b84726a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aff29b9ad80fa3b3072f595f2f109ed38" id="r_aff29b9ad80fa3b3072f595f2f109ed38"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="classSerialPort.html#a0d8c76213ce9dbbe345a09bd2ab04fc4">NativeHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#aff29b9ad80fa3b3072f595f2f109ed38">invalid_handle</a> = -1</td></tr>
+<tr class="separator:aff29b9ad80fa3b3072f595f2f109ed38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd85b7d1693acc7d6d6077838879d30e" id="r_acd85b7d1693acc7d6d6077838879d30e"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">Milliseconds</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSerialPort.html#acd85b7d1693acc7d6d6077838879d30e">no_timeout</a> {-1}</td></tr>
+<tr class="separator:acd85b7d1693acc7d6d6077838879d30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class to interface serialport under Linux and macOS </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a10f6750809ba706417ed399bdad69754" name="a10f6750809ba706417ed399bdad69754"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10f6750809ba706417ed399bdad69754">&#9670;&#160;</a></span>SerialPort()</h2>
+<div class="textblock"><p>Class to interface serial ports under Linux, macOS and Windows.</p>
+<p>The port is opened by the constructor and closed by the destructor. Objects are movable but not copyable, so that a handle is never closed twice. A single port must not be used concurrently from more than one thread.</p>
+<p>All the I/O methods honour the configured <a class="el" href="classSerialPort.html#a5cfd5d6ae46b4068a0e1f083dc0910a9">timeout()</a> and report failures via a negative return value; the reason of the failure is available through <a class="el" href="classSerialPort.html#a28789658b41ae486a170bbdfb25d5823">last_error()</a>, while <a class="el" href="classSerialPort.html#a8a2579dddcd190e581e79247b5915bf9">timed_out()</a> tells whether a short read was caused by the timeout expiring. The setup and control methods (the constructors, <a class="el" href="classSerialPort.html#af9e7b2075aa4befe6497c23cb855fed6">set_baud_rate()</a>, the flush family, <a class="el" href="classSerialPort.html#a5e97ab4ad9ca4d1a3dc2f8890a4fd238">drain()</a> and the modem line accessors) throw std::system_error or std::invalid_argument instead. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a63a434be2039352d3e027b5a9d09b2e1" name="a63a434be2039352d3e027b5a9d09b2e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63a434be2039352d3e027b5a9d09b2e1">&#9670;&#160;</a></span>Clock</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
+          <td class="memname">using <a class="el" href="classSerialPort.html#a63a434be2039352d3e027b5a9d09b2e1">SerialPort::Clock</a> =  std::chrono::steady_clock</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Steady clock used for all timeouts. </p>
+
+</div>
+</div>
+<a id="afc050db68c06998cb5483c4b0c434b47" name="afc050db68c06998cb5483c4b0c434b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc050db68c06998cb5483c4b0c434b47">&#9670;&#160;</a></span>Milliseconds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">SerialPort::Milliseconds</a> =  std::chrono::milliseconds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Convenience alias for timeout arguments. </p>
+
+</div>
+</div>
+<a id="a0d8c76213ce9dbbe345a09bd2ab04fc4" name="a0d8c76213ce9dbbe345a09bd2ab04fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8c76213ce9dbbe345a09bd2ab04fc4">&#9670;&#160;</a></span>NativeHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classSerialPort.html#a0d8c76213ce9dbbe345a09bd2ab04fc4">SerialPort::NativeHandle</a> =  int</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Native port handle: a file descriptor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a6392f5b895a305b7a4a253ae320a9a7f" name="a6392f5b895a305b7a4a253ae320a9a7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6392f5b895a305b7a4a253ae320a9a7f">&#9670;&#160;</a></span>FlowControl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classSerialPort.html#a6392f5b895a305b7a4a253ae320a9a7f">SerialPort::FlowControl</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Flow control mode. </p>
+
+</div>
+</div>
+<a id="a3a76ac2a9222062c94a0f236d4b025ed" name="a3a76ac2a9222062c94a0f236d4b025ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a76ac2a9222062c94a0f236d4b025ed">&#9670;&#160;</a></span>Parity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classSerialPort.html#a3a76ac2a9222062c94a0f236d4b025ed">SerialPort::Parity</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Parity generation/checking mode. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a31b7096011bac131f9b7c61d850aa67e" name="a31b7096011bac131f9b7c61d850aa67e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31b7096011bac131f9b7c61d850aa67e">&#9670;&#160;</a></span>SerialPort() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
           <td class="memname">SerialPort::SerialPort </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">std::string_view&#160;</td>
           <td class="paramname"><em>port</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>baudRate</em> = <code>57600</code>, </td>
+          <td class="paramname"><em>baud_rate</em> = <code>57600</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>stopBits</em> = <code>1</code>, </td>
+          <td class="paramname"><em>stop_bits</em> = <code>1</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -138,21 +350,472 @@ Protected Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p><a class="el" href="classSerialPort.html">SerialPort</a> </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Open a serial port. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Path to the serialport. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">baudRate</td><td>Serial baud rate configuration. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">stopBits</td><td>Number of stop bits (1 or 2). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Path to the serial port, e.g. "/dev/ttyUSB0". </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">baud_rate</td><td>Serial baud rate configuration. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">stop_bits</td><td>Number of stop bits (1 or 2). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">canonical_mode</td><td>Enable canonical (line oriented) input. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>on an unsupported parameter. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>if the port cannot be opened or configured. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
+<a id="aa46f80e610f99ea1558132663097ca08" name="aa46f80e610f99ea1558132663097ca08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa46f80e610f99ea1558132663097ca08">&#9670;&#160;</a></span>SerialPort() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SerialPort::SerialPort </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSerialPort_1_1Config.html">Config</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Open a serial port with a full configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>Path to the serial port. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">config</td><td>Port configuration. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>on an unsupported parameter. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>if the port cannot be opened or configured. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e09f366ed9b26b0456b66ae7bd8c702" name="a8e09f366ed9b26b0456b66ae7bd8c702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e09f366ed9b26b0456b66ae7bd8c702">&#9670;&#160;</a></span>~SerialPort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SerialPort::~SerialPort </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Restore the original port settings and close the descriptor. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7d255c80fa0495407c002e0b72f2bc6f" name="a7d255c80fa0495407c002e0b72f2bc6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d255c80fa0495407c002e0b72f2bc6f">&#9670;&#160;</a></span>read()</h2>
+<a id="ab50ede6302cd34b7e2301e405531f480" name="ab50ede6302cd34b7e2301e405531f480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab50ede6302cd34b7e2301e405531f480">&#9670;&#160;</a></span>available()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t SerialPort::available </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes available for reading without blocking. </dd></dl>
+
+</div>
+</div>
+<a id="ac4c1ceb32132f92b2e7455186b84726a" name="ac4c1ceb32132f92b2e7455186b84726a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4c1ceb32132f92b2e7455186b84726a">&#9670;&#160;</a></span>available_ports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; SerialPort::available_ports </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>List the serial ports that look usable on this machine. </p><dl class="section return"><dt>Returns</dt><dd>Paths of the candidate ports, sorted, possibly empty. </dd></dl>
+
+</div>
+</div>
+<a id="a37e1b78df2d49e17df2faeafd70ec060" name="a37e1b78df2d49e17df2faeafd70ec060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37e1b78df2d49e17df2faeafd70ec060">&#9670;&#160;</a></span>baud_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned SerialPort::baud_rate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The current baud rate. </dd></dl>
+
+</div>
+</div>
+<a id="abd9d14f7e48e14d39fe207d368f6951e" name="abd9d14f7e48e14d39fe207d368f6951e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd9d14f7e48e14d39fe207d368f6951e">&#9670;&#160;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Drain, restore the original settings and close the port. Idempotent. </p>
+
+</div>
+</div>
+<a id="ac6dbb4c11c79b4519e45155563515800" name="ac6dbb4c11c79b4519e45155563515800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6dbb4c11c79b4519e45155563515800">&#9670;&#160;</a></span>config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structSerialPort_1_1Config.html">Config</a> &amp; SerialPort::config </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The current configuration. </dd></dl>
+
+</div>
+</div>
+<a id="a5d7adcb926d188a9695f93eddaf32994" name="a5d7adcb926d188a9695f93eddaf32994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d7adcb926d188a9695f93eddaf32994">&#9670;&#160;</a></span>cts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SerialPort::cts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The state of the CTS input line. </dd></dl>
+
+</div>
+</div>
+<a id="a9d466ce5f31325559cd57b0091e32952" name="a9d466ce5f31325559cd57b0091e32952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d466ce5f31325559cd57b0091e32952">&#9670;&#160;</a></span>dcd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SerialPort::dcd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The state of the DCD (carrier detect) input line. </dd></dl>
+
+</div>
+</div>
+<a id="a5e97ab4ad9ca4d1a3dc2f8890a4fd238" name="a5e97ab4ad9ca4d1a3dc2f8890a4fd238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e97ab4ad9ca4d1a3dc2f8890a4fd238">&#9670;&#160;</a></span>drain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::drain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Block until all the pending output has been transmitted. </p>
+
+</div>
+</div>
+<a id="a1764ec99e5e09ff9d8165b72a468826c" name="a1764ec99e5e09ff9d8165b72a468826c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1764ec99e5e09ff9d8165b72a468826c">&#9670;&#160;</a></span>dsr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SerialPort::dsr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The state of the DSR input line. </dd></dl>
+
+</div>
+</div>
+<a id="a3f857653c0be9d14e8e454e11aabace2" name="a3f857653c0be9d14e8e454e11aabace2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f857653c0be9d14e8e454e11aabace2">&#9670;&#160;</a></span>fd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::fd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The underlying file descriptor, -1 if the port is closed. Available on POSIX systems only, use <a class="el" href="classSerialPort.html#a3b1d2045eeed51e6fe16c7b5fdc9995c">native_handle()</a> for portable code. </dd></dl>
+
+</div>
+</div>
+<a id="af414d78a85998604a33a62a3f58050d9" name="af414d78a85998604a33a62a3f58050d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af414d78a85998604a33a62a3f58050d9">&#9670;&#160;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Discard both pending input and pending output. </p>
+
+</div>
+</div>
+<a id="a5331280a44f16ecf5655a4babda3af39" name="a5331280a44f16ecf5655a4babda3af39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5331280a44f16ecf5655a4babda3af39">&#9670;&#160;</a></span>flush_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::flush_input </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Discard all the data received but not read yet. </p>
+
+</div>
+</div>
+<a id="a8978096fb219ae00ee96426a4f51cb56" name="a8978096fb219ae00ee96426a4f51cb56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8978096fb219ae00ee96426a4f51cb56">&#9670;&#160;</a></span>flush_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::flush_output </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Discard all the data written but not transmitted yet. </p>
+
+</div>
+</div>
+<a id="ac58f9ee21f5286f2ea037209715c96ae" name="ac58f9ee21f5286f2ea037209715c96ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac58f9ee21f5286f2ea037209715c96ae">&#9670;&#160;</a></span>is_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SerialPort::is_open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if the port is open. </dd></dl>
+
+</div>
+</div>
+<a id="a28789658b41ae486a170bbdfb25d5823" name="a28789658b41ae486a170bbdfb25d5823"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28789658b41ae486a170bbdfb25d5823">&#9670;&#160;</a></span>last_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code SerialPort::last_error </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The error reported by the last failed operation. </dd></dl>
+
+</div>
+</div>
+<a id="a3b1d2045eeed51e6fe16c7b5fdc9995c" name="a3b1d2045eeed51e6fe16c7b5fdc9995c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b1d2045eeed51e6fe16c7b5fdc9995c">&#9670;&#160;</a></span>native_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSerialPort.html#a0d8c76213ce9dbbe345a09bd2ab04fc4">NativeHandle</a> SerialPort::native_handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The native handle, invalid_handle if the port is closed. </dd></dl>
+
+</div>
+</div>
+<a id="af1c703b1c3b4845502d6fabde6ae0cf1" name="af1c703b1c3b4845502d6fabde6ae0cf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c703b1c3b4845502d6fabde6ae0cf1">&#9670;&#160;</a></span>port()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; SerialPort::port </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The path of the port. </dd></dl>
+
+</div>
+</div>
+<a id="ad9980a26d788ca7b2d32d2569bfd92c0" name="ad9980a26d788ca7b2d32d2569bfd92c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9980a26d788ca7b2d32d2569bfd92c0">&#9670;&#160;</a></span>read() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,8 +829,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>nBytes</em>&#160;</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>n_bytes</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -176,9 +839,35 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Read nBytes into a buffer. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Read exactly n_bytes into a buffer, unless the timeout expires first. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer read. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer to be filled. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n_bytes</td><td>Number of bytes to be read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes read (less than <code>n_bytes</code> on timeout), negative on error. </dd></dl>
+
+</div>
+</div>
+<a id="a076024fa6694057af839e81992336f63" name="a076024fa6694057af839e81992336f63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a076024fa6694057af839e81992336f63">&#9670;&#160;</a></span>read() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::read </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; char &gt;&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read exactly buf.size() bytes, unless the timeout expires first. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer to be filled. </td></tr>
   </table>
   </dd>
 </dl>
@@ -186,11 +875,154 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad29d367d78413099faed9996623fc674" name="ad29d367d78413099faed9996623fc674"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad29d367d78413099faed9996623fc674">&#9670;&#160;</a></span>readLine() <span class="overload">[1/2]</span></h2>
+<a id="a7e45a9afa9f99903a210f5a0870a469d" name="a7e45a9afa9f99903a210f5a0870a469d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e45a9afa9f99903a210f5a0870a469d">&#9670;&#160;</a></span>read() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::read </td>
+          <td>(</td>
+          <td class="paramtype">std::span&lt; std::byte &gt;&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read exactly buf.size() bytes, unless the timeout expires first. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer to be filled. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes read, negative on error. </dd></dl>
+
+</div>
+</div>
+<a id="af12270f0e9da9e0a51c1e807a877e496" name="af12270f0e9da9e0a51c1e807a877e496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af12270f0e9da9e0a51c1e807a877e496">&#9670;&#160;</a></span>read_line() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; SerialPort::read_line </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read a line terminated by a newline character (CR, LF or CRLF). </p><dl class="section return"><dt>Returns</dt><dd>The line read, or std::nullopt on error or timeout. </dd></dl>
+
+</div>
+</div>
+<a id="a0460a20fb6b4a3c58be3fc05b5a339c0" name="a0460a20fb6b4a3c58be3fc05b5a339c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0460a20fb6b4a3c58be3fc05b5a339c0">&#9670;&#160;</a></span>read_line() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::read_line </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>n_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read a line terminated by a newline character (CR, LF or CRLF). The terminator is consumed but not stored. A line longer than <code>n_max</code> - 1 is truncated (the rest is discarded, so that the framing of the following lines is preserved) and <a class="el" href="classSerialPort.html#a28789658b41ae486a170bbdfb25d5823">last_error()</a> is set to EMSGSIZE. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">line</td><td>Line read, NULL-terminated. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n_max</td><td>Capacity of line buffer inclusive NULL-termination. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes read (without NULL-termination), negative on error. </dd></dl>
+
+</div>
+</div>
+<a id="a274220e292fa6ab3808c27ee38605c45" name="a274220e292fa6ab3808c27ee38605c45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a274220e292fa6ab3808c27ee38605c45">&#9670;&#160;</a></span>read_line() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::read_line </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>line</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read a line terminated by a newline character (CR, LF or CRLF). <code>line</code> is cleared first; the terminator is consumed but not stored. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">line</td><td>Line read as a std::string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes read, negative on error. </dd></dl>
+
+</div>
+</div>
+<a id="aa8970ba0f5e244e3ac82c94633ac10a0" name="aa8970ba0f5e244e3ac82c94633ac10a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8970ba0f5e244e3ac82c94633ac10a0">&#9670;&#160;</a></span>read_some()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::read_some </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>n_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Read whatever is available, waiting for at least one byte. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>Buffer to be filled. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n_max</td><td>Capacity of <code>buf</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes read (0 on timeout), negative on error. </dd></dl>
+
+</div>
+</div>
+<a id="a047f7c569af38c1a8aef434e2ebf3d14" name="a047f7c569af38c1a8aef434e2ebf3d14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a047f7c569af38c1a8aef434e2ebf3d14">&#9670;&#160;</a></span>readLine() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int SerialPort::readLine </td>
@@ -201,8 +1033,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>nmax</em>&#160;</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>n_max</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -210,15 +1042,13 @@ Protected Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Read a line terminated by a newline character (CR or LF). </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">line</td><td>Line read, NULL-terminated. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">nmax</td><td>Capacity of line buffer inclusive NULL-termination. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of bytes read (without NULL-termination), negative on error. </dd></dl>
+<p>Alias of read_line(char *, size_t), kept for backward compatibility. </p>
 
 </div>
 </div>
@@ -227,6 +1057,9 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int SerialPort::readLine </td>
@@ -236,19 +1069,205 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Read a line terminated by a newline character (CR or LF). </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">line</td><td>Line read as a std::string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of bytes read, negative on error. </dd></dl>
+<p>Alias of <a class="el" href="classSerialPort.html#a274220e292fa6ab3808c27ee38605c45">read_line(std::string &amp;)</a>, kept for backward compatibility. </p>
 
 </div>
 </div>
-<a id="a1b4627dc37646df3be8b532372d0b399" name="a1b4627dc37646df3be8b532372d0b399"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b4627dc37646df3be8b532372d0b399">&#9670;&#160;</a></span>write() <span class="overload">[1/2]</span></h2>
+<a id="a434721e618b0c01f1fbcb0b48aa51397" name="a434721e618b0c01f1fbcb0b48aa51397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a434721e618b0c01f1fbcb0b48aa51397">&#9670;&#160;</a></span>send_break()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::send_break </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duration</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Transmit a stream of zero bits. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">duration</td><td>On POSIX an implementation defined duration, on Windows a number of milliseconds; 0 means about 0.25 s on both. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af9e7b2075aa4befe6497c23cb855fed6" name="af9e7b2075aa4befe6497c23cb855fed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9e7b2075aa4befe6497c23cb855fed6">&#9670;&#160;</a></span>set_baud_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::set_baud_rate </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Change the baud rate on an open port. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New baud rate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>on an unsupported baud rate. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>if the port cannot be reconfigured. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a996fe561ef944ad1f6957d6fd4caf062" name="a996fe561ef944ad1f6957d6fd4caf062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a996fe561ef944ad1f6957d6fd4caf062">&#9670;&#160;</a></span>set_dtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::set_dtr </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>on</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set or clear the DTR line (toggling it resets most Arduino boards). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">on</td><td>New state of the line. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a182e8d2b16a1dde5030fb8598159cbb9" name="a182e8d2b16a1dde5030fb8598159cbb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182e8d2b16a1dde5030fb8598159cbb9">&#9670;&#160;</a></span>set_rts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::set_rts </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>on</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set or clear the RTS line. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">on</td><td>New state of the line. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a53d3637b39b1f23e41b682fb1a09718b" name="a53d3637b39b1f23e41b682fb1a09718b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53d3637b39b1f23e41b682fb1a09718b">&#9670;&#160;</a></span>set_timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SerialPort::set_timeout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">Milliseconds</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the read/write timeout (no_timeout to block indefinitely). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>New timeout. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8a2579dddcd190e581e79247b5915bf9" name="a8a2579dddcd190e581e79247b5915bf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a2579dddcd190e581e79247b5915bf9">&#9670;&#160;</a></span>timed_out()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SerialPort::timed_out </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if the last I/O operation was cut short by the timeout. </dd></dl>
+
+</div>
+</div>
+<a id="a5cfd5d6ae46b4068a0e1f083dc0910a9" name="a5cfd5d6ae46b4068a0e1f083dc0910a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cfd5d6ae46b4068a0e1f083dc0910a9">&#9670;&#160;</a></span>timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">Milliseconds</a> SerialPort::timeout </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The current read/write timeout. </dd></dl>
+
+</div>
+</div>
+<a id="a2e42296713bb6c9cccc275dd73a1a3d4" name="a2e42296713bb6c9cccc275dd73a1a3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e42296713bb6c9cccc275dd73a1a3d4">&#9670;&#160;</a></span>write() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,8 +1281,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>nBytes</em>&#160;</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>n_bytes</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -272,19 +1291,19 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Write a buffer. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Write a buffer, retrying until everything is written or the timeout expires. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>Output buffer. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">nBytes</td><td>Number of bytes to be written. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n_bytes</td><td>Number of bytes to be written. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of bytes read, negative on error. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes written, negative on error. </dd></dl>
 
 </div>
 </div>
-<a id="ac9c4df34bd033c9fead180e235e1fe06" name="ac9c4df34bd033c9fead180e235e1fe06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9c4df34bd033c9fead180e235e1fe06">&#9670;&#160;</a></span>write() <span class="overload">[2/2]</span></h2>
+<a id="a283f2fe78729b680fea6b95246c0bbb8" name="a283f2fe78729b680fea6b95246c0bbb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a283f2fe78729b680fea6b95246c0bbb8">&#9670;&#160;</a></span>write() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,15 +1311,76 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">int SerialPort::write </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>string</em></td><td>)</td>
+          <td class="paramtype">std::span&lt; const std::byte &gt;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Wrire a std::string. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Write raw bytes. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">string</td><td>String to be written. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Bytes to be written. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes written, negative on error. </dd></dl>
+
+</div>
+</div>
+<a id="a32b090f9cfb9311a2920522dbda65f02" name="a32b090f9cfb9311a2920522dbda65f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32b090f9cfb9311a2920522dbda65f02">&#9670;&#160;</a></span>write() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::write </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write a string (also accepts a std::string or a C string). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Text to be written. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bytes written, negative on error. </dd></dl>
+
+</div>
+</div>
+<a id="a4d778fbca17ac2293c12b88a6a958510" name="a4d778fbca17ac2293c12b88a6a958510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d778fbca17ac2293c12b88a6a958510">&#9670;&#160;</a></span>write_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SerialPort::write_line </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>eol</em> = <code>&quot;\n&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write a string followed by a line terminator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Text to be written. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eol</td><td>Line terminator appended to <code>data</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -309,8 +1389,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a67cd62f1d1bd222989abc83d11d4ac47" name="a67cd62f1d1bd222989abc83d11d4ac47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67cd62f1d1bd222989abc83d11d4ac47">&#9670;&#160;</a></span>mFileDesc</h2>
+<a id="aff29b9ad80fa3b3072f595f2f109ed38" name="aff29b9ad80fa3b3072f595f2f109ed38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff29b9ad80fa3b3072f595f2f109ed38">&#9670;&#160;</a></span>invalid_handle</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,16 +1399,39 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int SerialPort::mFileDesc</td>
+          <td class="memname">constexpr <a class="el" href="classSerialPort.html#a0d8c76213ce9dbbe345a09bd2ab04fc4">NativeHandle</a> SerialPort::invalid_handle = -1</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>File descriptor </p>
+<p>Value of <a class="el" href="classSerialPort.html#a3b1d2045eeed51e6fe16c7b5fdc9995c">native_handle()</a> when the port is closed. </p>
+
+</div>
+</div>
+<a id="acd85b7d1693acc7d6d6077838879d30e" name="acd85b7d1693acc7d6d6077838879d30e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd85b7d1693acc7d6d6077838879d30e">&#9670;&#160;</a></span>no_timeout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classSerialPort.html#afc050db68c06998cb5483c4b0c434b47">Milliseconds</a> SerialPort::no_timeout {-1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Timeout value meaning "block until the operation completes". </p>
 
 </div>
 </div>

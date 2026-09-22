@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['error_0',['error',['../classFilter.html#a4f5237964d639b9f3c43a4a1d540174d',1,'Filter::error()'],['../classSink.html#a5d3da423ff6979ec8150a43fadfbd5ab',1,'Sink::error()'],['../classSource.html#aeb408a2891887138206fd602bf2357cb',1,'Source::error()']]]
+  ['baud_5frate_0',['baud_rate',['../classSerialPort.html#a37e1b78df2d49e17df2faeafd70ec060',1,'SerialPort']]],
+  ['blob_5fformat_1',['blob_format',['../classSource.html#a119129cc44d86a108285b52b7c496212',1,'Source']]]
 ];

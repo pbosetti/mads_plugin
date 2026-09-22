@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mfiledesc_0',['mFileDesc',['../classSerialPort.html#a67cd62f1d1bd222989abc83d11d4ac47',1,'SerialPort']]]
+  ['canonical_5fmode_0',['canonical_mode',['../structSerialPort_1_1Config.html#afcc16317a1dad59957e40ea207d7ef43',1,'SerialPort::Config']]]
 ];

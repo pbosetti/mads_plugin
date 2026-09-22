@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['read_0',['read',['../classSerialPort.html#a7d255c80fa0495407c002e0b72f2bc6f',1,'SerialPort']]],
-  ['readline_1',['readline',['../classSerialPort.html#ad29d367d78413099faed9996623fc674',1,'SerialPort::readLine(char *line, size_t nmax)'],['../classSerialPort.html#aa675e6546852ddb78f0248e840457f8f',1,'SerialPort::readLine(std::string &amp;line)']]]
+  ['hangup_0',['hangup',['../classPty.html#aa9b27ba5cc59090803fabc5093ea520e',1,'Pty']]]
 ];

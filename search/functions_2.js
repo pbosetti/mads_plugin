@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['get_5foutput_0',['get_output',['../classSource.html#ae53b4ab2f47b84e811232e0301682bb8',1,'Source::get_output()'],['../classMQTTBridge.html#a5a94e80b54015e4200d76eea11fdddf7',1,'MQTTBridge::get_output()'],['../classSerialReader.html#a7c0a2f303b640862cb3f0feef2bd4430',1,'SerialReader::get_output()'],['../classSpawnerPlugin.html#aa50f6c8ddb4e5a9ea13e23238f383762',1,'SpawnerPlugin::get_output()'],['../classPluginClassName.html#aa7145bf08e4b7a4a38ad079db66dd2cf',1,'PluginClassName::get_output()']]]
+  ['close_0',['close',['../classSerialPort.html#abd9d14f7e48e14d39fe207d368f6951e',1,'SerialPort']]],
+  ['config_1',['config',['../classSerialPort.html#ac6dbb4c11c79b4519e45155563515800',1,'SerialPort']]],
+  ['cts_2',['cts',['../classSerialPort.html#a5d7adcb926d188a9695f93eddaf32994',1,'SerialPort']]]
 ];

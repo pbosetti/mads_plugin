@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plugin_5fbase_0',['plugin_base',['../classFilter.html#a1ff8dc22488cf294078891f306deb798',1,'Filter::plugin_base'],['../classSink.html#a3f09334baeb70f735184c17f60dca419',1,'Sink::plugin_base'],['../classSource.html#a1f9f8a9351fef86233618f3c5d556491',1,'Source::plugin_base']]]
+  ['driver_5ftype_0',['driver_type',['../classFilter.html#aac7e304c3d0623e85a11858e10d61648',1,'Filter::driver_type'],['../classSink.html#afbf9983dd113208cf0ed185a43ea44c7',1,'Sink::driver_type'],['../classSource.html#ab11623a5d09bfe0839c6070a1f0494b9',1,'Source::driver_type']]]
 ];

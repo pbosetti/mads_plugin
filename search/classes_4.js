@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['runningaverage_0',['RunningAverage',['../classRunningAverage.html',1,'']]]
+  ['pluginclassname_0',['PluginClassName',['../classPluginClassName.html',1,'']]],
+  ['pty_1',['Pty',['../classPty.html',1,'']]]
 ];

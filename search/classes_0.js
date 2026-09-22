@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['datastore_0',['Datastore',['../classDatastore.html',1,'']]]
+  ['config_0',['Config',['../structSerialPort_1_1Config.html',1,'SerialPort']]]
 ];

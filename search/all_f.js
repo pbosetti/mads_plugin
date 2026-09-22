@@ -1,15 +1,13 @@
 var searchData=
 [
-  ['serial_20reader_0',['Serial Reader',['../index.html#autotoc_md7',1,'']]],
-  ['serialport_1',['serialport',['../classSerialPort.html',1,'SerialPort'],['../classSerialPort.html#a10f6750809ba706417ed399bdad69754',1,'SerialPort::SerialPort()']]],
-  ['serialreader_2',['SerialReader',['../classSerialReader.html',1,'']]],
-  ['server_5fname_3',['server_name',['../classFilter.html#a657d76bd2a240ebad038710a0a366f1b',1,'Filter::server_name()'],['../classSink.html#aba0880af562b8fc28e67e1cd3ec16384',1,'Sink::server_name()'],['../classSource.html#a67a3536853ce537a3aa9260ef6dd32bf',1,'Source::server_name()']]],
-  ['set_5fparams_4',['set_params',['../classWorkerPlugin.html#a957b8e7631391ea686d2f4f56b464bb3',1,'WorkerPlugin::set_params()'],['../classToConsole.html#a5f7cd8773bd3fa8b0e62b0cf28f562cd',1,'ToConsole::set_params()'],['../classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7',1,'PluginClassName::set_params(json const &amp;params) override'],['../classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7',1,'PluginClassName::set_params(json const &amp;params) override'],['../classPluginClassName.html#ab8adbda59ac1b29ccacc5d3de9e8f0a7',1,'PluginClassName::set_params(json const &amp;params) override'],['../classFilter.html#aa5e150e9cf66c769524cbefad64fe8b9',1,'Filter::set_params()'],['../classSink.html#a6df683b6aa4e9df7523b0df6b0cbf299',1,'Sink::set_params()'],['../classSource.html#a67633531d8c0a95b000f50d59de240c9',1,'Source::set_params()'],['../classMQTTBridge.html#affffc1ec622ede507088b8e6d784d090',1,'MQTTBridge::set_params()'],['../classRunningAverage.html#a8b9c5e6e91e9e6dd3e72c8bba68daaf3',1,'RunningAverage::set_params()'],['../classSerialReader.html#a2316a03ebb088c52f19b5f26df9f35c0',1,'SerialReader::set_params()'],['../classSpawnerPlugin.html#a046ab4c9134fa5cb87cc51b1bc59720f',1,'SpawnerPlugin::set_params()']]],
-  ['sink_5',['Sink',['../classSink.html',1,'']]],
-  ['sink_3c_20json_20_3e_6',['Sink&lt; json &gt;',['../classSink.html',1,'']]],
-  ['sinkdriver_7',['SinkDriver',['../classSinkDriver.html',1,'']]],
-  ['source_8',['Source',['../classSource.html',1,'']]],
-  ['source_3c_20json_20_3e_9',['Source&lt; json &gt;',['../classSource.html',1,'']]],
-  ['sourcedriver_10',['SourceDriver',['../classSourceDriver.html',1,'']]],
-  ['spawnerplugin_11',['SpawnerPlugin',['../classSpawnerPlugin.html',1,'']]]
+  ['read_0',['read',['../classSerialPort.html#ad9980a26d788ca7b2d32d2569bfd92c0',1,'SerialPort::read(char *buf, std::size_t n_bytes)'],['../classSerialPort.html#a076024fa6694057af839e81992336f63',1,'SerialPort::read(std::span&lt; char &gt; buf)'],['../classSerialPort.html#a7e45a9afa9f99903a210f5a0870a469d',1,'SerialPort::read(std::span&lt; std::byte &gt; buf)']]],
+  ['read_5fline_1',['read_line',['../classSerialPort.html#a0460a20fb6b4a3c58be3fc05b5a339c0',1,'SerialPort::read_line(char *line, std::size_t n_max)'],['../classSerialPort.html#a274220e292fa6ab3808c27ee38605c45',1,'SerialPort::read_line(std::string &amp;line)'],['../classSerialPort.html#af12270f0e9da9e0a51c1e807a877e496',1,'SerialPort::read_line()']]],
+  ['read_5fsome_2',['read_some',['../classSerialPort.html#aa8970ba0f5e244e3ac82c94633ac10a0',1,'SerialPort']]],
+  ['reader_3',['Serial Reader',['../index.html#autotoc_md7',1,'']]],
+  ['readline_4',['readline',['../classSerialPort.html#a047f7c569af38c1a8aef434e2ebf3d14',1,'SerialPort::readLine(char *line, std::size_t n_max)'],['../classSerialPort.html#aa675e6546852ddb78f0248e840457f8f',1,'SerialPort::readLine(std::string &amp;line)']]],
+  ['receive_5',['receive',['../classPty.html#a58543984ddfdd89f4c6ab720bf528aac',1,'Pty']]],
+  ['restore_6',['restore',['../structSerialPort_1_1State.html#a5c2bb444dbc1e6d28ecfe3d4e94c6d8f',1,'SerialPort::State']]],
+  ['return_5ftype_7',['return_type',['../common_8hpp.html#a8158a2d869c53eb8f38c869b380a1209',1,'common.hpp']]],
+  ['running_20average_8',['Running average',['../index.html#autotoc_md10',1,'']]],
+  ['runningaverage_9',['RunningAverage',['../classRunningAverage.html',1,'']]]
 ];
