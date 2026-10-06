@@ -76,6 +76,41 @@ public:
   virtual return_type load_data(Tin const &data, std::string topic = "", std::vector<unsigned char> const *blob = nullptr) = 0;
 
   /*!
+   * Loads the input data, with the blob given as a read-only view
+   *
+   * Called by the host instead of load_data() when the incoming blob lives
+   * in a shared-memory ring (protocol V9). Calls without a blob still go
+   * through load_data().
+   *
+   * The default implementation copies the view into the protected member
+   * #_blob_copy and forwards to load_data(data, topic, &_blob_copy) (or with
+   * a null blob pointer if `blob.data` is null), so plugins written for
+   * earlier protocols keep working unchanged, at the cost of one copy. The
+   * copy stays valid until the next load_data_view() call.
+   *
+   * Override it for zero-copy input. In that case observe the BlobView
+   * contract: the view is read-only; it is valid only until the next
+   * load_data()/load_data_view() call and only while the producer has not
+   * overwritten the slot (the ring is lossy: the host re-checks the slot
+   * after the call(s) and counts and discards torn reads); data to be kept
+   * must be copied.
+   *
+   * @param data The input data
+   * @param topic The topic of the data
+   * @param blob Read-only view of the binary data object (received)
+   * @return The outcome of the operation, as for load_data()
+   */
+  virtual return_type load_data_view(Tin const &data, std::string topic,
+                                     BlobView blob) {
+    if (blob.data == nullptr) {
+      _blob_copy.clear();
+      return load_data(data, std::move(topic), nullptr);
+    }
+    _blob_copy.assign(blob.data, blob.data + blob.size);
+    return load_data(data, std::move(topic), &_blob_copy);
+  }
+
+  /*!
    * Sets the parameters
    *
    * This method sets the parameters for the sink. It receives a void pointer
@@ -126,6 +161,11 @@ protected:
   std::string _error;
   std::string _agent_id;
   nlohmann::json _params;
+  /*!
+   * Copy of the last blob view, owned by the base class and filled by the
+   * default load_data_view() implementation.
+   */
+  std::vector<unsigned char> _blob_copy;
 };
 
 #ifndef HAVE_MAIN

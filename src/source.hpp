@@ -75,6 +75,47 @@ public:
    */
   virtual return_type get_output(Tout &out, std::vector<unsigned char> *blob = nullptr) = 0;
 
+  /*!
+   * Tells whether the plugin can write its blob directly into a host buffer
+   *
+   * Override and return true to opt in to zero-copy output (protocol V9).
+   * When this returns true and the agent has shared memory enabled, the host
+   * calls get_output_shared() instead of get_output(). The value is queried
+   * once, after set_params(), and must not change afterwards.
+   *
+   * @return True if get_output_shared() is implemented
+   */
+  virtual bool supports_shared_output() const { return false; }
+
+  /*!
+   * Get the output data, writing the blob into a host-provided buffer
+   *
+   * Zero-copy variant of get_output(), called by the host instead of it when
+   * supports_shared_output() returns true and the agent has shared memory
+   * enabled. The plugin fills `out` exactly as in get_output(), writes at
+   * most `buf.capacity` bytes of blob into `buf.data` and sets `buf.size`
+   * (0 means no blob). Return codes have the same meaning as in
+   * get_output().
+   *
+   * If the blob does not fit, the plugin writes nothing, sets `buf.size` to
+   * the required size (so that `buf.size > buf.capacity`), does not consume
+   * its pending data, and returns return_type::retry: the host then calls
+   * get_output() in the same loop iteration to deliver that payload through
+   * the copying path. See BlobBuffer for the full contract.
+   *
+   * The default implementation returns return_type::error, and is never
+   * called unless supports_shared_output() is overridden.
+   *
+   * @param out The output data
+   * @param buf Host-provided writable buffer (valid only during the call)
+   * @return The outcome of the operation
+   */
+  virtual return_type get_output_shared(Tout &out, BlobBuffer &buf) {
+    (void)out;
+    (void)buf;
+    return return_type::error;
+  }
+
 
   /*!
    * Sets the parameters

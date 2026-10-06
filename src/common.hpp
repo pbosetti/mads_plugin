@@ -1,7 +1,7 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
-#define PLUGIN_PROTOCOL_VERSION 8
+#define PLUGIN_PROTOCOL_VERSION 9
 
 /*!
  * @file common.hpp
@@ -23,6 +23,65 @@
  * @brief The return type of common interface functions.
  */
 enum class return_type { success = 0, retry, warning, error, critical };
+
+#include <cstddef>
+
+/*!
+ * @brief Read-only view of a binary payload (protocol V9).
+ *
+ * Passed by the host to Filter::load_data_view() and Sink::load_data_view()
+ * when the payload lives in a shared-memory ring owned by the producer agent
+ * (zero-copy input). It is a plain, ABI-stable struct: a pointer and a size.
+ *
+ * Contract:
+ * - The view is **read-only**: never write through BlobView::data (the
+ *   memory may be mapped read-only, and it is shared with other readers).
+ * - The view is valid only during the load_data_view() call and the
+ *   immediately following process() / process_shared() call of the same
+ *   loop iteration, and in any case only until the next load_data() or
+ *   load_data_view() call.
+ * - Even within that window the ring is **lossy**: a fast producer may
+ *   overwrite the slot at any time. The host re-checks the slot validity
+ *   after the plugin call(s) and, if the slot was overwritten, discards the
+ *   result and counts a torn read. A plugin must therefore never trust data
+ *   read from a view for anything that cannot be safely discarded.
+ * - Plugins that need to keep the payload (or parts of it) beyond the call
+ *   must copy it.
+ * - `data == nullptr` (with `size == 0`) means "no blob".
+ */
+struct BlobView {
+  const unsigned char *data = nullptr; ///< First byte of the payload
+  size_t size = 0;                     ///< Payload size in bytes
+};
+
+/*!
+ * @brief Host-provided writable buffer for a binary payload (protocol V9).
+ *
+ * Passed by the host to Source::get_output_shared() and
+ * Filter::process_shared(); typically it is a slot in the agent's
+ * shared-memory ring (zero-copy output). It is a plain, ABI-stable struct.
+ *
+ * Contract:
+ * - The host sets `data` and `capacity`, and sets `size` to 0 before the
+ *   call.
+ * - The plugin writes at most `capacity` bytes starting at `data` and sets
+ *   `size` to the number of bytes written. `size == 0` means "no blob".
+ * - **Overflow**: if the payload does not fit, the plugin writes nothing,
+ *   sets `size` to the required number of bytes (so `size > capacity`) and
+ *   returns return_type::retry. The host detects the overflow from
+ *   `size > capacity` (regardless of the return code) and, in the same loop
+ *   iteration, falls back to the copying path (Source::get_output() or
+ *   Filter::process()) for that one payload. The plugin must therefore check
+ *   the size *before* consuming its pending data, so that the fallback call
+ *   delivers the same payload.
+ * - The buffer is valid only for the duration of the call: never keep the
+ *   `data` pointer.
+ */
+struct BlobBuffer {
+  unsigned char *data = nullptr; ///< Start of the writable buffer
+  size_t capacity = 0;           ///< Bytes available at `data`
+  size_t size = 0;               ///< Bytes written by the plugin
+};
 
 #ifndef HAVE_MAIN
 #include <pugg/Kernel.h>
